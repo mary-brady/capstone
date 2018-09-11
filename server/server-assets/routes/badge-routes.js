@@ -40,7 +40,7 @@ router.post('/', (req, res, next) => {
 })
 
 //DELETE
-router.delete(':/id', (req, res, next) => {
+router.delete('/:id', (req, res, next) => {
     Badges.findById(req.params.id)
         .then(badge => {
             if (!badge.authorId.equals(req.session.uid)) {

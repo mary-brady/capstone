@@ -7,7 +7,7 @@ let schema = new Schema({
     title: { type: String, required: true },
     authorId: { type: ObjectId, ref: 'User', required: true },
     created: { type: Date, default: Date.now(), required: true },
-    desciption: { type: String, required: true }
+    description: { type: String, required: true }
 
 })
 

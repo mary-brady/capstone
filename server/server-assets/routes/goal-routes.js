@@ -50,7 +50,7 @@ router.put('/:id', (req, res, next) => {
 })
 
 //DELETE
-router.delete(':/id', (req, res, next) => {
+router.delete('/:id', (req, res, next) => {
     Goals.findById(req.params.id)
         .then(goal => {
             if (!goal.authorId.equals(req.session.uid)) {

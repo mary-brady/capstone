@@ -29,6 +29,9 @@ let auth = require('./server-assets/auth/routes')
 server.use(auth.session)
 server.use(auth.router)
 
+let feed = require('./server-assets/routes/post-routes')
+server.use('/api/feed', feed)
+
 
 //Gate Keeper Must login to access any route below this code
 server.use((req, res, next) => {
@@ -41,7 +44,14 @@ server.use((req, res, next) => {
 })
 
 //YOUR ROUTES HERE!!!!!!
+let postRoutes = require('./server-assets/routes/post-routes')
+server.use('/api/posts', postRoutes)
 
+let badgeRoutes = require('./server-assets/routes/badge-routes')
+server.use('/api/badges', badgeRoutes)
+
+let goalRoutes = require('./server-assets/routes/goal-routes')
+server.use('/api/goals', goalRoutes)
 
 //Catch all
 server.get('*', (req, res, next) => {
