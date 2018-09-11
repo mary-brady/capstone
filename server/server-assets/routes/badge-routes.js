@@ -25,6 +25,24 @@ router.get('/:id', (req, res, next) => {
         })
 })
 
+//EDIT
+router.put('/:id', (req, res, next) => {
+    Badges.findById(req.params.id)
+        .then(badge => {
+            badge.update(req.body, (err) => {
+                if (err) {
+                    console.log(err)
+                    next()
+                    return
+                }
+                res.send("Badge updated")
+            });
+        })
+        .catch(err => {
+            console.log(err)
+            next()
+        })
+})
 
 //POST
 router.post('/', (req, res, next) => {
@@ -43,9 +61,6 @@ router.post('/', (req, res, next) => {
 router.delete('/:id', (req, res, next) => {
     Badges.findById(req.params.id)
         .then(badge => {
-            if (!badge.authorId.equals(req.session.uid)) {
-                return res.status(401).send("Not authorized")
-            }
             Badges.findByIdAndRemove(req.params.id)
                 .then(data => {
                     res.send('Delorted!')
