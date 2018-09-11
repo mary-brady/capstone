@@ -1,5 +1,5 @@
 let router = require('express').Router()
-let Goals = require('../models/goal')
+let Goals = require('../models/Goal')
 
 //GET
 router.get('/', (req, res, next) => {
