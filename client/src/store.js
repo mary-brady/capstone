@@ -11,13 +11,27 @@ let auth = Axios.create({
   withCredentials: true
 })
 
+let api = Axios.create({
+  baseURL: "//localhost:3000/api/",
+  timeout: 3000,
+  withCredentials: true
+})
+
 export default new Vuex.Store({
   state: {
-    user: {}
+    user: {},
+    weight:[],
+    endurance:[]
   },
   mutations: {
     setUser(state, user) {
       state.user = user;
+    },
+    setWeight(state, weight) {
+      state.weight = weight;
+    },
+    setEndurance(state, endurance) {
+      state.endurance = endurance;
     }
   },
   actions: {
@@ -45,6 +59,9 @@ export default new Vuex.Store({
         commit("clearUser");
         router.push({ name: "login" });
       });
-    }
+    },
+    ///////Weight and Endurance for Charts
+
+    
   }
 })
