@@ -11,7 +11,7 @@ let schema = new Schema({
     name: { type: String, required: true },
     //every email must be unique on the database
     email: { type: String, required: true, unique: true },
-    username: { type: String, unique: true },
+    username: { type: String, required: true, unique: true },
     age: { type: Number },
     gym: { type: String },
     description: { type: String },
