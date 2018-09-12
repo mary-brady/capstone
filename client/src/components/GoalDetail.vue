@@ -7,9 +7,9 @@
 
 <script>
   import Chart from 'chart.js';
-  import planetChartData from './chart-data.js';
+  import planetChartData from './GoalEdit.vue';
   export default {
-    name: "app",
+    name: "goalDetail",
     data() {
       return {
         planetChartData: planetChartData,
