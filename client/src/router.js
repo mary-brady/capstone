@@ -31,11 +31,11 @@ export default new Router({
       // which is lazy-loaded when the route is visited.
       component: () => import(/* webpackChunkName: "profile" */ './views/Profile.vue')
     },
-    // {
-    //   ///creating temporary path for chart tests
-    //   path: 'test',
-    //   name: 'goalDetail',
-    //   component: GoalDetail
-    // }
+    {
+      ///creating temporary path for chart tests
+      path: '/test',
+      name: 'goalDetail',
+      component: GoalDetail
+    }
   ]
 })
