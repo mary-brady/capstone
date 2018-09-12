@@ -2,11 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Login from './views/Login.vue'
-<<<<<<< HEAD
-=======
 import GoalDetail from './components/GoalDetail.vue'
 
->>>>>>> 13892abf4d51299e2c0d186a720cff84d3137f01
 import Profile from './views/Profile.vue'
 
 Vue.use(Router)
