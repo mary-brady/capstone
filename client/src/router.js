@@ -11,6 +11,11 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
+      path: '/',
+      name:'home',
+      component: Home
+    },
+    {
       path: '/login',
       name: 'login',
       // route level code-splitting
