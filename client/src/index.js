@@ -1,7 +1,8 @@
-import Vue from 'vue';
+import Vue from 'vue/dist/vue.js';
 import Profile from './views/Profile.vue';
 
-Vue.config.productionTip = false
+
+Vue.config.productionTip = false;
 
 export const bus = new Vue();
 

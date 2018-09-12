@@ -12,9 +12,9 @@ let schema = new Schema({
     //every email must be unique on the database
     email: { type: String, required: true, unique: true },
     username: { type: String, required: true, unique: true },
-    age: { type: Number, required: true },
+    age: { type: Number },
     gym: { type: String },
-    description:{type: String},
+    description: { type: String },
     userType: { type: String },
     password: { type: String, required: true },
     created: { type: Number, required: true, default: Date.now() }
