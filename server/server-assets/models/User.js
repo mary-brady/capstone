@@ -14,6 +14,7 @@ let schema = new Schema({
     username: { type: String, required: true, unique: true },
     age: { type: Number, required: true },
     gym: { type: String },
+    description:{type: String},
     userType: { type: String },
     password: { type: String, required: true },
     created: { type: Number, required: true, default: Date.now() }
