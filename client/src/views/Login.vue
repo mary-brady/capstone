@@ -33,6 +33,9 @@
       </div>
     </div>
   </div>
+<<<<<<< HEAD
+</template>
+=======
 </template>
 
 <script>
@@ -70,3 +73,4 @@ export default {
   color: blue;
 }
 </style>
+>>>>>>> c7575fee35869ef00ae4d6b2fe5b571fe12e57bc
