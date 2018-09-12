@@ -2,7 +2,7 @@
   <div class="login container">
     <div class="row">
       <div class="col">
-        <h1 class="font-size">CAPSTONE</h1>
+        <h1>CAPSTONE</h1>
       </div>
     </div>
     <div class="row">
@@ -63,9 +63,6 @@ export default {
 };
 </script>
 <style>
-.font-size{
-  font-size:30px;
-}
 .link {
   color: blue;
 }
