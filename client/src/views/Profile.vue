@@ -1,8 +1,13 @@
 <template>
     <div class="profile">
+        <span class="label">profile</span>
         <h1>Profile Page :)</h1>
-    <button @click="switchComponents('ProfileEdit')">Edit Profile</button>
-        <component :is="currentComp"></component>
+    <button @click="switchComponents('ProfileEdit')" :disabled="currentComp === 'ProfileEdit'">Edit Profile</button>
+    <button @click="switchComponents('Posts')" :disabled="currentComp === 'Posts'">Go Back</button>
+    <div>
+        <component id="profile" :is="currentComp"></component>
+    </div>    
+
     </div>
 </template>
 <script>
@@ -12,7 +17,7 @@ import GoalDetail from "@/components/GoalDetail.vue"
 import Posts from "@/components/Posts.vue"
 import {bus} from "../index.js" 
 export default {
-    el:'#profile',
+    name: 'profile',
     data(){
         return {
             currentComp: Posts
@@ -24,9 +29,10 @@ export default {
         })
     },
     methods:{
-        display(){
-            getElent.classList.remove('hide')
+        switchComponent(comp){
+            bus.$emit('switchComp', comp)
         }
+        
     },
     components:{
         ProfileEdit,
@@ -37,10 +43,4 @@ export default {
 }
 </script>
 <style>
-.hide{
-    display: none;
-}
-.display{
-    display:block;
-}
 </style>
