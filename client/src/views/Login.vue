@@ -8,17 +8,18 @@
     <div class="row">
       <form v-if="loginForm" @submit.prevent="loginUser" class="col-12 d-flex justify-content-center">
         <div class="form-group">
-          <input type="email" v-model="creds.email" placeholder="email" class="mb-1 mt-1">
-          <input type="password" v-model="creds.password" placeholder="password" class="mb-1 mt-1">
-          <button type="submit" class="btn mb-1 mt-1">Login</button>
+          <input type="text" v-model="creds.username" placeholder="username" class="form-control mb-1 mt-1">
+          <input type="password" v-model="creds.password" placeholder="password" class="form-control mb-1 mt-1">
+          <button type="submit" class="btn btn-primary mb-1 mt-1">Login</button>
         </div>
       </form>
       <form v-else @submit.prevent="register" class="col-12 d-flex justify-content-center">
         <div class="form-group">
-          <input type="text" v-model="newUser.name" placeholder="name" class="mb-1 mt-1">
-          <input type="email" v-model="newUser.email" placeholder="email" class="mb-1 mt-1">
-          <input type="password" v-model="newUser.password" placeholder="password" class="mb-1 mt-1">
-          <button type="submit" class="btn mb-1 mt-1">Create Account</button>
+          <input type="text" v-model="newUser.name" placeholder="name" class="form-control mb-1 mt-1">
+          <input type="text" v-model="newUser.username" placeholder="username" class="form-control mb-1 mt-1">
+          <input type="email" v-model="newUser.email" placeholder="email" class="form-control mb-1 mt-1">
+          <input type="password" v-model="newUser.password" placeholder="password" class="form-control mb-1 mt-1">
+          <button type="submit" class="btn btn-primary mb-1 mt-1">Create Account</button>
         </div>
       </form>
       <div @click="loginForm = !loginForm" class="col-12">
@@ -42,18 +43,20 @@ export default {
     return {
       loginForm: true,
       creds: {
-        email: "",
+        username: "",
         password: ""
       },
       newUser: {
         email: "",
         password: "",
-        name: ""
+        name: "",
+        username:""
       }
     };
   },
   methods: {
     register() {
+      debugger
       this.$store.dispatch("register", this.newUser);
     },
     loginUser() {
