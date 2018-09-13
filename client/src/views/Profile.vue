@@ -7,12 +7,12 @@
         </div>
         <div class="row mt-1 mb-1">
             <div class="col-12">
-                <h1>Hello Mighty "UserName"</h1>
+                <h1>Hello Mighty {{this.$store.state.user.username}}!</h1>
             </div>
         </div>
         <div class="row mt-1 mb-1">
             <div class="col-6">
-                <img src="https://image.shutterstock.com/image-vector/knight-front-view-illustration-260nw-566198422.jpg" class="img-fluid" alt=""/>            
+                <img src="//placehold.it/150x150" class="img-fluid" alt=""/>            
             </div>
             <div class="col-6">
                 <div class="row">
@@ -31,8 +31,13 @@
             </div>
         </div>
         <div class="row mt-1 mb-1">
-            <div class="col-3">Level #</div>
-            <div class="col-9">Progress Bar Here</div>
+            <div class="col-4"><p><strong>Level: 10</strong></p></div>
+            <div class="col-8">
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"> 
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="row mt-1 mb-1">
             <div class="col-6"><button class="btn btn-primary">My Goals</button></div>
