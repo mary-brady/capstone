@@ -14,6 +14,7 @@
     <div class="row">
       <div class="col-12">
         <h3>Feed</h3>
+        <Feed />
       </div>
     </div>
     <div class="row">
@@ -29,16 +30,21 @@
 // @ is an alias to /src
 
 import modal from "@/components/Quest.vue";
+import Feed from "@/components/Feed.vue";
 
 export default {
   name: "home",
   components: {
-    modal
+    modal,
+    Feed
   },
   data() {
     return {
       isModalVisible: false
     };
+  },
+  mounted() {
+    this.$store.dispatch("getFeed");
   },
   methods: {
     showModal() {

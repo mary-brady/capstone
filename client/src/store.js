@@ -22,7 +22,9 @@ export default new Vuex.Store({
     user: {},
     weight: [],
     endurance: [],
-    weightGoal:[]
+    weightGoal: [],
+    posts: [],
+    feed: []
   },
   mutations: {
     setUser(state, user) {
@@ -36,6 +38,18 @@ export default new Vuex.Store({
     },
     setWeightGoals(state, weightGoal) {
       state.weightGoal = weightGoal
+    },
+    setPosts(state, posts) {
+      state.posts = posts
+      state.posts.forEach(posts => {
+        posts.created = new Date(posts.created).toDateString()
+      })
+    },
+    setFeed(state, feed) {
+      state.feed = feed
+      state.feed.forEach(feed => {
+        feed.created = new Date(feed.created).toDateString()
+      })
     }
   },
   actions: {
@@ -91,24 +105,24 @@ export default new Vuex.Store({
         })
     },
     ///////Weight and Endurance for Goals
-    
+
     getWeightGoals({ commit }) {
       api.get('weightGoal')
         .then(goal => {
           commit('setWeightGoals', goal.data)
         })
     },
-    addWeightGoal({commit, dispatch}, weightGoal ){
+    addWeightGoal({ commit, dispatch }, weightGoal) {
       api.post('weightGoal', weightGoal)
-      .then(goal => {
-        commit('setWeightGoals')
-      })
+        .then(goal => {
+          commit('setWeightGoals')
+        })
     },
-    deleteWeightGoal({commit,dispatch}, _id) {
+    deleteWeightGoal({ commit, dispatch }, _id) {
       api.delete('weightGoal/' + _id)
-      .then(res => {
-        dispatch('getWeightGoals')
-      })
+        .then(res => {
+          dispatch('getWeightGoals')
+        })
     },
 
 
@@ -158,6 +172,14 @@ export default new Vuex.Store({
       auth.put(profileUpdate.userId, { userType: profileUpdate.userType })
         .then(res => {
           dispatch('getUser', profileUpdate.userId)
+        })
+    },
+    //FEED STUFF
+    getFeed({ commit }) {
+      api.get('feed/')
+        .then(res => {
+          commit('setFeed', res.data)
+          console.log('feed res: ', res.data)
         })
     }
   }
