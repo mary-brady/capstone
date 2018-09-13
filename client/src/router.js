@@ -1,9 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+// @ts-ignore
 import Home from './views/Home.vue'
+// @ts-ignore
 import Login from './views/Login.vue'
+// @ts-ignore
 import GoalDetail from './components/GoalDetail.vue'
-
+// @ts-ignore
 import Profile from './views/Profile.vue'
 
 Vue.use(Router)
@@ -12,7 +15,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name:'home',
+      name: 'home',
       component: Home
     },
     {
