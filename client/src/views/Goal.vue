@@ -95,11 +95,11 @@
     },
     methods: {
       addWeightGoal() {
-          this.weightGoal.authorId = this.user._id
-          this.weightGoal.created = Date.now()
-          this.weightGoal.completed = false
-          console.log(this.weightGoal)
-        this.$store.dispatch("addWeightGoal")
+        this.weightGoal.authorId = this.user._id
+        this.weightGoal.created = Date.now()
+        this.weightGoal.completed = false
+        console.log(this.weightGoal)
+        this.$store.dispatch("addWeightGoal", this.weightGoal)
       },
       addEnduranceGoal() {
         this.$store.dispatch("addEnduranceGoal")
