@@ -30,9 +30,7 @@
 export default {
   name: 'home',
   components: {
-    toForm() {
-
-    }
+    
   }
 }
 </script>
