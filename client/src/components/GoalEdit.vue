@@ -2,7 +2,7 @@
   export const planetChartData = {
     type: 'line',
     data: {
-      labels: ['Sep. 1', 'Sep. 2', 'Sep. 3', 'Sep. 4', 'Sep. 5', 'Sep. 6',],
+      labels: ['Sep. 1', 'Sep. 2', 'Sep. 3', 'Sep. 4', 'Sep. 5', 'Sep. 6'],
       datasets: [{
         label: 'Time',
         data: [12, 19, 10, 11, 9, 7],

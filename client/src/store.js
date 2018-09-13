@@ -20,8 +20,8 @@ let api = Axios.create({
 export default new Vuex.Store({
   state: {
     user: {},
-    weight:[],
-    endurance:[]
+    weight: [],
+    endurance: []
   },
   mutations: {
     setUser(state, user) {
@@ -62,6 +62,30 @@ export default new Vuex.Store({
     },
     ///////Weight and Endurance for Charts
 
-    
+    getEndurance({ commit }) {
+      api.get('endurance')
+        .then(stats => {
+          commit('setEndurance', stats.data)
+        })
+    },
+    addEndurance({ commit, dispatch }, enduranceData) {
+      api.post('endurance', enduranceData)
+        .then(stats => {
+          dispatch('getEndurance')
+        })
+    },
+    getWeight({ commit }) {
+      api.get('weight')
+        .then(stats => {
+          commit('setWeight', stats.data)
+        })
+    },
+    addWeight({ commit, dispatch }, weightData) {
+      api.post('weight', weightData)
+        .then(stats => {
+          dispatch('getWeight')
+        })
+    }
+
   }
 })
