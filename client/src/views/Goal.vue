@@ -54,6 +54,9 @@
               <button type="submit" class="btn btn-success mb-1 mt-1">Add Goal</button>
             </div>
           </form> -->
+    <div v-for="goal in weightGoals">
+      {{goal.title}} - {{goal.description}}
+    </div>
   </div>
 </template>
 
@@ -88,18 +91,24 @@
         }
       }
     },
+    mounted() {
+      this.$store.dispatch('getWeightGoals')
+    },
     computed: {
       user() {
         return this.$store.state.user;
+      },
+      weightGoals() {
+        return this.$store.state.weightGoal;
       }
     },
     methods: {
       addWeightGoal() {
-          this.weightGoal.authorId = this.user._id
-          this.weightGoal.created = Date.now()
-          this.weightGoal.completed = false
-          console.log(this.weightGoal)
-        this.$store.dispatch("addWeightGoal")
+        this.weightGoal.authorId = this.user._id
+        this.weightGoal.created = Date.now()
+        this.weightGoal.completed = false
+        console.log(this.weightGoal)
+        this.$store.dispatch("addWeightGoal", this.weightGoal)
       },
       addEnduranceGoal() {
         this.$store.dispatch("addEnduranceGoal")
