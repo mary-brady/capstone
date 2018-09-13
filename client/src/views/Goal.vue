@@ -88,15 +88,20 @@
         }
       }
     },
+    computed: {
+      user() {
+        return this.$store.state.user;
+      }
+    },
     methods: {
       addWeightGoal() {
         this.$store.dispatch("addWeightGoal")
       },
       addEnduranceGoal() {
-
+        this.$store.dispatch("addEnduranceGoal")
       },
       addStrengthGoal() {
-
+        this.$store.dispatch("addStrengthGoal")
       }
     },
     components: {
