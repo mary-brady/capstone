@@ -24,10 +24,8 @@
         </div>
         <div class="row mt-1 mb-1">
             <div class="col-12">
-                <p>Bio Here. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                 Accusantium reiciendis ratione voluptates dicta amet vel modi
-                nesciunt adipisci architecto. Fuga praesentium voluptatibus
-                ea vero debitis maiores, eum accusantium atque corporis?</p>
+                <h2 class="text-left">About You</h2>
+                <p>{{this.$store.state.user.description}}</p>
             </div>
         </div>
         <div class="row mt-1 mb-1">
@@ -84,5 +82,5 @@ export default {
   }
 };
 </script>
-<style>
+<style scoped>
 </style>

@@ -18,7 +18,8 @@
     </div>
     <div class="row">
       <div class="col-12">
-        <h3>Daily Quest</h3>
+        <button type="button" class="btn btn-primary" @click="showModal">Daily Quest</button>
+        <modal v-show="isModalVisible" @close="closeModal" />
       </div>
     </div>
   </div>
@@ -27,10 +28,25 @@
 <script>
 // @ is an alias to /src
 
+import modal from "@/components/Quest.vue";
+
 export default {
-  name: 'home',
+  name: "home",
   components: {
-    
+    modal
+  },
+  data() {
+    return {
+      isModalVisible: false
+    };
+  },
+  methods: {
+    showModal() {
+      this.isModalVisible = true;
+    },
+    closeModal() {
+      this.isModalVisible = false;
+    }
   }
-}
+};
 </script>
