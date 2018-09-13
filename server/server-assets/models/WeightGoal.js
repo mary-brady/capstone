@@ -1,7 +1,7 @@
 let mongoose = require('mongoose')
 let Schema = mongoose.Schema
 let ObjectId = Schema.Types.ObjectId
-let schemaName = 'Goal'
+let schemaName = 'WeightGoal'
 
 let schema = new Schema({
     title: { type: String, required: true },

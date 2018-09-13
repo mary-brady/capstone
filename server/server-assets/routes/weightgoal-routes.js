@@ -1,9 +1,9 @@
 let router = require('express').Router()
-let Goals = require('../models/Goal')
+let WeightGoals = require('../models/WeightGoal')
 
 //GET
 router.get('/', (req, res, next) => {
-    Goals.find({ authorId: req.session.uid })
+    WeightGoals.find({ authorId: req.session.uid })
         .then(data => {
             res.send(data)
         })
@@ -17,7 +17,7 @@ router.get('/', (req, res, next) => {
 //POST
 router.post('/', (req, res, next) => {
     req.body.authorId = req.session.uid
-    Goals.create(req.body)
+    WeightGoals.create(req.body)
         .then(newGoal => {
             res.send(newGoal)
         })
@@ -29,7 +29,7 @@ router.post('/', (req, res, next) => {
 
 //PUT
 router.put('/:id', (req, res, next) => {
-    Goals.findById(req.params.id)
+    WeightGoals.findById(req.params.id)
         .then(goal => {
             if (!goal.authorId.equals(req.session.uid)) {
                 return res.status(401).send("Not authorized")
@@ -51,12 +51,12 @@ router.put('/:id', (req, res, next) => {
 
 //DELETE
 router.delete('/:id', (req, res, next) => {
-    Goals.findById(req.params.id)
+    WeightGoals.findById(req.params.id)
         .then(goal => {
             if (!goal.authorId.equals(req.session.uid)) {
                 return res.status(401).send("Not authorized")
             }
-            Goals.findByIdAndRemove(req.params.id)
+            WeightGoals.findByIdAndRemove(req.params.id)
                 .then(data => {
                     res.send('Delorted!')
                 })

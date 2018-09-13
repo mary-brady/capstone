@@ -50,8 +50,8 @@ server.use('/api/posts', postRoutes)
 let badgeRoutes = require('./server-assets/routes/badge-routes')
 server.use('/api/badges', badgeRoutes)
 
-let goalRoutes = require('./server-assets/routes/goal-routes')
-server.use('/api/goals', goalRoutes)
+let weightGoalRoutes = require('./server-assets/routes/weightgoal-routes')
+server.use('/api/weightGoal', weightGoalRoutes)
 
 let weightRoutes = require('./server-assets/routes/weight-routes')
 server.use('/api/weight', weightRoutes)

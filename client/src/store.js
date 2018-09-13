@@ -21,7 +21,8 @@ export default new Vuex.Store({
   state: {
     user: {},
     weight: [],
-    endurance: []
+    endurance: [],
+    weightGoal:[]
   },
   mutations: {
     setUser(state, user) {
@@ -32,6 +33,9 @@ export default new Vuex.Store({
     },
     setEndurance(state, endurance) {
       state.endurance = endurance;
+    },
+    setWeightGoals(state, weightGoal) {
+      state.weightGoal = weightGoal
     }
   },
   actions: {
@@ -86,6 +90,27 @@ export default new Vuex.Store({
           dispatch('getWeight')
         })
     },
+    ///////Weight and Endurance for Goals
+    
+    getWeightGoals({ commit }) {
+      api.get('weightGoal')
+        .then(goal => {
+          commit('setWeightGoals', goal.data)
+        })
+    },
+    addWeightGoal({commit, dispatch}, weightGoal ){
+      api.post('weightGoal', weightGoal)
+      .then(goal => {
+        commit('setWeightGoals')
+      })
+    },
+    deleteWeightGoal({commit,dispatch}, _id) {
+      api.delete('weightGoal/' + _id)
+      .then(res => {
+        dispatch('getWeightGoals')
+      })
+    },
+
 
     //USER PROFILE EDITS
     getUser({ commit }, userId) {
