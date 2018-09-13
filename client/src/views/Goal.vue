@@ -54,9 +54,9 @@
               <button type="submit" class="btn btn-success mb-1 mt-1">Add Goal</button>
             </div>
           </form> -->
-          <div v-for="goal in weightGoals">
-              {{goal.title}} - {{goal.description}}
-          </div>
+    <div v-for="goal in weightGoals">
+      {{goal.title}} - {{goal.description}}
+    </div>
   </div>
 </template>
 
@@ -92,14 +92,14 @@
       }
     },
     mounted() {
-        this.$store.dispatch('getWeightGoals')
+      this.$store.dispatch('getWeightGoals')
     },
     computed: {
       user() {
         return this.$store.state.user;
       },
-      weightGoal() {
-          return this.$store.state.weightGoal;
+      weightGoals() {
+        return this.$store.state.weightGoal;
       }
     },
     methods: {
