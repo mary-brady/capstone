@@ -1,11 +1,8 @@
 <template>
-<div class="profile-edit">
-    <div class="navbar"></div>
-    <div class="card">
-        <img src="//placehold.it/150x150" alt="" class="card-img-top">
-    </div>
+<div class="profile-edit row">
+    <div class="navbar col-12"></div>
+    <div class="col-12 text-left">
         <ul>
-
     <li><strong>Name</strong>: {{userData.name}} &nbsp &nbsp <span @click="nameEditVisible = !nameEditVisible"><i class="clickable fa fa-edit"></i></span></li>
         <form v-if="nameEditVisible" @submit.prevent="editName()">
             <input type="text" v-model="profileUpdate.name" class="form-control" placeholder="Put Thy Name">
@@ -36,12 +33,13 @@
             <button class="btn btn-primary btn-sm mt-1" type="submit">Submit Changes</button>            
         </form>
 
-     <li><strong>Title</strong>: {{userData.userType}} &nbsp &nbsp <span @click="titleEditVisible = !titleEditVisible"><i class="clickable fa fa-edit"></i></span></li>
-        <form v-if="titleEditVisible" @submit.prevent="edituserType()">
+     <li><strong>Title</strong>: {{userData.userType}} &nbsp &nbsp <span @click="userTypeEditVisible = !userTypeEditVisible"><i class="clickable fa fa-edit"></i></span></li>
+        <form v-if="userTypeEditVisible" @submit.prevent="editUserType()">
             <input type="text" v-model="profileUpdate.userType" class="form-control" placeholder="Are ye trainer?">
             <button class="btn btn-primary btn-sm mt-1" type="submit">Submit Changes</button>    
         </form>
         </ul>
+    </div>
 </div>
 </template>
 
@@ -63,7 +61,7 @@ export default {
       ageEditVisible: false,
       gymEditVisible: false,
       descriptionEditVisible: false,
-      titleEditVisible: false
+      userTypeEditVisible: false
     };
   },
   computed: {
@@ -71,12 +69,64 @@ export default {
       return this.$store.state.user;
     }
   },
-  methods: {}
+  methods: {
+    editName() {
+      this.$store.dispatch("updateName", {
+        name: this.profileUpdate.name,
+        userId: this.userData._id
+      });
+      this.nameEditVisible = false;
+      this.profileUpdate.name = "";
+    },
+    editEmail() {
+      this.$store.dispatch("updateEmail", {
+        email: this.profileUpdate.email,
+        userId: this.userData._id
+      });
+      this.emailEditVisible = false;
+      this.profileUpdate.email = "";
+    },
+    editAge() {
+      this.$store.dispatch("updateAge", {
+        age: this.profileUpdate.age,
+        userId: this.userData._id
+      });
+      this.ageEditVisible = false;
+      this.profileUpdate.age = "";
+    },
+    editGym() {
+      this.$store.dispatch("updateGym", {
+        gym: this.profileUpdate.gym,
+        userId: this.userData._id
+      });
+      this.gymEditVisible = false;
+      this.profileUpdate.gym = "";
+    },
+    editDescription() {
+      this.$store.dispatch("updateDescription", {
+        description: this.profileUpdate.description,
+        userId: this.userData._id
+      });
+      this.descriptionEditVisible = false;
+      this.profileUpdate.description = "";
+    },
+    editUserType() {
+      this.$store.dispatch("updateUserType", {
+        userType: this.profileUpdate.userType,
+        userId: this.userData._id
+      });
+      this.userTypeEditVisible = false;
+      this.profileUpdate.userType = "";
+    }
+  }
 };
 </script>
 <style scoped>
 .clickable:hover {
   cursor: pointer;
+}
+ul {
+  list-style: none;
 }
 </style>
 

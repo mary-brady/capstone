@@ -84,6 +84,43 @@ router.get('/auth/authenticate', (req, res) => {
         })
 })
 
+//Change User Profile Info
+router.put('/auth/:id', (req, res, next) => {
+    Users.findById(req.params.id)
+        .then(user => {
+            if (!user._id.equals(req.session.uid)) {
+                return res.status(401).send('Not your profile, yo')
+            }
+            user.update(req.body, (err) => {
+                if (err) {
+                    console.log(err)
+                    next()
+                    return
+                }
+                res.send("Profile updated")
+            });
+        })
+        .catch(err => {
+            console.log(err)
+            next()
+        })
+})
+
+router.get('/auth/:id', (req, res, next) => {
+    Users.findById(req.params.id)
+        .then(user => {
+            if (!user._id.equals(req.session.uid)) {
+                return res.status(401).send("something is off??")
+            }
+            delete user._doc.password
+            res.send(user)
+        })
+        .catch(err => {
+            console.log(err)
+            next()
+        })
+})
+
 
 module.exports = {
     router,
