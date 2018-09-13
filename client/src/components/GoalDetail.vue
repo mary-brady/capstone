@@ -1,22 +1,39 @@
 <template>
   <div id="">
-    <canvas id="planet-chart"></canvas>
+    <canvas id="endurance-chart"></canvas>
+    <form @submit.prevent="addEndurance">
+      <input type="number" placeholder="Time" v-model="newTime.time" required>
+      <button class="btn-success" type="submit">Create New Time</button>
+    </form>
 
   </div>
 </template>
 
 <script>
   import Chart from 'chart.js';
-  import planetChartData from './GoalEdit.vue';
+  import enduranceChartData from './GoalEdit.vue';
   export default {
     name: "goalDetail",
     data() {
       return {
-        planetChartData: planetChartData,
+        enduranceChartData: enduranceChartData,
+        newTime: {
+          time: "",
+          authorId: "",
+          created: ""
+        }
+      }
+    },
+    computed: {
+      endurance() {
+        return this.$store.state.boards;
+      },
+      user() {
+        return this.$store.state.user;
       }
     },
     mounted() {
-      this.createChart('planet-chart', this.planetChartData);
+      this.createChart('endurance-chart', this.enduranceChartData);
     },
     methods: {
       createChart(chartId, chartData) {
@@ -26,7 +43,14 @@
           data: chartData.data,
           options: chartData.options,
         });
-      }
+      },
+      addEndurance() {
+        this.newTime.authorId = this.user._id
+        this.newTime.created = Date.now()
+        console.log(this.newTime)
+        this.$store.dispatch("addEndurance", this.newTime);
+        // this.newTime = { time: "", authorId: "", created: "" };
+      },
     }
   }
 </script>
