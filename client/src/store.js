@@ -222,7 +222,14 @@ export default new Vuex.Store({
       api.get('feed/')
         .then(res => {
           commit('setFeed', res.data)
-          console.log('feed res: ', res.data)
+        })
+    },
+
+    //posts
+    getPosts({ commit }, userId) {
+      api.get('posts/' + userId)
+        .then(res => {
+          commit('setPosts', res.data)
         })
     }
   }

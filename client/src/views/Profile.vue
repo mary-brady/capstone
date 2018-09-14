@@ -7,7 +7,7 @@
         </div>
         <div class="row mt-1 mb-1">
             <div class="col-12">
-                <h1>Hello, Mighty <strong>{{this.$store.state.user.username}}</strong>!</h1>
+                <h1>Hello, Mighty <strong>{{user.username}}</strong>!</h1>
             </div>
         </div>
         <div class="row mt-1 mb-1">
@@ -25,7 +25,7 @@
         <div class="row mt-1 mb-1">
             <div class="col-12">
                 <h2 class="text-left">About You</h2>
-                <p>{{this.$store.state.user.description}}</p>
+                <p>{{user.description}}</p>
             </div>
         </div>
         <div class="row mt-1 mb-1">
@@ -38,14 +38,15 @@
             </div>
         </div>
         <div class="row mt-1 mb-1">
-            <div class="col-6"><button class="btn btn-primary">My Goals</button></div>
-            <div class="col-6"> <button  class="btn btn-primary" @click="switchComponents('ProfileEdit')" :disabled="currentComp === 'ProfileEdit'">Edit Profile</button></div>
+            <div class="col-4"><button class="btn btn-primary">My Goals</button></div>
+            <div class="col-4"><button class="btn btn-warning" @click="showModal">Make Post</button>
+            <modal v-show="isModalVisible" @close="closeModal"></modal>
+            </div>
+            <div class="col-4"> <button  class="btn btn-primary" @click="switchComponents('ProfileEdit')" :disabled="currentComp === 'ProfileEdit'">Edit Profile</button></div>
         </div>
         <div class="row mt-1 mb-1"></div>
-
-   
-    <button class="btn btn-warning" @click="switchComponents('Posts')" :disabled="currentComp === 'Posts'">Go Back</button>
     <div>
+        <h1>Your Posts</h1>
         <component id="profile" :is="currentComp"></component>
     </div>    
 
@@ -56,13 +57,23 @@ import ProfileEdit from "@/components/ProfileEdit.vue";
 import GoalEdit from "@/components/GoalEdit.vue";
 import GoalDetail from "@/components/GoalDetail.vue";
 import Posts from "@/components/Posts.vue";
+import modal from "@/components/MakePost.vue";
 import { bus } from "../index.js";
 export default {
   name: "profile",
+  mounted() {
+    this.$store.dispatch("getPosts", this.user._id);
+  },
   data() {
     return {
-      currentComp: Posts
+      currentComp: Posts,
+      isModalVisible: false
     };
+  },
+  computed: {
+    user() {
+      return this.$store.state.user;
+    }
   },
   created() {
     bus.$on("switchComp", comp => {
@@ -72,13 +83,20 @@ export default {
   methods: {
     switchComponents(comp) {
       bus.$emit("switchComp", comp);
+    },
+    showModal() {
+      this.isModalVisible = true;
+    },
+    closeModal() {
+      this.isModalVisible = false;
     }
   },
   components: {
     ProfileEdit,
     GoalEdit,
     GoalDetail,
-    Posts
+    Posts,
+    modal
   }
 };
 </script>
