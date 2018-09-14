@@ -22,7 +22,7 @@ export default new Vuex.Store({
     user: {},
     weight: [],
     endurance: [],
-    weightGoals: {}
+    weightGoals: []
   },
   mutations: {
     setUser(state, user) {
@@ -34,9 +34,8 @@ export default new Vuex.Store({
     setEndurance(state, endurance) {
       state.endurance = endurance;
     },
-    setWeightGoals(state, weightGoal) {
-      console.log(weightGoal)
-      state.weightGoal = weightGoal
+    setWeightGoals(state, data) {
+      state.weightGoals = data
     }
   },
   actions: {

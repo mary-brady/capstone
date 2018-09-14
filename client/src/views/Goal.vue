@@ -99,7 +99,7 @@
         return this.$store.state.user;
       },
       weightGoals() {
-        return this.$store.state.weightGoal;
+        return this.$store.state.weightGoals;
       }
     },
     methods: {
