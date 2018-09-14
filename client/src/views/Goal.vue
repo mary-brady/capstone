@@ -142,7 +142,7 @@
         this.$store.dispatch("addStrengthGoal", this.strengthGoal)
       },
       deleteWeightGoal() {
-        _id = this.wGoal._id
+        this._id = this.wGoal._id
         console.log(_id)
         this.$store.dispatch("deleteWeightGoal", _id)
       }
