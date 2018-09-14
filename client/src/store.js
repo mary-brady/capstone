@@ -23,6 +23,8 @@ export default new Vuex.Store({
     weight: [],
     endurance: [],
     weightGoals: [],
+    enduranceGoals: [],
+    strengthGoals: [],
     posts: [],
     feed: []
   },
@@ -38,6 +40,12 @@ export default new Vuex.Store({
     },
     setWeightGoals(state, data) {
       state.weightGoals = data
+    },
+    setEnduranceGoals(state, data) {
+      state.enduranceGoals = data
+    },
+    setStrengthGoals(state, data) {
+      state.strengthGoals = data
     },
     setPosts(state, posts) {
       state.posts = posts
@@ -124,7 +132,42 @@ export default new Vuex.Store({
           dispatch('getWeightGoals')
         })
     },
-
+    getStrengthGoals({ commit }) {
+      api.get('strength-goal')
+        .then(goal => {
+          commit('setStrengthGoals', goal.data)
+        })
+    },
+    addStrengthGoal({ commit, dispatch }, strengthGoal) {
+      api.post('strength-goal', strengthGoal)
+        .then(goal => {
+          dispatch('getStrengthGoals', goal.data)
+        })
+    },
+    deleteStrengthGoals({ commit, dispatch }, _id) {
+      api.delete('strength-goal/' + _id)
+        .then(res => {
+          dispatch('getStrengthGoals')
+        })
+    },
+    getEnduranceGoals({ commit }) {
+      api.get('endurance-goal')
+        .then(goal => {
+          commit('setEnduranceGoals', goal.data)
+        })
+    },
+    addEnduranceGoals({ commit, dispatch }, enduranceGoal) {
+      api.post('endurance-goal', enduranceGoal)
+        .then(goal => {
+          dispatch('getEnduranceGoals', goal.data)
+        })
+    },
+    deleteEnduranceGoals({ commit, dispatch }, _id) {
+      api.delete('endurance-goal/' + _id)
+        .then(res => {
+          dispatch('getEnduranceGoals')
+        })
+    },
 
     //USER PROFILE EDITS
     getUser({ commit }, userId) {
