@@ -11,11 +11,11 @@
         <div class="modal-body">
         <slot class="body">
             <div class="mw">
-             <form>
+             <form @submit.prevent="addPost">
                <div class="form-group">
-                 <input type="text" class="form-control mt-1 mb-1" placeholder="Delicious Cucumber"/>
-                  <textarea type="text" class="form-control mt-1 mb-1" placeholder="I ate A Ton Of Cucumbers"></textarea>
-                  <button class="btn btn-secondary mt-1 mb-1 btn-sm" >Post</button>
+                 <input type="text" class="form-control mt-1 mb-1" v-model="newPost.title" placeholder="Delicious Cucumber"/>
+                  <textarea type="text" class="form-control mt-1 mb-1" v-model="newPost.description" placeholder="I ate A Ton Of Cucumbers"></textarea>
+                  <button class="btn btn-secondary mt-1 mb-1 btn-sm" type="submit">Post</button>
                </div>
             </form>
             </div>
@@ -29,8 +29,24 @@
 <script>
 export default {
   name: "modal",
-
+  props: ["userId"],
+  data() {
+    return {
+      newPost: {
+        title: "",
+        description: ""
+      }
+    };
+  },
   methods: {
+    addPost() {
+      debugger;
+      this.$store.dispatch("addPost", {
+        userId: this.userId,
+        postData: this.newPost
+      });
+      this.newPost = { title: "", description: "" };
+    },
     close() {
       this.$emit("close");
     }

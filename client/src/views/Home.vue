@@ -11,10 +11,12 @@
         <router-link :to="{name: 'login'}">Sign Up/Log in</router-link>
       </div>
     </div>
-    <div class="row">
+    <div class="row d-flex justify-content-center">
       <div class="col-12">
         <h3>Feed</h3>
-        <Feed />
+      </div>
+      <div class="col-6">
+        <Feed class="d-flex justify-content-center"/>
       </div>
     </div>
     <div class="row">

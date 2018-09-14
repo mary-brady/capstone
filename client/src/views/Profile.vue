@@ -40,14 +40,14 @@
         <div class="row mt-1 mb-1">
             <div class="col-4"><button class="btn btn-primary">My Goals</button></div>
             <div class="col-4"><button class="btn btn-warning" @click="showModal">Make Post</button>
-            <modal v-show="isModalVisible" @close="closeModal"></modal>
+            <modal v-show="isModalVisible" :userId="user._id" @close="closeModal"></modal>
             </div>
             <div class="col-4"> <button  class="btn btn-primary" @click="switchComponents('ProfileEdit')" :disabled="currentComp === 'ProfileEdit'">Edit Profile</button></div>
         </div>
         <div class="row mt-1 mb-1"></div>
     <div>
         <h1>Your Posts</h1>
-        <component id="profile" :is="currentComp"></component>
+        <component id="profile" :is="currentComp" :userId="user._id"></component>
     </div>    
 
     </div>
@@ -61,9 +61,6 @@ import modal from "@/components/MakePost.vue";
 import { bus } from "../index.js";
 export default {
   name: "profile",
-  mounted() {
-    this.$store.dispatch("getPosts", this.user._id);
-  },
   data() {
     return {
       currentComp: Posts,

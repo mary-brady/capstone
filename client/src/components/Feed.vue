@@ -1,8 +1,8 @@
 <template>
 <div>
     <div class="row">
-    <div class="col-6">
-    <div v-for="post in feed" :key="post._id" class="card">
+    <div class="col-12 mt-2 mb-2" v-for="post in feed" :key="post._id">
+    <div class="card">
         <div class="card-header">
             <h3>{{post.title}}</h3>
         </div>

@@ -20,6 +20,8 @@
 </template>
 <script>
 export default {
+  name: "posts",
+  props: ["userId"],
   computed: {
     posts() {
       return this.$store.state.posts;

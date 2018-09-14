@@ -62,22 +62,25 @@ export default new Vuex.Store({
   },
   actions: {
     //AUTH
-    register({ commit }, newUser) {
+    register({ commit, dispatch }, newUser) {
       auth.post("register", newUser).then(res => {
         commit("setUser", res.data);
         router.push({ name: "profile" });
+        dispatch('getPosts', res.data._id)
       });
     },
-    authenticate({ commit }) {
+    authenticate({ commit, dispatch }) {
       auth.get("authenticate").then(res => {
         commit("setUser", res.data);
         router.push({ name: "profile" });
+        dispatch('getPosts', res.data._id)
       });
     },
-    login({ commit }, creds) {
+    login({ commit, dispatch }, creds) {
       auth.post("login", creds).then(res => {
         commit("setUser", res.data);
         router.push({ name: "profile" });
+        dispatch('getPosts', res.data._id)
       });
     },
     logout({ commit }) {
@@ -230,6 +233,12 @@ export default new Vuex.Store({
       api.get('posts/' + userId)
         .then(res => {
           commit('setPosts', res.data)
+        })
+    },
+    addPost({ dispatch }, postData) {
+      api.post('posts/' + postData.postData)
+        .then(res => {
+          dispatch('getPosts', postData.userId)
         })
     }
   }

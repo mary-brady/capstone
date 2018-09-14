@@ -2,7 +2,7 @@
 <div class="profile-edit row d-flex justify-content-center">
     <div class="navbar col-12"></div>
     <div class="col-6 d-flex justify-content-center text-left bg-color">
-        <ul>
+        <ul class="mt-2 padding">
     <li><strong>Name</strong>: {{userData.name}} &nbsp; &nbsp; <span @click="nameEditVisible = !nameEditVisible"><i class="clickable fa fa-edit"></i></span></li>
         <form v-if="nameEditVisible" @submit.prevent="editName()">
             <input type="text" v-model="profileUpdate.name" class="form-control" placeholder="Put Thy Name">
@@ -139,6 +139,9 @@ ul {
 .bg-color {
   background-color: rgb(235, 235, 235);
   border: 2px dashed black;
+}
+.padding {
+  -webkit-padding-start: 10px;
 }
 </style>
 
