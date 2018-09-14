@@ -38,7 +38,6 @@ export default new Vuex.Store({
     },
     setWeightGoals(state, data) {
       state.weightGoals = data
-
     },
     setPosts(state, posts) {
       state.posts = posts
@@ -116,7 +115,7 @@ export default new Vuex.Store({
     addWeightGoal({ commit, dispatch }, weightGoal) {
       api.post('weight-goal', weightGoal)
         .then(goal => {
-          commit('setWeightGoals', goal.data)
+          dispatch('getWeightGoals', goal.data)
         })
     },
     deleteWeightGoal({ commit, dispatch }, _id) {
