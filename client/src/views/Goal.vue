@@ -79,93 +79,92 @@
 </template>
 
 <script>
-import GoalDetail from "../components/GoalDetail";
-export default {
-  name: "goal",
-  data() {
-    return {
-      weight: false,
-      endurance: false,
-      strength: false,
-      weightGoal: {
-        title: "",
-        description: "",
-        authorId: "",
-        created: "",
-        completed: false
+  import GoalDetail from "../components/GoalDetail";
+  export default {
+    name: "goal",
+    data() {
+      return {
+        weight: false,
+        endurance: false,
+        strength: false,
+        weightGoal: {
+          title: "",
+          description: "",
+          authorId: "",
+          created: "",
+          completed: false
+        },
+        enduranceGoal: {
+          title: "",
+          description: "",
+          authorId: "",
+          created: "",
+          completed: false
+        },
+        strengthGoal: {
+          title: "",
+          description: "",
+          authorId: "",
+          created: "",
+          completed: false
+        }
+      };
+    },
+    mounted() {
+      this.$store.dispatch("getWeightGoals");
+      this.$store.dispatch("getEnduranceGoals");
+      this.$store.dispatch("getStrengthGoals");
+    },
+    computed: {
+      user() {
+        return this.$store.state.user;
       },
-      enduranceGoal: {
-        title: "",
-        description: "",
-        authorId: "",
-        created: "",
-        completed: false
+      weightGoals() {
+        return this.$store.state.weightGoals;
       },
-      strengthGoal: {
-        title: "",
-        description: "",
-        authorId: "",
-        created: "",
-        completed: false
+      enduranceGoals() {
+        return this.$store.state.enduranceGoals;
+      },
+      strengthGoals() {
+        return this.$store.state.strengthGoals;
       }
-    };
-  },
-  mounted() {
-    this.$store.dispatch("getWeightGoals");
-    this.$store.dispatch("getEnduranceGoals");
-    this.$store.dispatch("getStrengthGoals");
-  },
-  computed: {
-    user() {
-      return this.$store.state.user;
     },
-    weightGoals() {
-      return this.$store.state.weightGoals;
+    methods: {
+      addWeightGoal() {
+        this.weightGoal.authorId = this.user._id;
+        this.weightGoal.created = Date.now();
+        this.weightGoal.completed = false;
+        this.$store.dispatch("addWeightGoal", this.weightGoal);
+      },
+      addEnduranceGoal() {
+        this.enduranceGoal.authorId = this.user._id;
+        this.enduranceGoal.created = Date.now();
+        this.enduranceGoal.completed = false;
+        this.$store.dispatch("addEnduranceGoal", this.enduranceGoal);
+      },
+      addStrengthGoal() {
+        this.strengthGoal.authorId = this.user._id;
+        this.strengthGoal.created = Date.now();
+        this.strengthGoal.completed = false;
+        this.$store.dispatch("addStrengthGoal", this.strengthGoal);
+      },
+      deleteWeightGoal(id) {
+        this.$store.dispatch("deleteWeightGoal", id);
+      },
+      deleteEnduranceGoal(id) {
+        this.$store.dispatch("deleteEnduranceGoal", id);
+      },
+      deleteStrengthGoal(id) {
+        this.$store.dispatch("deleteStrengthGoal", id);
+      }
     },
-    enduranceGoals() {
-      return this.$store.state.enduranceGoals;
-    },
-    strengthGoals() {
-      return this.$store.state.strengthGoals;
+    components: {
+      GoalDetail
     }
-  },
-  methods: {
-    addWeightGoal() {
-      this.weightGoal.authorId = this.user._id;
-      this.weightGoal.created = Date.now();
-      this.weightGoal.completed = false;
-      this.$store.dispatch("addWeightGoal", this.weightGoal);
-    },
-    addEnduranceGoal() {
-      this.enduranceGoal.authorId = this.user._id;
-      this.enduranceGoal.created = Date.now();
-      this.enduranceGoal.completed = false;
-      this.$store.dispatch("addEnduranceGoal", this.enduranceGoal);
-    },
-    addStrengthGoal() {
-      this.strengthGoal.authorId = this.user._id;
-      this.strengthGoal.created = Date.now();
-      this.strengthGoal.completed = false;
-      this.$store.dispatch("addStrengthGoal", this.strengthGoal);
-    },
-    deleteWeightGoal(id) {
-      this.$store.dispatch("deleteWeightGoal", id);
-    },
-    deleteEnduranceGoal(id) {
-      this.$store.dispatch("deleteEnduranceGoal", id);
-    },
-    deleteStrengthGoal(id) {
-      this.$store.dispatch("deleteStrengthGoal", id);
-    }
-  },
-  components: {
-    GoalDetail
-  }
-};
+  };
 </script>
 
 <style scoped>
-<<<<<<< HEAD
   h1 {
     font-weight: 700;
   }
@@ -187,24 +186,4 @@ export default {
   .green:hover {
     color: yellowgreen
   }
-=======
-h1 {
-  font-weight: 700;
-}
-.red {
-  /* font-size: 500px; */
-  color: #8b0000;
-}
-.red:hover {
-  color: red;
-}
-
-.green {
-  /* font-size: 500px; */
-  color: green;
-}
-.green:hover {
-  color: yellowgreen;
-}
->>>>>>> 5351ccf9cb342b387298fad662cfbf4d0db0c78f
 </style>
