@@ -5,18 +5,31 @@
       <input type="number" placeholder="Time" v-model="newTime.time" required>
       <button class="btn-success" type="submit">Create New Time</button>
     </form>
-
+    <div class='junk'>
+      {{endurance}}
+    </div>
   </div>
 </template>
 
 <script>
   import Chart from 'chart.js';
-  import enduranceChartData from './GoalEdit.vue';
+  import Vue from 'vue'
   export default {
     name: "goalDetail",
     data() {
       return {
-        enduranceChartData: enduranceChartData,
+        enduranceChartData: {
+          type: 'line',
+          data: {
+            labels: [],
+            datasets: [{
+              label: 'Time',
+              data: [],
+              backgroundColor: "rgba(153,255,51,0.4)"
+            }
+            ]
+          }
+        },
         newTime: {
           time: "",
           authorId: "",
@@ -26,14 +39,18 @@
     },
     computed: {
       endurance() {
-        return this.$store.state.boards;
+        let eData = this.$store.getters.enduranceChartData
+        if (document.getElementById('endurance-chart')) {
+          this.createChart('endurance-chart', eData);
+        }
+        return eData
       },
       user() {
         return this.$store.state.user;
       }
     },
     mounted() {
-      this.createChart('endurance-chart', this.enduranceChartData);
+      this.$store.dispatch('getEndurance')
     },
     methods: {
       createChart(chartId, chartData) {
@@ -54,3 +71,9 @@
     }
   }
 </script>
+
+<style>
+  .junk {
+    display: none
+  }
+</style>
