@@ -23,7 +23,13 @@ export default new Vuex.Store({
     weight: [],
     endurance: [],
 <<<<<<< HEAD
+<<<<<<< HEAD
     weightGoals: []
+=======
+    weightGoal: [],
+    posts: [],
+    feed: []
+>>>>>>> e4efb3078c53b6b20d22b35513fa2cab3b541a89
 =======
     weightGoal: [],
     posts: [],
@@ -59,6 +65,9 @@ export default new Vuex.Store({
       state.feed.forEach(feed => {
         feed.created = new Date(feed.created).toDateString()
       })
+<<<<<<< HEAD
+>>>>>>> e4efb3078c53b6b20d22b35513fa2cab3b541a89
+=======
 >>>>>>> e4efb3078c53b6b20d22b35513fa2cab3b541a89
     }
   },
