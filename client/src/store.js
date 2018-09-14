@@ -22,7 +22,13 @@ export default new Vuex.Store({
     user: {},
     weight: [],
     endurance: [],
+<<<<<<< HEAD
     weightGoals: []
+=======
+    weightGoal: [],
+    posts: [],
+    feed: []
+>>>>>>> e4efb3078c53b6b20d22b35513fa2cab3b541a89
   },
   mutations: {
     setUser(state, user) {
@@ -34,8 +40,26 @@ export default new Vuex.Store({
     setEndurance(state, endurance) {
       state.endurance = endurance;
     },
+<<<<<<< HEAD
     setWeightGoals(state, data) {
       state.weightGoals = data
+=======
+    setWeightGoals(state, weightGoal) {
+      console.log(weightGoal)
+      state.weightGoal = weightGoal
+    },
+    setPosts(state, posts) {
+      state.posts = posts
+      state.posts.forEach(posts => {
+        posts.created = new Date(posts.created).toDateString()
+      })
+    },
+    setFeed(state, feed) {
+      state.feed = feed
+      state.feed.forEach(feed => {
+        feed.created = new Date(feed.created).toDateString()
+      })
+>>>>>>> e4efb3078c53b6b20d22b35513fa2cab3b541a89
     }
   },
   actions: {
@@ -158,6 +182,14 @@ export default new Vuex.Store({
       auth.put(profileUpdate.userId, { userType: profileUpdate.userType })
         .then(res => {
           dispatch('getUser', profileUpdate.userId)
+        })
+    },
+    //FEED STUFF
+    getFeed({ commit }) {
+      api.get('feed/')
+        .then(res => {
+          commit('setFeed', res.data)
+          console.log('feed res: ', res.data)
         })
     }
   }

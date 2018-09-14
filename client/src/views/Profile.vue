@@ -7,7 +7,7 @@
         </div>
         <div class="row mt-1 mb-1">
             <div class="col-12">
-                <h1>Hello Mighty {{this.$store.state.user.username}}!</h1>
+                <h1>Hello, Mighty <strong>{{this.$store.state.user.username}}</strong>!</h1>
             </div>
         </div>
         <div class="row mt-1 mb-1">
