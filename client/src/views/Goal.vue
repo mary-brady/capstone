@@ -67,7 +67,7 @@
     <h1>Endurance Goals</h1>
     <div v-for="eGoal in enduranceGoals">
       {{eGoal.title}} - {{eGoal.description}}
-      <button @click="deleteEnduranceGoals(eGoal._id)">Delete</button>
+      <button @click="deleteEnduranceGoal(eGoal._id)">Delete</button>
     </div>
   </div>
 </template>
@@ -119,7 +119,7 @@
         return this.$store.state.enduranceGoals;
       },
       strengthGoals() {
-        return this.$store.state.enduranceGoals;
+        return this.$store.state.strengthGoals;
       }
     },
     methods: {
