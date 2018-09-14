@@ -21,7 +21,7 @@
     </div>
     <div class="row">
       <div class="col-12">
-        <button type="button" class="btn btn-primary" @click="showModal">Daily Quest</button>
+        <button type="button" class="btn btn-danger" @click="showModal">Daily Quest</button>
         <modal v-show="isModalVisible" @close="closeModal" />
       </div>
     </div>

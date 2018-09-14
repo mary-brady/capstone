@@ -41,11 +41,11 @@
             </div>
         </div>
         <div class="row mt-1 mb-1">
-            <div class="col-4"><button class="btn btn-primary">My Goals</button></div>
+            <div class="col-4"><button class="btn btn-info">My Goals</button></div>
             <div class="col-4"><button class="btn btn-warning" @click="showModal">Make Post</button>
             <modal v-show="isModalVisible" :userId="user._id" @close="closeModal"></modal>
             </div>
-            <div class="col-4"> <button class="btn btn-primary" @click="switchComponents('ProfileEdit')" :disabled="currentComp === 'ProfileEdit'">Edit
+            <div class="col-4"> <button class="btn btn-info" @click="switchComponents('ProfileEdit')" :disabled="currentComp === 'ProfileEdit'">Edit
                     Profile</button></div>
         </div>
         <div class="row mt-1 mb-1"></div>
