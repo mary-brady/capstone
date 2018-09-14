@@ -156,7 +156,7 @@ export default new Vuex.Store({
           commit('setEnduranceGoals', goal.data)
         })
     },
-    addEnduranceGoals({ commit, dispatch }, enduranceGoal) {
+    addEnduranceGoal({ commit, dispatch }, enduranceGoal) {
       api.post('endurance-goal', enduranceGoal)
         .then(goal => {
           dispatch('getEnduranceGoals', goal.data)

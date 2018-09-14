@@ -57,7 +57,7 @@ let weightRoutes = require('./server-assets/routes/weight-routes')
 server.use('/api/weight', weightRoutes)
 
 let enduranceRoutes = require('./server-assets/routes/endurance-routes')
-server.use('/api/endurance', enduranceRoutes)
+server.use('/api/endurance-goal', enduranceRoutes)
 
 //Catch all
 server.get('*', (req, res, next) => {

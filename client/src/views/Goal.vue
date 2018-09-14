@@ -100,6 +100,9 @@
       },
       weightGoals() {
         return this.$store.state.weightGoals;
+      },
+      enduranceGoals() {
+        return this.$store.state.enduranceGoals;
       }
     },
     methods: {
@@ -110,10 +113,16 @@
         this.$store.dispatch("addWeightGoal", this.weightGoal)
       },
       addEnduranceGoal() {
-        this.$store.dispatch("addEnduranceGoal")
+        this.enduranceGoal.authorId = this.user._id
+        this.enduranceGoal.created = Date.now()
+        this.enduranceGoal.completed = false
+        this.$store.dispatch("addEnduranceGoal", this.enduranceGoal)
       },
       addStrengthGoal() {
-        this.$store.dispatch("addStrengthGoal")
+        this.strengthGoal.authorId = this.user._id
+        this.strengthGoal.created = Date.now()
+        this.strengthGoal.completed = false
+        this.$store.dispatch("addStrengthGoal", this.strengthGoal)
       }
     },
     components: {
