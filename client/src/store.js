@@ -22,6 +22,7 @@ export default new Vuex.Store({
     user: {},
     weight: [],
     endurance: [],
+    strength: [],
     weightGoals: [],
     enduranceGoals: [],
     strengthGoals: [],
@@ -38,6 +39,9 @@ export default new Vuex.Store({
     setEndurance(state, endurance) {
       Vue.set(state, "endurance", endurance)
       //state.endurance = endurance;
+    },
+    setStrength(state, strength) {
+      state.strength = strength;
     },
     setWeightGoals(state, data) {
       state.weightGoals = data
@@ -87,7 +91,7 @@ export default new Vuex.Store({
         router.push({ name: "login" });
       });
     },
-    ///////Weight and Endurance for Charts
+    ///////Weight, Endurance, and Strength for Charts
 
     getEndurance({ commit }) {
       api.get('endurance')
@@ -111,6 +115,18 @@ export default new Vuex.Store({
       api.post('weight', weightData)
         .then(stats => {
           dispatch('getWeight')
+        })
+    },
+    getStrength({ commit }) {
+      api.get('strength')
+        .then(stats => {
+          commit('setStrength', stats.data)
+        })
+    },
+    addStrength({ commit, dispatch }, strengthData) {
+      api.post('strength', strengthData)
+        .then(stats => {
+          dispatch('getStrength')
         })
     },
     ///////Weight and Endurance for Goals
@@ -223,7 +239,14 @@ export default new Vuex.Store({
       api.get('feed/')
         .then(res => {
           commit('setFeed', res.data)
-          console.log('feed res: ', res.data)
+        })
+    },
+
+    //posts
+    getPosts({ commit }, userId) {
+      api.get('posts/' + userId)
+        .then(res => {
+          commit('setPosts', res.data)
         })
     }
   },
