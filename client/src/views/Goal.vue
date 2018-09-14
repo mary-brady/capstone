@@ -54,17 +54,20 @@
               <button type="submit" class="btn btn-success mb-1 mt-1">Add Goal</button>
             </div>
           </form> -->
-    <h1>Endurance Goals</h1>
-    <div v-for="goal in weightGoals">
-      {{goal.title}} - {{goal.description}}
+    <h1>Weight Goals</h1>
+    <div v-for="wGoal in weightGoals">
+      {{wGoal.title}} - {{wGoal.description}}
+      <button @click="deleteWeightGoal">Delete</button>
     </div>
     <h1>Strength Goals</h1>
-    <div v-for="goal in strengthGoals">
-      {{goal.title}} - {{goal.description}}
+    <div v-for="sGoal in strengthGoals">
+      {{sGoal.title}} - {{sGoal.description}}
+      <button>Delete</button>
     </div>
     <h1>Endurance Goals</h1>
-    <div v-for="goal in enduranceGoals">
-      {{goal.title}} - {{goal.description}}
+    <div v-for="eGoal in enduranceGoals">
+      {{eGoal.title}} - {{eGoal.description}}
+      <button>Delete</button>
     </div>
   </div>
 </template>
@@ -137,6 +140,11 @@
         this.strengthGoal.created = Date.now()
         this.strengthGoal.completed = false
         this.$store.dispatch("addStrengthGoal", this.strengthGoal)
+      },
+      deleteWeightGoal() {
+        _id = this.wGoal._id
+        console.log(_id)
+        this.$store.dispatch("deleteWeightGoal", _id)
       }
     },
     components: {

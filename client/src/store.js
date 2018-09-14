@@ -144,7 +144,7 @@ export default new Vuex.Store({
           dispatch('getStrengthGoals', goal.data)
         })
     },
-    deleteStrengthGoals({ commit, dispatch }, _id) {
+    deleteStrengthGoal({ commit, dispatch }, _id) {
       api.delete('strength-goal/' + _id)
         .then(res => {
           dispatch('getStrengthGoals')
@@ -162,7 +162,7 @@ export default new Vuex.Store({
           dispatch('getEnduranceGoals', goal.data)
         })
     },
-    deleteEnduranceGoals({ commit, dispatch }, _id) {
+    deleteEnduranceGoal({ commit, dispatch }, _id) {
       api.delete('endurance-goal/' + _id)
         .then(res => {
           dispatch('getEnduranceGoals')
