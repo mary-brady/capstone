@@ -1,15 +1,18 @@
 <template>
 <div class="posts">
         <div class="row justify-content-center">
-            <div v-for="post in posts" :key="post._id" class="col-6">
-                <div class="card border-info">
-            <div class="card-header">
-            <h3>{{post.title}}</h3>
+            <div class="col-12">
+                <h1 class="font-size">Your Posts</h1>
             </div>
-            <div class="card-body">
+            <div v-for="post in posts" :key="post._id" class="col-xs-12 col-md-6 mb-2 mt-2">
+                <div class="card border-info">
+            <div class="card-header bg-light-blue">
+            <h3 class="font-size">{{post.title}}</h3>
+            </div>
+            <div class="card-body ">
                 <p>{{post.description}}</p>
             </div>
-            <div class="card-footer">
+            <div>
              <p class="card-text"> <small class="text-muted"><strong>Created</strong>: {{post.created}}</small></p>
             </div>
                 </div>
@@ -29,3 +32,13 @@ export default {
   }
 };
 </script>
+<style scoped>
+.font-size {
+  font-family: "Oldenburg", cursive;
+}
+
+.bg-light-blue {
+  background-color: #a0dee7;
+}
+</style>
+

@@ -2,7 +2,7 @@
   <div class="login container">
     <div class="row">
       <div class="col">
-        <h1>CAPSTONE</h1>
+        <h1 class="font-size">Ye Olde Health Tracker</h1>
       </div>
     </div>
     <div class="row">
@@ -50,13 +50,13 @@ export default {
         email: "",
         password: "",
         name: "",
-        username:""
+        username: ""
       }
     };
   },
   methods: {
     register() {
-      debugger
+      debugger;
       this.$store.dispatch("register", this.newUser);
     },
     loginUser() {
@@ -67,6 +67,9 @@ export default {
 </script>
 <style>
 .link {
-  color: blue;
+  color: rgb(216, 202, 12);
+}
+.font-size {
+  font-family: "Oldenburg", cursive;
 }
 </style>

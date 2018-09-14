@@ -1,9 +1,9 @@
 <template>
 <transition name="modal-fade">
 <div class="modal-backdrop">
-<div class="modal">
+<div class="modal col-md-4 col-xs-6">
     <header class="modal-header">
-        <slot class="header">
+        <slot class="header d-flex justify-content-between">
             <h1>DAILY QUEST!</h1>
         </slot>
         </header>
@@ -62,7 +62,6 @@ export default {
   overflow-x: auto;
   display: flex;
   flex-direction: column;
-  max-width: 40%;
 }
 
 .modal-header,
