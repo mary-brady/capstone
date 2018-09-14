@@ -22,19 +22,9 @@ export default new Vuex.Store({
     user: {},
     weight: [],
     endurance: [],
-<<<<<<< HEAD
-<<<<<<< HEAD
-    weightGoals: []
-=======
-    weightGoal: [],
+    weightGoals: [],
     posts: [],
     feed: []
->>>>>>> e4efb3078c53b6b20d22b35513fa2cab3b541a89
-=======
-    weightGoal: [],
-    posts: [],
-    feed: []
->>>>>>> e4efb3078c53b6b20d22b35513fa2cab3b541a89
   },
   mutations: {
     setUser(state, user) {
@@ -46,13 +36,9 @@ export default new Vuex.Store({
     setEndurance(state, endurance) {
       state.endurance = endurance;
     },
-<<<<<<< HEAD
     setWeightGoals(state, data) {
       state.weightGoals = data
-=======
-    setWeightGoals(state, weightGoal) {
-      console.log(weightGoal)
-      state.weightGoal = weightGoal
+
     },
     setPosts(state, posts) {
       state.posts = posts
@@ -65,10 +51,6 @@ export default new Vuex.Store({
       state.feed.forEach(feed => {
         feed.created = new Date(feed.created).toDateString()
       })
-<<<<<<< HEAD
->>>>>>> e4efb3078c53b6b20d22b35513fa2cab3b541a89
-=======
->>>>>>> e4efb3078c53b6b20d22b35513fa2cab3b541a89
     }
   },
   actions: {
