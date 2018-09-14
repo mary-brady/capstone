@@ -1,7 +1,7 @@
 <template>
-<div class="profile-edit row">
+<div class="profile-edit row d-flex justify-content-center">
     <div class="navbar col-12"></div>
-    <div class="col-12 text-left">
+    <div class="col-6 d-flex justify-content-center text-left bg-color">
         <ul>
     <li><strong>Name</strong>: {{userData.name}} &nbsp; &nbsp; <span @click="nameEditVisible = !nameEditVisible"><i class="clickable fa fa-edit"></i></span></li>
         <form v-if="nameEditVisible" @submit.prevent="editName()">
@@ -40,7 +40,7 @@
         </form>
         </ul>
     </div>
-    <div class="col">
+    <div class="col-12 mb-1 mt-3">
        <button class="btn btn-warning" @click="switchComponents('Posts')" :disabled="currentComp === 'Posts'">Go Back</button>
     </div>
 </div>
@@ -134,6 +134,11 @@ export default {
 }
 ul {
   list-style: none;
+}
+
+.bg-color {
+  background-color: rgb(235, 235, 235);
+  border: 2px dashed black;
 }
 </style>
 
