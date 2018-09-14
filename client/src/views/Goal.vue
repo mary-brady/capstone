@@ -73,10 +73,12 @@
               <button type="submit" class="btn btn-success mb-1 mt-1">Add Goal</button>
             </div>
           </form> -->
+    <GoalDetail />
   </div>
 </template>
 
 <script>
+  import GoalDetail from '../components/GoalDetail'
   export default {
     name: 'goal',
     data() {
@@ -156,7 +158,7 @@
       }
     },
     components: {
-
+      GoalDetail
     }
   }
 </script>
