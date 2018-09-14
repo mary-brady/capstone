@@ -55,9 +55,9 @@
             </div>
           </form> -->
     <h1>Weight Goals</h1>
-    <div v-for="wGoal in weightGoals">
-      {{wGoal.title}} - {{wGoal.description}}
-      <button @click="deleteWeightGoal">Delete</button>
+    <div v-for="wGoal in weightGoals" :wGoalData="wGoal">
+      {{wGoal.title}} - {{wGoal.description}} - {{wGoal._id}}
+      <button @click="deleteWeightGoal(wGoal._id)">Delete</button>
     </div>
     <h1>Strength Goals</h1>
     <div v-for="sGoal in strengthGoals">
@@ -141,10 +141,12 @@
         this.strengthGoal.completed = false
         this.$store.dispatch("addStrengthGoal", this.strengthGoal)
       },
-      deleteWeightGoal() {
-        this._id = this.wGoal._id
-        console.log(_id)
-        this.$store.dispatch("deleteWeightGoal", _id)
+      deleteWeightGoal(id) {
+        // this.wGoal._id = this.wGoal._id
+        // this.wgoal._id = id
+        // console.log(wGoal)
+
+        this.$store.dispatch("deleteWeightGoal", id)
       }
     },
     components: {
