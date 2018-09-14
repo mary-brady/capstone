@@ -2,29 +2,62 @@
     <div class="profile container-fluid">
         <div class="row mt-1 mb-1">
             <div class="col-12">
-                <div class="navbar"></div>
             </div>
         </div>
         <div class="row mt-1 mb-1">
-            <div class="col-12">
-                <h1>Hello, Mighty <strong>{{user.username}}</strong>!</h1>
+            <div class="col-12 ">
+                <h1 class="font-size">Hello, Mighty <strong>{{user.username}}</strong>!</h1>
             </div>
         </div>
         <div class="row mt-1 mb-1">
             <div class="col-6">
-                <img src="//placehold.it/150x150" class="img-fluid" alt="" />
+                <img src="//placehold.it/200x200" class="img-fluid" alt="" />
             </div>
             <div class="col-6">
                 <div class="row">
-                    <div class="col">
-                        <p>Put v-for here for badges</p>
+                    <div class="col-4 mb-1 mt-1">
+                        <img src="//placehold.it/50x50" class="img-fluid" alt="">
                     </div>
+                    <div class="col-4 mb-1 mt-1">
+                        <img src="//placehold.it/50x50" class="img-fluid" alt="">
+                    </div>
+                    <div class="col-4 mb-1 mt-1">
+                        <img src="//placehold.it/50x50" class="img-fluid" alt="">
+                    </div>
+                    <div class="col-4 mb-1 mt-1">
+                        <img src="//placehold.it/50x50" class="img-fluid" alt="">
+                    </div>
+                    <div class="col-4 mb-1 mt-1">
+                        <img src="//placehold.it/50x50" class="img-fluid" alt="">
+                    </div>
+                    <div class="col-4 mb-1 mt-1">
+                        <img src="//placehold.it/50x50" class="img-fluid" alt="">
+                    </div>
+                    <div class="col-4 mb-1 mt-1">
+                        <img src="//placehold.it/50x50" class="img-fluid" alt="">
+                    </div>
+                    <div class="col-4 mb-1 mt-1">
+                        <img src="//placehold.it/50x50" class="img-fluid" alt="">
+                    </div>
+                    <div class="col-4 mb-1 mt-1">
+                        <img src="//placehold.it/50x50" class="img-fluid" alt="">
+                    </div>
+                    <div class="col-4 mb-1 mt-1">
+                        <img src="//placehold.it/50x50" class="img-fluid" alt="">
+                    </div>
+                    <div class="col-4 mb-1 mt-1">
+                        <img src="//placehold.it/50x50" class="img-fluid" alt="">
+                    </div>
+                     <div class="col-4 mb-1 mt-1">
+                        <img src="//placehold.it/50x50" class="img-fluid" alt="">
+                    </div>
+                    
                 </div>
             </div>
         </div>
         <div class="row mt-1 mb-1">
             <div class="col-12">
-                <h2 class="text-left">About You</h2>
+                <h2 class="font-size">About You</h2>
                 <p>{{user.description}}</p>
             </div>
         </div>
@@ -41,16 +74,15 @@
             </div>
         </div>
         <div class="row mt-1 mb-1">
-            <div class="col-4"><button class="btn btn-primary">My Goals</button></div>
+            <div class="col-4"><button class="btn btn-info">My Goals</button></div>
             <div class="col-4"><button class="btn btn-warning" @click="showModal">Make Post</button>
             <modal v-show="isModalVisible" :userId="user._id" @close="closeModal"></modal>
             </div>
-            <div class="col-4"> <button class="btn btn-primary" @click="switchComponents('ProfileEdit')" :disabled="currentComp === 'ProfileEdit'">Edit
+            <div class="col-4"> <button class="btn btn-info" @click="switchComponents('ProfileEdit')" :disabled="currentComp === 'ProfileEdit'">Edit
                     Profile</button></div>
         </div>
         <div class="row mt-1 mb-1"></div>
     <div>
-        <h1>Your Posts</h1>
         <component id="profile" :is="currentComp" :userId="user._id"></component>
     </div>    
 
@@ -103,4 +135,7 @@ export default {
 };
 </script>
 <style scoped>
+.font-size {
+  font-family: "Oldenburg", cursive;
+}
 </style>

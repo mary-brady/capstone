@@ -74,7 +74,7 @@ export default {
   overflow-x: auto;
   display: flex;
   flex-direction: column;
-  max-width: 40%;
+  /* max-width: 40%; */
 }
 
 .modal-header,

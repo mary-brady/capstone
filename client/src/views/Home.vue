@@ -2,7 +2,7 @@
   <div class="home container">
     <div class="row">
       <div class="col">
-        <h1 class="font-size">CAPSTONE</h1>
+        <h1 class="font-size">Ye Olde Health Tracker</h1>
       </div>
     </div>
     <div class="row">
@@ -13,16 +13,16 @@
     </div>
     <div class="row d-flex justify-content-center">
       <div class="col-12">
-        <h3>Feed</h3>
+        <h3 class="font-size">Feed</h3>
       </div>
       <div class="col-6">
         <Feed class="d-flex justify-content-center"/>
       </div>
     </div>
-    <div class="row">
+    <div class="row d-flex justify-content-center">
       <div class="col-12">
-        <button type="button" class="btn btn-primary" @click="showModal">Daily Quest</button>
-        <modal v-show="isModalVisible" @close="closeModal" />
+        <button type="button" class="btn btn-danger" @click="showModal">Daily Quest</button>
+        <modal v-show="isModalVisible" @close="closeModal" class="row"/>
       </div>
     </div>
   </div>
@@ -58,3 +58,10 @@ export default {
   }
 };
 </script>
+
+<style>
+.font-size {
+  font-family: "Oldenburg", cursive;
+}
+</style>
+
