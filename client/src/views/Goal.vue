@@ -15,7 +15,7 @@
     <h1>Weight Goals</h1>
     <div v-for="wGoal in weightGoals" :wGoalData="wGoal">
       <i class="fas fa-check-circle green"></i>
-     {{wGoal.title}} - {{wGoal.description}}
+      {{wGoal.title}} - {{wGoal.description}}
       <i class="fas fa-times red" @click="deleteWeightGoal(wGoal._id)" title="Delete"></i>
     </div>
     <div v-if="weight">
@@ -165,22 +165,25 @@
 </script>
 
 <style scoped>
-    h1 {
-        font-weight:700;
-    }
+  h1 {
+    font-weight: 700;
+  }
+
   .red {
     /* font-size: 500px; */
     color: #8B0000;
   }
+
   .red:hover {
-      color:red
+    color: red
   }
 
   .green {
     /* font-size: 500px; */
     color: green;
   }
+
   .green:hover {
-      color:yellowgreen
+    color: yellowgreen
   }
 </style>

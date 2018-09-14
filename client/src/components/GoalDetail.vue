@@ -5,8 +5,9 @@
       <input type="number" placeholder="Time" v-model="newTime.time" required>
       <button class="btn-success" type="submit">Create New Time</button>
     </form>
+    <canvas id="weight-chart"></canvas>
     <div class='junk'>
-      {{endurance}}
+      {{endurance}} {{weight}}
     </div>
   </div>
 </template>
@@ -30,6 +31,18 @@
             ]
           }
         },
+        weightChartData: {
+          type: 'line',
+          data: {
+            labels: [],
+            datasets: [{
+              label: 'Weight',
+              data: [],
+              backgroundColor: "rgba(153,255,51,0.4)"
+            }
+            ]
+          }
+        },
         newTime: {
           time: "",
           authorId: "",
@@ -45,12 +58,20 @@
         }
         return eData
       },
+      weight() {
+        let wData = this.$store.getters.weightChartData
+        if (document.getElementById('weight-chart')) {
+          this.createChart('weight-chart', wData);
+        }
+        return wData
+      },
       user() {
         return this.$store.state.user;
       }
     },
     mounted() {
       this.$store.dispatch('getEndurance')
+      this.$store.dispatch('getWeight')
     },
     methods: {
       createChart(chartId, chartData) {
@@ -70,6 +91,7 @@
       },
     }
   }
+  ///strength - squat, deadlift, bench, shoulder, press, row
 </script>
 
 <style>

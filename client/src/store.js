@@ -280,6 +280,27 @@ export default new Vuex.Store({
         chartData.data.datasets[0].data.push(eData.time)
       })
       return chartData
+    },
+    weightChartData(state) {
+      let data = state.weight
+      let chartData = {
+        type: 'line',
+        data: {
+          labels: [],
+          datasets: [{
+            label: 'Weight',
+            data: [],
+            backgroundColor: "rgba(153,255,51,0.4)"
+          }
+          ]
+        }
+      }
+      data.forEach(eData => {
+        let myLabel = eData.created.split('T').join("-").substr(5, 5)
+        chartData.data.labels.push(myLabel)
+        chartData.data.datasets[0].data.push(eData.time)
+      })
+      return chartData
     }
   }
 })
