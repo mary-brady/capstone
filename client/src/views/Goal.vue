@@ -56,18 +56,18 @@
           </form> -->
     <h1>Weight Goals</h1>
     <div v-for="wGoal in weightGoals" :wGoalData="wGoal">
-      {{wGoal.title}} - {{wGoal.description}} - {{wGoal._id}}
+      {{wGoal.title}} - {{wGoal.description}}
       <button @click="deleteWeightGoal(wGoal._id)">Delete</button>
     </div>
     <h1>Strength Goals</h1>
     <div v-for="sGoal in strengthGoals">
       {{sGoal.title}} - {{sGoal.description}}
-      <button>Delete</button>
+      <button @click="deleteStrengthGoal(sGoal._id)">Delete</button>
     </div>
     <h1>Endurance Goals</h1>
     <div v-for="eGoal in enduranceGoals">
       {{eGoal.title}} - {{eGoal.description}}
-      <button>Delete</button>
+      <button @click="deleteEnduranceGoals(eGoal._id)">Delete</button>
     </div>
   </div>
 </template>
@@ -142,11 +142,13 @@
         this.$store.dispatch("addStrengthGoal", this.strengthGoal)
       },
       deleteWeightGoal(id) {
-        // this.wGoal._id = this.wGoal._id
-        // this.wgoal._id = id
-        // console.log(wGoal)
-
         this.$store.dispatch("deleteWeightGoal", id)
+      },
+      deleteEnduranceGoal(id) {
+        this.$store.dispatch("deleteEnduranceGoal", id)
+      },
+      deleteStrengthGoal(id) {
+        this.$store.dispatch("deleteStrengthGoal", id)
       }
     },
     components: {
