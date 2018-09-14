@@ -53,11 +53,17 @@ server.use('/api/badges', badgeRoutes)
 let weightGoalRoutes = require('./server-assets/routes/weightgoal-routes')
 server.use('/api/weight-goal', weightGoalRoutes)
 
+let strengthGoalRoutes = require('./server-assets/routes/strengthgoal-routes')
+server.use('/api/strength-goal', strengthGoalRoutes)
+
+let enduranceGoalRoutes = require('./server-assets/routes/endurancegoal-routes')
+server.use('/api/endurance-goal', enduranceGoalRoutes)
+
 let weightRoutes = require('./server-assets/routes/weight-routes')
 server.use('/api/weight', weightRoutes)
 
 let enduranceRoutes = require('./server-assets/routes/endurance-routes')
-server.use('/api/endurance-goal', enduranceRoutes)
+server.use('/api/endurance', enduranceRoutes)
 
 //Catch all
 server.get('*', (req, res, next) => {
