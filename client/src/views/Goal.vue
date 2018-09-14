@@ -73,6 +73,7 @@
               <button type="submit" class="btn btn-success mb-1 mt-1">Add Goal</button>
             </div>
           </form> -->
+    <h1> Endurance Chart</h1>
     <GoalDetail />
   </div>
 </template>
