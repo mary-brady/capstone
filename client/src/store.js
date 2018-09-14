@@ -22,6 +22,7 @@ export default new Vuex.Store({
     user: {},
     weight: [],
     endurance: [],
+    strength: [],
     weightGoals: [],
     enduranceGoals: [],
     strengthGoals: [],
@@ -36,7 +37,11 @@ export default new Vuex.Store({
       state.weight = weight;
     },
     setEndurance(state, endurance) {
-      state.endurance = endurance;
+      Vue.set(state, "endurance", endurance)
+      //state.endurance = endurance;
+    },
+    setStrength(state, strength) {
+      state.strength = strength;
     },
     setWeightGoals(state, data) {
       state.weightGoals = data
@@ -89,7 +94,7 @@ export default new Vuex.Store({
         router.push({ name: "login" });
       });
     },
-    ///////Weight and Endurance for Charts
+    ///////Weight, Endurance, and Strength for Charts
 
     getEndurance({ commit }) {
       api.get('endurance')
@@ -113,6 +118,18 @@ export default new Vuex.Store({
       api.post('weight', weightData)
         .then(stats => {
           dispatch('getWeight')
+        })
+    },
+    getStrength({ commit }) {
+      api.get('strength')
+        .then(stats => {
+          commit('setStrength', stats.data)
+        })
+    },
+    addStrength({ commit, dispatch }, strengthData) {
+      api.post('strength', strengthData)
+        .then(stats => {
+          dispatch('getStrength')
         })
     },
     ///////Weight and Endurance for Goals
@@ -240,6 +257,29 @@ export default new Vuex.Store({
         .then(res => {
           dispatch('getPosts', postData.userId)
         })
+    }
+  },
+  getters: {
+    enduranceChartData(state) {
+      let data = state.endurance
+      let chartData = {
+        type: 'line',
+        data: {
+          labels: [],
+          datasets: [{
+            label: 'Time',
+            data: [],
+            backgroundColor: "rgba(153,255,51,0.4)"
+          }
+          ]
+        }
+      }
+      data.forEach(eData => {
+        let myLabel = eData.created.split('T').join("-").substr(5, 5)
+        chartData.data.labels.push(myLabel)
+        chartData.data.datasets[0].data.push(eData.time)
+      })
+      return chartData
     }
   }
 })
