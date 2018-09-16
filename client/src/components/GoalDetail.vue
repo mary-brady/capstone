@@ -102,6 +102,12 @@
         this.$store.dispatch("addEndurance", this.newTime);
         // this.newTime = { time: "", authorId: "", created: "" };
       },
+      addWeight() {
+        this.newWeight.authorId = this.user._id
+        this.newWeight.created = Date.now()
+        console.log(this.newWeight)
+        this.$store.dispatch("addWeight", this.newWeight);
+      },
     }
   }
   ///strength - squat, deadlift, bench, shoulder, press, row
