@@ -1,27 +1,25 @@
 <template>
   <div id="app">
     <div id="nav">
-      <Push>
-        <router-link to="/">Home</router-link>  
+      <Slide width='200'>
+      <router-link to="/">Home</router-link>  
       <router-link to="/login">Login</router-link>
       <router-link to="/profile">Profile</router-link>
       <router-link to="/goal">Goals</router-link>
-      </Push>
+      </Slide>
     </div>
     <router-view />
   </div>
 </template>
 <script>
-import { Push } from "vue-burger-menu";
+import { Slide } from "vue-burger-menu";
 export default {
   name: "App",
   components: {
-    Push
+    Slide
   }
 };
 </script>
-
-
 
 <style>
 #app {
@@ -34,7 +32,7 @@ export default {
 
 #nav a {
   font-weight: bold;
-  color: rgb(160, 222, 231);
+  color: #555;
 }
 
 .bm-burger-button {
@@ -61,7 +59,7 @@ export default {
   cursor: pointer;
 }
 .bm-cross {
-  background: #bdc3c7;
+  background: #292929;
 }
 .bm-cross-button {
   height: 24px;
@@ -74,10 +72,11 @@ export default {
   z-index: 1000;
   top: 0;
   left: 0;
-  background-color: rgb(63, 63, 65);
+  background-color: #fff;
   overflow-x: hidden;
   padding-top: 60px;
   transition: 0.5s;
+  font-family: "Oldenburg", cursive;
 }
 
 .bm-overlay {

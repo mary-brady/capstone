@@ -8,7 +8,7 @@
     <div class="row">
       <div class="col-12 d-flex justify-content-center">
         <img src="">
-        <router-link :to="{name: 'login'}">Sign Up/Log in</router-link>
+        <router-link :to="{name: 'login'}"><button class="btn btn-danger btn-lg">Sign Up/Log in</button></router-link>
       </div>
     </div>
     <div class="row d-flex justify-content-center">
@@ -62,6 +62,10 @@ export default {
 <style>
 .font-size {
   font-family: "Oldenburg", cursive;
+}
+.underline {
+  border-bottom: 1px solid rgb(0, 0, 0);
+  width: fit-content;
 }
 </style>
 
