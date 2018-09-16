@@ -10,6 +10,10 @@
     <div>
       <canvas id="weight-chart"></canvas>
     </div>
+    <form @submit.prevent="addWeight">
+        <input type="number" placeholder="Weight" v-model="newWeight.weight" required>
+        <button class="btn-success" type="submit">Create New Weight</button>
+      </form>
     <div class='junk'>
       {{endurance}} {{weight}}
     </div>
@@ -49,6 +53,11 @@
         },
         newTime: {
           time: "",
+          authorId: "",
+          created: ""
+        },
+        newWeight: {
+          weight: "",
           authorId: "",
           created: ""
         }
