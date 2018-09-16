@@ -1,11 +1,15 @@
 <template>
   <div id="">
-    <canvas id="endurance-chart"></canvas>
+    <div>
+      <canvas id="endurance-chart"></canvas>
+    </div>
     <form @submit.prevent="addEndurance">
       <input type="number" placeholder="Time" v-model="newTime.time" required>
       <button class="btn-success" type="submit">Create New Time</button>
     </form>
-    <canvas id="weight-chart"></canvas>
+    <div>
+      <canvas id="weight-chart"></canvas>
+    </div>
     <div class='junk'>
       {{endurance}} {{weight}}
     </div>

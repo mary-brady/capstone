@@ -299,7 +299,7 @@ export default new Vuex.Store({
       data.forEach(eData => {
         let myLabel = eData.created.split('T').join("-").substr(5, 5)
         chartData.data.labels.push(myLabel)
-        chartData.data.datasets[0].data.push(eData.time)
+        chartData.data.datasets[0].data.push(eData.weight)
       })
       return chartData
     }
