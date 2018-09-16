@@ -5,7 +5,7 @@
       <router-link to="/">Home</router-link>  
       <router-link to="/login">Login</router-link>
       <router-link to="/profile">Profile</router-link>
-      <router-link to="/goal">Goals</router-link>
+     <router-link to="/goal">Goals</router-link>
       </Slide>
     </div>
     <router-view />
@@ -59,7 +59,7 @@ export default {
   cursor: pointer;
 }
 .bm-cross {
-  background: #292929;
+  background: #555;
 }
 .bm-cross-button {
   height: 24px;
