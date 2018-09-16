@@ -34,7 +34,8 @@ export default new Vuex.Store({
       state.user = user;
     },
     setWeight(state, weight) {
-      state.weight = weight;
+      Vue.set(state, "weight", weight)
+      // state.weight = weight;
     },
     setEndurance(state, endurance) {
       Vue.set(state, "endurance", endurance)
