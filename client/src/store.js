@@ -341,6 +341,51 @@ export default new Vuex.Store({
         chartData.data.datasets[0].data.push(eData.weight)
       })
       return chartData
+    },
+    strengthChartData(state) {
+      let data = state.strength
+      let chartData = {
+        type: 'bar',
+        data: {
+          labels: [],
+          datasets: [{
+            label: 'Squats',
+            data: [],
+            backgroundColor: "rgba(92, 205, 240, 0.4)"
+            
+          },
+          {label: 'Row',
+          data: [],
+          backgroundColor: "rgba(213, 14, 253, 0.4)"
+        },
+        {
+        label: 'Bench Press',
+        data: [],
+        backgroundColor: " rgba(27, 172, 59, 0.4)"
+        },
+        {
+          label: 'Shoulder Press',
+          data: [],
+          backgroundColor: "rgba(250, 183, 39, 0.4)"
+          },
+          {
+            label: 'Deadlift',
+            data: [],
+            backgroundColor: "rgba(253, 14, 14, 0.4)"
+            }
+          ]
+        }
+      }
+      data.forEach(sData => {
+        let myLabel = sData.created.split('T').join("-").substr(5, 5)
+        chartData.data.labels.push(myLabel)
+        chartData.data.datasets[0].data.push(sData.squats)
+        chartData.data.datasets[1].data.push(sData.rows)
+        chartData.data.datasets[2].data.push(sData.benches)
+        chartData.data.datasets[3].data.push(sData.shoulders)
+        chartData.data.datasets[4].data.push(sData.deadlifts)
+      })
+      return chartData
     }
   }
 })

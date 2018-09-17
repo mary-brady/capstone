@@ -32,9 +32,17 @@
     <div v-show="strengthChart">
       <h1> Strength Chart</h1>
       <canvas id="strength-chart"></canvas>
+      <form @submit.prevent="addStrength">
+          <input type="number" placeholder="Max lbs Squatted" v-model="newStrength.squats" required>
+          <input type="number" placeholder="Max lbs Rowed" v-model="newStrength.rows" required>
+          <input type="number" placeholder="Max lbs Bench Pressed" v-model="newStrength.benches" required>
+          <input type="number" placeholder="Max lbs Shoulder Pressed" v-model="newStrength.shoulders" required>
+          <input type="number" placeholder="Max lbs Deadlifted" v-model="newStrength.deadlifts" required>
+          <button class="btn-success" type="submit">Add Strength Data</button>
+        </form>
     </div>
     <div class='junk'>
-      {{endurance}} {{weight}}
+      {{endurance}} {{weight}} {{strength}}
     </div>
   </div>
 </template>
@@ -102,6 +110,15 @@
           weight: "",
           authorId: "",
           created: ""
+        },
+        newStrength: {
+          squats: "",
+          deadlifts: "",
+          rows:"",
+          benches:"",
+          shoulders:"",
+          authorId:"",
+          created:""
         }
       }
     },
@@ -120,6 +137,13 @@
         }
         return 'weight data success'
       },
+      strength() {
+        let sData = this.$store.getters.strengthChartData
+        if (document.getElementById('strength-chart')) {
+          this.createChart('strength-chart', sData);
+        }
+        return 'weight data success'
+      },
       user() {
         return this.$store.state.user;
       }
@@ -127,7 +151,8 @@
     mounted() {
       this.$store.dispatch('getEndurance')
       this.$store.dispatch('getWeight')
-      this.createChart('strength-chart', this.strengthChartData);
+      this.$store.dispatch('getStrength')
+      // this.createChart('strength-chart', this.strengthChartData);
     },
     //temp mount
     methods: {
@@ -167,6 +192,12 @@
         this.newWeight.created = Date.now()
         console.log(this.newWeight)
         this.$store.dispatch("addWeight", this.newWeight);
+      },
+      addStrength() {
+        this.newStrength.authorId = this.user._id
+        this.newStrength.created = Date.now()
+        console.log(this.newStrength)
+        this.$store.dispatch("addStrength", this.newStrength);
       },
     }
   }
