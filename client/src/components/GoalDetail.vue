@@ -1,15 +1,9 @@
 <template>
   <div id="">
 
-<<<<<<< HEAD
-    <div class="dropdown col-sm-4 mb-5">
+    <div class="dropdown offset-sm-4 col-sm-4 mb-5">
       <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
         aria-haspopup="true" aria-expanded="false">
-=======
-    <div class="dropdown offset-sm-4 col-sm-4 mb-5">
-      <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-        aria-expanded="false">
->>>>>>> 778c08026b2abfb43f338b7777f10db766bdea2b
         Progress Charts
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
