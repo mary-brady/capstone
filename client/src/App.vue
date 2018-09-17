@@ -50,10 +50,10 @@ export default {
   color: #2c3e50;
 }
 
-#nav a {
+.navbar,
+a {
   font-weight: bold;
   color: #ffffff;
   font-family: "Oldenburg", cursive;
-  font-size: larger;
 }
 </style>

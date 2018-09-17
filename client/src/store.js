@@ -39,6 +39,17 @@ export default new Vuex.Store({
     setUser(state, user) {
       state.user = user;
     },
+    clearUser(state) {
+      state.user = {},
+        state.weight = [],
+        state.endurance = [],
+        state.strength = [],
+        state.weightGoals = [],
+        state.enduranceGoals = [],
+        state.strengthGoals = [],
+        state.posts = [],
+        state.tips = []
+    },
     setWeight(state, weight) {
       Vue.set(state, "weight", weight)
       // state.weight = weight;
@@ -72,7 +83,7 @@ export default new Vuex.Store({
       })
     },
     setTips(state, data) {
-      state.tips = data.match( /[^\.!\?]+[\.!\?]+/g )
+      state.tips = data.match(/[^\.!\?]+[\.!\?]+/g)
     }
   },
   actions: {
@@ -101,7 +112,7 @@ export default new Vuex.Store({
     logout({ commit }) {
       auth.delete("logout").then(() => {
         commit("clearUser");
-        router.push({ name: "login" });
+        router.push({ name: "home" });
       });
     },
     ///////Weight, Endurance, and Strength for Charts
@@ -240,7 +251,12 @@ export default new Vuex.Store({
           dispatch('getUser', profileUpdate.userId)
         })
     },
-
+    updateLevel({ dispatch }, profileData) {
+      auth.put(profileData.userId, { level: profileData.level })
+        .then(res => {
+          dispatch('getUser', profileData.userId)
+        })
+    },
     updateUserType({ dispatch }, profileUpdate) {
       auth.put(profileUpdate.userId, { userType: profileUpdate.userType })
         .then(res => {
