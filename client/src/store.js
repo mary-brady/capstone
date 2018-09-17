@@ -82,9 +82,9 @@ export default new Vuex.Store({
         feed.created = new Date(feed.created).toDateString()
       })
     },
-    setTips(state, data) {
-      state.tips = data.match(/[^\.!\?]+[\.!\?]+/g)
-    }
+    // setTips(state, data) {
+    //   state.tips = data.match(/[^\.!\?]+[\.!\?]+/g)
+    // }
   },
   actions: {
     //AUTH
@@ -271,7 +271,15 @@ export default new Vuex.Store({
         })
     },
 
-    //posts
+    //TIP
+    // getTip({commit}) {
+    //   api.get('tips/')
+    //     .then(res => {
+    //       commit('setTips', res.data)
+    //     })
+    // },
+
+    //POSTS
     getPosts({ commit }, userId) {
       api.get('posts/' + userId)
         .then(res => {
