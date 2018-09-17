@@ -106,6 +106,12 @@ export default {
       isModalVisible: false
     };
   },
+  created() {
+    if (!this.$store.state.user._id) {
+      console.log(this.$store.state.user);
+      this.$router.push({ name: "home" });
+    }
+  },
   computed: {
     user() {
       return this.$store.state.user;

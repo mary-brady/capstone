@@ -112,7 +112,7 @@ export default new Vuex.Store({
     logout({ commit }) {
       auth.delete("logout").then(() => {
         commit("clearUser");
-        router.push({ name: "login" });
+        router.push({ name: "home" });
       });
     },
     ///////Weight, Endurance, and Strength for Charts
