@@ -33,7 +33,7 @@
         <h3 class="font-size">Health Tip</h3>
       </div>
       <div class="col-12">
-        {{tips[Math.floor(Math.random() * tips.length)]}}
+        <!-- {{tips[Math.floor(Math.random() * tips.length)]}} -->
       </div>
     </div>
   </div>
@@ -58,7 +58,7 @@ export default {
   },
   mounted() {
     this.$store.dispatch("getFeed");
-    this.$store.dispatch("getTip")
+    // this.$store.dispatch("getTip");
   },
   methods: {
     showModal() {
