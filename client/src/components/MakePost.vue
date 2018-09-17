@@ -40,7 +40,6 @@ export default {
   },
   methods: {
     addPost() {
-      debugger;
       this.$store.dispatch("addPost", {
         userId: this.userId,
         postData: this.newPost

@@ -5,6 +5,8 @@ import router from "./router"
 
 Vue.use(Vuex)
 
+
+
 let auth = Axios.create({
   baseURL: "//localhost:3000/auth/",
   timeout: 3000,
@@ -16,6 +18,13 @@ let api = Axios.create({
   timeout: 3000,
   withCredentials: true
 })
+
+// let weatherApi = axios.create({
+//   baseURL: 'http://api.openweathermap.org/data/2.5/weather?q=boise&&APPID=bd82255fd0a21fa1238699b9eda2ee35',
+//   timeout: 3000
+// })
+
+
 
 let healthTip = Axios.create({
   baseURL: "https://healthfinder.gov/FreeContent/Developer/Search.xml?api_key=demo_api_key&CategoryID=17",
@@ -33,7 +42,8 @@ export default new Vuex.Store({
     strengthGoals: [],
     posts: [],
     feed: [],
-    tips: []
+    tips: [],
+    weather: {}
   },
   mutations: {
     setUser(state, user) {
@@ -84,6 +94,9 @@ export default new Vuex.Store({
     },
     setTips(state, data) {
       state.tips = data.match(/[^\.!\?]+[\.!\?]+/g)
+    },
+    setWeather(state, weather) {
+      state.weather = weather
     }
   },
   actions: {
@@ -327,6 +340,14 @@ export default new Vuex.Store({
         chartData.data.datasets[0].data.push(eData.weight)
       })
       return chartData
-    }
+    },
+
+    //Weather
+    // getWeather({ commit }) {
+    //   weatherApi.get()
+    //     .then(res => {
+    //       commit('setWeather', res.data)
+    //     })
+    // }
   }
 })

@@ -15,17 +15,26 @@
       </div>
     </div>
     <div class="row d-flex justify-content-center">
-      <div class="col-12">
+      <div class="col-8">
+        <div class="row">
+        <div class="col-12">
         <h3 class="font-size">Feed</h3>
       </div>
-      <div class="col-6">
+      <div class="col-12">
         <Feed class="d-flex justify-content-center"/>
       </div>
-    </div>
-    <div class="row d-flex justify-content-center">
-      <div class="col-12">
-        <button type="button" class="btn btn-danger" @click="showModal">Daily Quest</button>
-        <modal v-show="isModalVisible" @close="closeModal" class="row"/>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="row">
+          <div class="col-12 mb-2 mt-2">
+            <button type="button" class="btn btn-danger" @click="showModal">Daily Quest</button>
+        <modal v-show="isModalVisible" @close="closeModal" class="row"/></div>
+          <div class="col-12  mb-2 mt-2 bg-yellow">
+            <Weather />
+          </div>
+        </div>
+        
       </div>
     </div>
   </div>
@@ -36,10 +45,12 @@
 
 import modal from "@/components/Quest.vue";
 import Feed from "@/components/Feed.vue";
+import Weather from "@/components/Weather.vue";
 
 export default {
   name: "home",
   components: {
+    Weather,
     modal,
     Feed
   },
@@ -69,6 +80,10 @@ export default {
 .underline {
   border-bottom: 1px solid rgb(0, 0, 0);
   width: fit-content;
+}
+.bg-yellow {
+  border: 2px solid #ffc107;
+  border-radius: 10px;
 }
 </style>
 
