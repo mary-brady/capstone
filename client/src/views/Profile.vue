@@ -106,12 +106,6 @@ export default {
       isModalVisible: false
     };
   },
-  created() {
-    if (!this.$store.state.user._id) {
-      console.log(this.$store.state.user);
-      this.$router.push({ name: "home" });
-    }
-  },
   computed: {
     user() {
       return this.$store.state.user;
@@ -149,6 +143,9 @@ export default {
     bus.$on("switchComp", comp => {
       this.currentComp = comp;
     });
+    if (!this.$store.state.user._id) {
+      this.$router.push({ name: "home" });
+    }
   },
   methods: {
     moveLevel() {},
