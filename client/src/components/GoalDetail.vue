@@ -2,17 +2,17 @@
   <div id="">
 
     <div class="dropdown col-sm-4 mb-5">
-      <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-        aria-expanded="false">
+      <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
         Progress Charts
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="#" @click="weightChart = !weightChart">Weight Chart</a>
-        <a class="dropdown-item" href="#" @click="enduranceChart = !enduranceChart">Endurance Chart</a>
-        <a class="dropdown-item" href="#" @click="strengthChart = !strengthChart">Strength Chart</a>
+        <a class="dropdown-item" href="#" @click="setChart('weight')">Weight Chart</a>
+        <a class="dropdown-item" href="#" @click="setChart('endurance')">Endurance Chart</a>
+        <a class="dropdown-item" href="#" @click="setChart('strength')">Strength Chart</a>
       </div>
     </div>
-    <div v-if="enduranceChart">
+    <div v-show="enduranceChart">
       <h1> Endurance Chart</h1>
       <canvas id="endurance-chart"></canvas>
       <form @submit.prevent="addEndurance">
@@ -20,7 +20,7 @@
         <button class="btn-success" type="submit">Create New Time</button>
       </form>
     </div>
-    <div v-if="weightChart">
+    <div v-show="weightChart">
       <h1> Weight Chart</h1>
       <canvas id="weight-chart"></canvas>
 
@@ -29,7 +29,7 @@
         <button class="btn-success" type="submit">Create New Weight</button>
       </form>
     </div>
-    <div v-if="strengthChart">
+    <div v-show="strengthChart">
       <h1> Strength Chart</h1>
       <canvas id="strength-chart"></canvas>
     </div>
@@ -49,30 +49,6 @@
         weightChart: false,
         enduranceChart: false,
         strengthChart: false,
-        enduranceChartData: {
-          type: 'line',
-          data: {
-            labels: [],
-            datasets: [{
-              label: 'Time',
-              data: [],
-              backgroundColor: "rgba(153,255,51,0.4)"
-            }
-            ]
-          }
-        },
-        weightChartData: {
-          type: 'line',
-          data: {
-            labels: [],
-            datasets: [{
-              label: 'Weight',
-              data: [],
-              backgroundColor: "rgba(153,255,51,0.4)"
-            }
-            ]
-          }
-        },
         strengthChartData: {
           type: 'bar',
           data: {
@@ -123,14 +99,14 @@
         if (document.getElementById('endurance-chart')) {
           this.createChart('endurance-chart', eData);
         }
-        return eData
+        return "success"
       },
       weight() {
         let wData = this.$store.getters.weightChartData
         if (document.getElementById('weight-chart')) {
           this.createChart('weight-chart', wData);
         }
-        return wData
+        return 'weight data success'
       },
       user() {
         return this.$store.state.user;
@@ -139,10 +115,26 @@
     mounted() {
       this.$store.dispatch('getEndurance')
       this.$store.dispatch('getWeight')
-      this.createChart('strength-chart', this.strengthChartData);
+      // this.createChart('strength-chart', this.strengthChartData);
     },
     //temp mount
     methods: {
+      setChart(chart) {
+        this.weightChart = false
+        this.enduranceChart = false
+        this.strengthChart = false
+        switch (chart) {
+          case 'weight':
+            this.weightChart = true
+            break;
+          case 'endurance':
+            this.enduranceChart = true
+            break;
+          case 'strength':
+            this.strengthChart = true
+            break;
+        }
+      },
       createChart(chartId, chartData) {
         const ctx = document.getElementById(chartId);
         const myChart = new Chart(ctx, {
