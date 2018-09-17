@@ -81,13 +81,31 @@ export default new Vuex.Store({
       state.strengthGoals = data
     },
     setPosts(state, posts) {
-      state.posts = posts
+      state.posts = posts.sort((a, b) => {
+        let dateOne = Date.parse(a.created)
+        let dateTwo = Date.parse(b.created)
+        if (dateOne < dateTwo) {
+          return 1
+        } else if (dateOne > dateTwo) {
+          return -1
+        }
+        return 0
+      })
       state.posts.forEach(posts => {
         posts.created = new Date(posts.created).toDateString()
       })
     },
     setFeed(state, feed) {
-      state.feed = feed
+      state.feed = feed.sort((a, b) => {
+        let dateOne = Date.parse(a.created)
+        let dateTwo = Date.parse(b.created)
+        if (dateOne < dateTwo) {
+          return 1
+        } else if (dateOne > dateTwo) {
+          return -1
+        }
+        return 0
+      })
       state.feed.forEach(feed => {
         feed.created = new Date(feed.created).toDateString()
       })

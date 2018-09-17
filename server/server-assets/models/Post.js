@@ -6,7 +6,7 @@ let schemaName = 'Post'
 let schema = new Schema({
     title: { type: String, required: true },
     authorId: { type: ObjectId, ref: 'User', required: true },
-    created: { type: Date, default: Date.now(), required: true },
+    created: { type: Date, default: Date.now(), required: true }, // this is being set in post route
     description: { type: String, required: true }
 
 })
