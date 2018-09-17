@@ -15,7 +15,7 @@
                <div class="form-group">
                  <input type="text" class="form-control mt-1 mb-1" v-model="newPost.title" placeholder="Delicious Cucumber"/>
                   <textarea type="text" class="form-control mt-1 mb-1" v-model="newPost.description" placeholder="I ate A Ton Of Cucumbers"></textarea>
-                  <button class="btn btn-secondary mt-1 mb-1 btn-sm" type="submit">Post</button>
+                  <button class="btn btn-secondary mt-1 mb-1 btn-sm" type="submit" @click="close">Post</button>
                </div>
             </form>
             </div>
@@ -40,7 +40,6 @@ export default {
   },
   methods: {
     addPost() {
-      debugger;
       this.$store.dispatch("addPost", {
         userId: this.userId,
         postData: this.newPost

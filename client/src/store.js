@@ -291,6 +291,12 @@ export default new Vuex.Store({
         .then(res => {
           dispatch('getPosts', postData.userId)
         })
+    },
+    deletePost({ dispatch }, postData) {
+      api.delete('posts/' + postData._id)
+        .then(res => {
+          dispatch('getPosts', postData.authorId)
+        })
     }
   },
   getters: {

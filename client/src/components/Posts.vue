@@ -13,7 +13,7 @@
                 <p>{{post.description}}</p>
             </div>
             <div>
-             <p class="card-text"> <small class="text-muted"><strong>Created</strong>: {{post.created}}</small></p>
+             <p class="card-text"> <small class="text-muted"><strong>Created</strong>: {{post.created}} | <span class="clickable" @click="deletePost(post)"><i class="far fa-trash-alt"></i></span></small></p>
             </div>
                 </div>
             
@@ -29,6 +29,12 @@ export default {
     posts() {
       return this.$store.state.posts;
     }
+  },
+  methods: {
+    deletePost(post) {
+      console.log("post: ", post);
+      this.$store.dispatch("deletePost", post);
+    }
   }
 };
 </script>
@@ -39,6 +45,9 @@ export default {
 
 .bg-light-blue {
   background-color: #a0dee7;
+}
+.clickable:hover {
+  cursor: pointer;
 }
 </style>
 
