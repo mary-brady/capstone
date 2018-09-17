@@ -293,9 +293,9 @@ export default new Vuex.Store({
         })
     },
     deletePost({ dispatch }, postData) {
-      api.delete('/post' + postData.postId)
+      api.delete('posts/' + postData._id)
         .then(res => {
-          dispatch('getPosts', postData.userId)
+          dispatch('getPosts', postData.authorId)
         })
     }
   },

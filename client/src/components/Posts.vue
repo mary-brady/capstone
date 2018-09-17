@@ -13,7 +13,7 @@
                 <p>{{post.description}}</p>
             </div>
             <div>
-             <p class="card-text"> <small class="text-muted"><strong>Created</strong>: {{post.created}} | <span class="clickable" @click="deletePost(post._id)"><i class="far fa-trash-alt"></i></span></small></p>
+             <p class="card-text"> <small class="text-muted"><strong>Created</strong>: {{post.created}} | <span class="clickable" @click="deletePost(post)"><i class="far fa-trash-alt"></i></span></small></p>
             </div>
                 </div>
             
@@ -31,10 +31,9 @@ export default {
     }
   },
   methods: {
-    deletePost(postId) {
-      if (post.authorid == userId) {
-        this.$store.dispatch("deletePost", postId);
-      }
+    deletePost(post) {
+      console.log("post: ", post);
+      this.$store.dispatch("deletePost", post);
     }
   }
 };
