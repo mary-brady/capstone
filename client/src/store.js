@@ -18,7 +18,7 @@ let api = Axios.create({
 })
 
 let healthTip = Axios.create({
-  baseURL: "https://healthfinder.gov/FreeContent/Developer/Search.xml?api_key=demo_api_key&CategoryID=17/Content",
+  baseURL: "https://healthfinder.gov/FreeContent/Developer/Search.xml?api_key=demo_api_key&CategoryID=17",
   timeout: 3000
 })
 
@@ -32,7 +32,8 @@ export default new Vuex.Store({
     enduranceGoals: [],
     strengthGoals: [],
     posts: [],
-    feed: []
+    feed: [],
+    tips: []
   },
   mutations: {
     setUser(state, user) {
@@ -69,6 +70,9 @@ export default new Vuex.Store({
       state.feed.forEach(feed => {
         feed.created = new Date(feed.created).toDateString()
       })
+    },
+    setTips(state, data) {
+      state.tips = data.match( /[^\.!\?]+[\.!\?]+/g )
     }
   },
   actions: {
@@ -259,7 +263,7 @@ export default new Vuex.Store({
         })
     },
     addPost({ dispatch }, postData) {
-      api.post('posts/' + postData.postData)
+      api.post('posts/', postData.postData)
         .then(res => {
           dispatch('getPosts', postData.userId)
         })
