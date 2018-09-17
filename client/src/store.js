@@ -251,7 +251,12 @@ export default new Vuex.Store({
           dispatch('getUser', profileUpdate.userId)
         })
     },
-
+    updateLevel({ dispatch }, profileData) {
+      auth.put(profileData.userId, { level: profileData.level })
+        .then(res => {
+          dispatch('getUser', profileData.userId)
+        })
+    },
     updateUserType({ dispatch }, profileUpdate) {
       auth.put(profileUpdate.userId, { userType: profileUpdate.userType })
         .then(res => {

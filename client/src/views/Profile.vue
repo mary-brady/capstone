@@ -69,7 +69,7 @@
             <div class="col-8">
                 <div class="progress">
                     <div class="progress-bar progress-bar-striped bg-info" id="progress" role="progressbar" :style="{width: barWidth+'%'}"
-                        :aria-valuenow="barWidth" aria-valuemin="0" aria-valuemax="100" @loadstart="moveLevel()">
+                        :aria-valuenow="barWidth" aria-valuemin="0" aria-valuemax="100">
                     </div>
                 </div>
             </div>
@@ -103,7 +103,8 @@ export default {
   data() {
     return {
       currentComp: Posts,
-      isModalVisible: false
+      isModalVisible: false,
+      level: user.level
     };
   },
   computed: {
@@ -125,7 +126,7 @@ export default {
     barWidth() {
       let width = 0;
       for (let i = 0; i < this.posts.length; i++) {
-        width += 5;
+        width += 10;
       }
       for (let i = 0; i < this.weightGoals.length; i++) {
         width += 1;
@@ -135,6 +136,11 @@ export default {
       }
       for (let i = 0; i < this.strengthGoals.length; i++) {
         width += 1;
+      }
+      if (width == 100) {
+        level++;
+        editLevel();
+        width = 0;
       }
       return width;
     }
@@ -148,7 +154,12 @@ export default {
     }
   },
   methods: {
-    moveLevel() {},
+    editLevel() {
+      this.$store.dispatch("updateLevel", {
+        userId: user._id,
+        level: this.level
+      });
+    },
     switchComponents(comp) {
       bus.$emit("switchComp", comp);
     },
