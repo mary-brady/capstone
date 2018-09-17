@@ -18,7 +18,7 @@ let api = Axios.create({
 })
 
 let healthTip = Axios.create({
-  baseURL: "https://healthfinder.gov/FreeContent/Developer/Search.xml?api_key=demo_api_key&CategoryID=17/Content",
+  baseURL: "https://healthfinder.gov/FreeContent/Developer/Search.xml?api_key=demo_api_key&CategoryID=17",
   timeout: 3000
 })
 
