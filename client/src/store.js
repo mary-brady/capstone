@@ -17,6 +17,11 @@ let api = Axios.create({
   withCredentials: true
 })
 
+let healthTip = Axios.create({
+  baseURL: "https://healthfinder.gov/FreeContent/Developer/Search.xml?api_key=demo_api_key&CategoryID=17/Content",
+  timeout: 3000
+})
+
 export default new Vuex.Store({
   state: {
     user: {},
