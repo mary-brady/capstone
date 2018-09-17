@@ -39,6 +39,17 @@ export default new Vuex.Store({
     setUser(state, user) {
       state.user = user;
     },
+    clearUser(state) {
+      state.user = {},
+        state.weight = [],
+        state.endurance = [],
+        state.strength = [],
+        state.weightGoals = [],
+        state.enduranceGoals = [],
+        state.strengthGoals = [],
+        state.posts = [],
+        state.tips = []
+    },
     setWeight(state, weight) {
       Vue.set(state, "weight", weight)
       // state.weight = weight;
@@ -72,7 +83,7 @@ export default new Vuex.Store({
       })
     },
     setTips(state, data) {
-      state.tips = data.match( /[^\.!\?]+[\.!\?]+/g )
+      state.tips = data.match(/[^\.!\?]+[\.!\?]+/g)
     }
   },
   actions: {
