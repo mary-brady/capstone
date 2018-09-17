@@ -1,19 +1,20 @@
 <template>
   <div id="">
     <div>
-      <canvas id="endurance-chart"></canvas>
+      <!-- <canvas id="endurance-chart"></canvas> -->
     </div>
     <form @submit.prevent="addEndurance">
       <input type="number" placeholder="Time" v-model="newTime.time" required>
       <button class="btn-success" type="submit">Create New Time</button>
     </form>
     <div>
-      <canvas id="weight-chart"></canvas>
+      <!-- <canvas id="weight-chart"></canvas> -->
     </div>
     <form @submit.prevent="addWeight">
-        <input type="number" placeholder="Weight" v-model="newWeight.weight" required>
-        <button class="btn-success" type="submit">Create New Weight</button>
-      </form>
+      <input type="number" placeholder="Weight" v-model="newWeight.weight" required>
+      <button class="btn-success" type="submit">Create New Weight</button>
+    </form>
+    <canvas id="strength-chart"></canvas>
     <div class='junk'>
       {{endurance}} {{weight}}
     </div>
@@ -47,6 +48,36 @@
               label: 'Weight',
               data: [],
               backgroundColor: "rgba(153,255,51,0.4)"
+            }
+            ]
+          }
+        },
+        strengthChartData: {
+          type: 'bar',
+          data: {
+            labels: ['Sep. 1', 'Sep. 2', 'Sep. 3', 'Sep. 4'],
+            datasets: [{
+              label: 'Strength',
+              data: [50, 55, 50, 70],
+              backgroundColor: "rgba(153,255,51,0.4)"
+            },
+            {
+              labels: ['Sep. 1', 'Sep. 2', 'Sep. 3', 'Sep. 4'],
+              datasets: [{
+                label: 'Strength',
+                data: [20, 30, 10, 50],
+                backgroundColor: "rgba(153,255,51,0.4)"
+              },
+              {
+                labels: [],
+                datasets: [{
+                  label: 'Strength',
+                  data: [],
+                  backgroundColor: "rgba(153,255,51,0.4)"
+                }
+                ]
+              }
+              ]
             }
             ]
           }
@@ -85,7 +116,9 @@
     mounted() {
       this.$store.dispatch('getEndurance')
       this.$store.dispatch('getWeight')
+      this.createChart('strength-chart', this.strengthChartData);
     },
+    //temp mount
     methods: {
       createChart(chartId, chartData) {
         const ctx = document.getElementById(chartId);
