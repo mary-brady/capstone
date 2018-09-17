@@ -32,7 +32,8 @@ export default new Vuex.Store({
     enduranceGoals: [],
     strengthGoals: [],
     posts: [],
-    feed: []
+    feed: [],
+    tips: []
   },
   mutations: {
     setUser(state, user) {
@@ -69,6 +70,9 @@ export default new Vuex.Store({
       state.feed.forEach(feed => {
         feed.created = new Date(feed.created).toDateString()
       })
+    },
+    setTips(state, data) {
+      state.tips = data.match( /[^\.!\?]+[\.!\?]+/g )
     }
   },
   actions: {
