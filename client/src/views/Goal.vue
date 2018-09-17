@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <h1>{{user.name}}'s Goals</h1>
         <div class="row">
-            <div class="dropdown offset-sm-2 col-sm-4">
+            <div class="dropdown offset-sm-4 col-sm-4 mb-5">
                 <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="false">
                     Goal Type
