@@ -284,7 +284,15 @@ export default new Vuex.Store({
         })
     },
 
-    //posts
+    //TIP
+    // getTip({commit}) {
+    //   api.get('tips/')
+    //     .then(res => {
+    //       commit('setTips', res.data)
+    //     })
+    // },
+
+    //POSTS
     getPosts({ commit }, userId) {
       api.get('posts/' + userId)
         .then(res => {
@@ -295,6 +303,18 @@ export default new Vuex.Store({
       api.post('posts/', postData.postData)
         .then(res => {
           dispatch('getPosts', postData.userId)
+        })
+    },
+    deletePost({ dispatch }, postData) {
+      api.delete('posts/' + postData._id)
+        .then(res => {
+          dispatch('getPosts', postData.authorId)
+        })
+    },
+    deleteFeedPost({ dispatch }, postData) {
+      api.delete('posts/' + postData._id)
+        .then(res => {
+          dispatch('getFeed')
         })
     }
   },

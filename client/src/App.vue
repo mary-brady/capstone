@@ -2,7 +2,7 @@
   <div id="app">
     <div id="nav">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#"><strong>Y O F T</strong></a>
+  <a class="navbar-brand" href="/#/"><strong>Y O F T</strong></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -22,7 +22,7 @@
         </li>
     </ul>
     <br>
-    <button class="btn btn-outline-warning" @click="logout">Logout</button>
+    <button class="btn btn-outline-warning btn-sm" @click="logout">Logout</button>
   </div>
 </nav>
     <router-view />

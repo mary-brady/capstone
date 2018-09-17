@@ -57,6 +57,11 @@ export default {
       }
     };
   },
+  created() {
+    if (this.$store.state.user._id) {
+      this.$router.push({ name: "profile" });
+    }
+  },
   methods: {
     register() {
       debugger;
