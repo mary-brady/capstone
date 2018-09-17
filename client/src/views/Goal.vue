@@ -213,14 +213,8 @@ h1 {
   color: green;
 }
 
-<<<<<<< HEAD
     .green:hover {
-        color: yellowgreen
+        color: yellowgreen;
     }
     
-=======
-.green:hover {
-  color: yellowgreen;
-}
->>>>>>> 66085898aab9a0251a89aeed1a673b00f7136eae
 </style>
