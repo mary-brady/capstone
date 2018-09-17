@@ -361,7 +361,6 @@ export default new Vuex.Store({
       })
       return chartData
     },
-<<<<<<< HEAD
     strengthChartData(state) {
       let data = state.strength
       let chartData = {
@@ -407,7 +406,6 @@ export default new Vuex.Store({
       })
       return chartData
     }
-=======
 
     //Weather
     // getWeather({ commit }) {
@@ -416,6 +414,5 @@ export default new Vuex.Store({
     //       commit('setWeather', res.data)
     //     })
     // }
->>>>>>> 604d482406e9ef1a396c7bc05e654961151254be
   }
 })
