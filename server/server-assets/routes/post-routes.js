@@ -52,6 +52,7 @@ router.get('/:id', (req, res, next) => {
 //POST
 router.post('/', (req, res, next) => {
     req.body.authorId = req.session.uid
+    req.body.created = Date.now()
     Posts.create(req.body)
         .then(newPost => {
             res.send(newPost)
