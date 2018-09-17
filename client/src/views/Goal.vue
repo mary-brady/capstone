@@ -31,7 +31,13 @@
 
         <h1>Weight Goals</h1>
         <div v-for="wGoal in weightGoals" :wGoalData="wGoal">
-          <i class="fas fa-check-circle green"></i>
+          <i class="fas fa-check-circle green" @click="editWeightGoal(wGoal)"></i>
+          <div>
+
+          </div>
+          <div>
+
+          </div>
           {{wGoal.title}} - {{wGoal.description}}
           <i class="fas fa-times red" @click="deleteWeightGoal(wGoal._id)" title="Delete"></i>
         </div>
@@ -117,7 +123,8 @@
           description: "",
           authorId: "",
           created: "",
-          completed: false
+          completed: false,
+          _id: ""
         },
         enduranceGoal: {
           title: "",
@@ -186,6 +193,12 @@
       },
       deleteStrengthGoal(id) {
         this.$store.dispatch("deleteStrengthGoal", id);
+      },
+      editWeightGoal(wGoal) {
+        console.log(wGoal)
+        this.weightGoal._id = wGoal._id
+        this.weightGoal.completed = true;
+        this.$store.dispatch('editWeightGoal', this.weightGoal)
       }
     },
     components: {

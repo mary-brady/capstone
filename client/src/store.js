@@ -186,6 +186,15 @@ export default new Vuex.Store({
           dispatch('getWeightGoals')
         })
     },
+    editWeightGoal({ commit, dispatch }, weightGoal) {
+      debugger
+      console.log(weightGoal)
+      api.put('weight-goal/' + weightGoal._id)
+        .then(goal => {
+          dispatch('getWeightGoals')
+        }
+        )
+    },
     getStrengthGoals({ commit }) {
       api.get('strength-goal')
         .then(goal => {
@@ -371,27 +380,28 @@ export default new Vuex.Store({
             label: 'Squats',
             data: [],
             backgroundColor: "rgba(92, 205, 240, 0.4)"
-            
+
           },
-          {label: 'Row',
-          data: [],
-          backgroundColor: "rgba(213, 14, 253, 0.4)"
-        },
-        {
-        label: 'Bench Press',
-        data: [],
-        backgroundColor: " rgba(27, 172, 59, 0.4)"
-        },
-        {
-          label: 'Shoulder Press',
-          data: [],
-          backgroundColor: "rgba(250, 183, 39, 0.4)"
+          {
+            label: 'Row',
+            data: [],
+            backgroundColor: "rgba(213, 14, 253, 0.4)"
+          },
+          {
+            label: 'Bench Press',
+            data: [],
+            backgroundColor: " rgba(27, 172, 59, 0.4)"
+          },
+          {
+            label: 'Shoulder Press',
+            data: [],
+            backgroundColor: "rgba(250, 183, 39, 0.4)"
           },
           {
             label: 'Deadlift',
             data: [],
             backgroundColor: "rgba(253, 14, 14, 0.4)"
-            }
+          }
           ]
         }
       }
