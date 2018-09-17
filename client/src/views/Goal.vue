@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container-fluid">
     <h1>{{user.name}}'s Goals</h1>
     <div class="dropdown">
       <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
@@ -12,68 +12,79 @@
         <a class="dropdown-item" href="#" @click="strength = !strength">Strength</a>
       </div>
     </div>
-    <h1>Weight Goals</h1>
-    <div v-for="wGoal in weightGoals" :wGoalData="wGoal">
-      <i class="fas fa-check-circle green"></i>
-      {{wGoal.title}} - {{wGoal.description}}
-      <i class="fas fa-times red" @click="deleteWeightGoal(wGoal._id)" title="Delete"></i>
-    </div>
-    <div v-if="weight">
-      <form @submit.prevent="addWeightGoal" class="col d-flex justify-content-center">
-        <div class="form-group">
-          <input type="text" placeholder="Weight Goal Title" v-model="weightGoal.title" class="form-control mb-1 mt-1">
-          <input type="text" placeholder="Weight Goal Description" v-model="weightGoal.description" class="form-control mb-1 mt-1">
-          <button type="submit" class="btn btn-success mb-1 mt-1">Add Goal</button>
+    <div class="row">
+      <div class="col-sm-4">
+
+        <h1>Weight Goals</h1>
+        <div v-for="wGoal in weightGoals" :wGoalData="wGoal">
+          <i class="fas fa-check-circle green"></i>
+          {{wGoal.title}} - {{wGoal.description}}
+          <i class="fas fa-times red" @click="deleteWeightGoal(wGoal._id)" title="Delete"></i>
         </div>
-      </form>
-    </div>
-    <h1>Endurance Goals</h1>
-    <div v-for="eGoal in enduranceGoals">
-      <i class="fas fa-check-circle green"></i>
-      {{eGoal.title}} - {{eGoal.description}}
-      <i class="fas fa-times red" @click="deleteEnduranceGoal(eGoal._id)" title="Delete"></i>
-    </div>
-    <div v-if="endurance">
-      <form @submit.prevent="addEnduranceGoal" class="col d-flex justify-content-center">
-        <div class="form-group">
-          <input type="text" placeholder="Endurance Goal Title" v-model="enduranceGoal.title" class="form-control mb-1 mt-1">
-          <input type="text" placeholder="Endurance Goal Description" v-model="enduranceGoal.description" class="form-control mb-1 mt-1">
-          <button type="submit" class="btn btn-success mb-1 mt-1">Add Goal</button>
-        </div>
-      </form>
-    </div>
-    <h1>Strength Goals</h1>
-    <div v-for="sGoal in strengthGoals">
-      <i class="fas fa-check-circle green"></i>
-      {{sGoal.title}} - {{sGoal.description}}
-      <i class="fas fa-times red" @click="deleteStrengthGoal(sGoal._id)" title="Delete"></i>
-    </div>
-    <div v-if="strength">
-      <form @submit.prevent="addStrengthGoal" class="col d-flex justify-content-center">
-        <div class="form-group">
-          <input type="text" placeholder="Strength Goal Title" v-model="strengthGoal.title" class="form-control mb-1 mt-1">
-          <input type="text" placeholder="Strength Goal Description" v-model="strengthGoal.description" class="form-control mb-1 mt-1">
-          <button type="submit" class="btn btn-success mb-1 mt-1">Add Goal</button>
-        </div>
-      </form>
-    </div>
-    <!-- <h3>Weight Goal:</h3>
-    
-      <h3>Endurance Goal:</h3>
-      <form @submit.prevent="addEnduranceGoal" class="col-12 d-flex justify-content-center mb-5">
-          <div class="form-group">
-            <input type="text"  placeholder="Goal Description" class="form-control mb-1 mt-1">
-            <button type="submit" class="btn btn-success mb-1 mt-1">Add Goal</button>
-          </div>
-        </form>
-        <h3>Strength Goal:</h3>
-        <form @submit.prevent="addStrengthGoal" class="col-12 d-flex justify-content-center">
+        <div v-if="weight">
+          <form @submit.prevent="addWeightGoal" class="col d-flex justify-content-center">
             <div class="form-group">
-              <input type="text"  placeholder="Goal Description" class="form-control mb-1 mt-1">
+              <input type="text" placeholder="Weight Goal Title" v-model="weightGoal.title" class="form-control mb-1 mt-1">
+              <input type="text" placeholder="Weight Goal Description" v-model="weightGoal.description" class="form-control mb-1 mt-1">
               <button type="submit" class="btn btn-success mb-1 mt-1">Add Goal</button>
             </div>
-          </form> -->
-    <h1> Endurance Chart</h1>
+          </form>
+        </div>
+      </div>
+      <div class="col-sm-4">
+
+        <h1>Endurance Goals</h1>
+        <div v-for="eGoal in enduranceGoals">
+          <i class="fas fa-check-circle green"></i>
+          {{eGoal.title}} - {{eGoal.description}}
+          <i class="fas fa-times red" @click="deleteEnduranceGoal(eGoal._id)" title="Delete"></i>
+        </div>
+        <div v-if="endurance">
+          <form @submit.prevent="addEnduranceGoal" class="col d-flex justify-content-center">
+            <div class="form-group">
+              <input type="text" placeholder="Endurance Goal Title" v-model="enduranceGoal.title" class="form-control mb-1 mt-1">
+              <input type="text" placeholder="Endurance Goal Description" v-model="enduranceGoal.description" class="form-control mb-1 mt-1">
+              <button type="submit" class="btn btn-success mb-1 mt-1">Add Goal</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="col-sm-4">
+
+        <h1>Strength Goals</h1>
+        <div v-for="sGoal in strengthGoals">
+          <i class="fas fa-check-circle green"></i>
+          {{sGoal.title}} - {{sGoal.description}}
+          <i class="fas fa-times red" @click="deleteStrengthGoal(sGoal._id)" title="Delete"></i>
+        </div>
+        <div v-if="strength">
+          <form @submit.prevent="addStrengthGoal" class="col d-flex justify-content-center">
+            <div class="form-group">
+              <input type="text" placeholder="Strength Goal Title" v-model="strengthGoal.title" class="form-control mb-1 mt-1">
+              <input type="text" placeholder="Strength Goal Description" v-model="strengthGoal.description" class="form-control mb-1 mt-1">
+              <button type="submit" class="btn btn-success mb-1 mt-1">Add Goal</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- <h3>Weight Goal:</h3>
+      
+      <h3>Endurance Goal:</h3>
+      <form @submit.prevent="addEnduranceGoal" class="col-12 d-flex justify-content-center mb-5">
+        <div class="form-group">
+          <input type="text"  placeholder="Goal Description" class="form-control mb-1 mt-1">
+          <button type="submit" class="btn btn-success mb-1 mt-1">Add Goal</button>
+        </div>
+      </form>
+      <h3>Strength Goal:</h3>
+      <form @submit.prevent="addStrengthGoal" class="col-12 d-flex justify-content-center">
+        <div class="form-group">
+          <input type="text"  placeholder="Goal Description" class="form-control mb-1 mt-1">
+          <button type="submit" class="btn btn-success mb-1 mt-1">Add Goal</button>
+        </div>
+      </form> -->
+
     <GoalDetail />
   </div>
 </template>
