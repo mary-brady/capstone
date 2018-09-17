@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <h1>{{user.name}}'s Goals</h1>
         <div class="row">
-            <div class="dropdown offset-sm-2 col-sm-4">
+            <div class="dropdown offset-sm-4 col-sm-4 mb-5">
                 <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="false">
                     Goal Type
@@ -104,111 +104,116 @@
 </template>
 
 <script>
-    import GoalDetail from "../components/GoalDetail";
-    export default {
-        name: "goal",
-        data() {
-            return {
-                weight: false,
-                endurance: false,
-                strength: false,
-                weightGoal: {
-                    title: "",
-                    description: "",
-                    authorId: "",
-                    created: "",
-                    completed: false
-                },
-                enduranceGoal: {
-                    title: "",
-                    description: "",
-                    authorId: "",
-                    created: "",
-                    completed: false
-                },
-                strengthGoal: {
-                    title: "",
-                    description: "",
-                    authorId: "",
-                    created: "",
-                    completed: false
-                }
-            };
-        },
-        mounted() {
-            this.$store.dispatch("getWeightGoals");
-            this.$store.dispatch("getEnduranceGoals");
-            this.$store.dispatch("getStrengthGoals");
-        },
-        computed: {
-            user() {
-                return this.$store.state.user;
-            },
-            weightGoals() {
-                return this.$store.state.weightGoals;
-            },
-            enduranceGoals() {
-                return this.$store.state.enduranceGoals;
-            },
-            strengthGoals() {
-                return this.$store.state.strengthGoals;
-            }
-        },
-        methods: {
-            addWeightGoal() {
-                this.weightGoal.authorId = this.user._id;
-                this.weightGoal.created = Date.now();
-                this.weightGoal.completed = false;
-                this.$store.dispatch("addWeightGoal", this.weightGoal);
-            },
-            addEnduranceGoal() {
-                this.enduranceGoal.authorId = this.user._id;
-                this.enduranceGoal.created = Date.now();
-                this.enduranceGoal.completed = false;
-                this.$store.dispatch("addEnduranceGoal", this.enduranceGoal);
-            },
-            addStrengthGoal() {
-                this.strengthGoal.authorId = this.user._id;
-                this.strengthGoal.created = Date.now();
-                this.strengthGoal.completed = false;
-                this.$store.dispatch("addStrengthGoal", this.strengthGoal);
-            },
-            deleteWeightGoal(id) {
-                this.$store.dispatch("deleteWeightGoal", id);
-            },
-            deleteEnduranceGoal(id) {
-                this.$store.dispatch("deleteEnduranceGoal", id);
-            },
-            deleteStrengthGoal(id) {
-                this.$store.dispatch("deleteStrengthGoal", id);
-            }
-        },
-        components: {
-            GoalDetail
-        }
+import GoalDetail from "../components/GoalDetail";
+export default {
+  name: "goal",
+  data() {
+    return {
+      weight: false,
+      endurance: false,
+      strength: false,
+      weightGoal: {
+        title: "",
+        description: "",
+        authorId: "",
+        created: "",
+        completed: false
+      },
+      enduranceGoal: {
+        title: "",
+        description: "",
+        authorId: "",
+        created: "",
+        completed: false
+      },
+      strengthGoal: {
+        title: "",
+        description: "",
+        authorId: "",
+        created: "",
+        completed: false
+      }
     };
+  },
+  mounted() {
+    this.$store.dispatch("getWeightGoals");
+    this.$store.dispatch("getEnduranceGoals");
+    this.$store.dispatch("getStrengthGoals");
+  },
+  created() {
+    if (!this.$store.state.user._id) {
+      this.$router.push({ name: "home" });
+    }
+  },
+  computed: {
+    user() {
+      return this.$store.state.user;
+    },
+    weightGoals() {
+      return this.$store.state.weightGoals;
+    },
+    enduranceGoals() {
+      return this.$store.state.enduranceGoals;
+    },
+    strengthGoals() {
+      return this.$store.state.strengthGoals;
+    }
+  },
+  methods: {
+    addWeightGoal() {
+      this.weightGoal.authorId = this.user._id;
+      this.weightGoal.created = Date.now();
+      this.weightGoal.completed = false;
+      this.$store.dispatch("addWeightGoal", this.weightGoal);
+    },
+    addEnduranceGoal() {
+      this.enduranceGoal.authorId = this.user._id;
+      this.enduranceGoal.created = Date.now();
+      this.enduranceGoal.completed = false;
+      this.$store.dispatch("addEnduranceGoal", this.enduranceGoal);
+    },
+    addStrengthGoal() {
+      this.strengthGoal.authorId = this.user._id;
+      this.strengthGoal.created = Date.now();
+      this.strengthGoal.completed = false;
+      this.$store.dispatch("addStrengthGoal", this.strengthGoal);
+    },
+    deleteWeightGoal(id) {
+      this.$store.dispatch("deleteWeightGoal", id);
+    },
+    deleteEnduranceGoal(id) {
+      this.$store.dispatch("deleteEnduranceGoal", id);
+    },
+    deleteStrengthGoal(id) {
+      this.$store.dispatch("deleteStrengthGoal", id);
+    }
+  },
+  components: {
+    GoalDetail
+  }
+};
 </script>
 
 <style scoped>
-    h1 {
-        font-weight: 700;
-    }
+h1 {
+  font-weight: 700;
+}
 
-    .red {
-        /* font-size: 500px; */
-        color: #8B0000;
-    }
+.red {
+  /* font-size: 500px; */
+  color: #8b0000;
+}
 
-    .red:hover {
-        color: red
-    }
+.red:hover {
+  color: red;
+}
 
-    .green {
-        /* font-size: 500px; */
-        color: green;
-    }
+.green {
+  /* font-size: 500px; */
+  color: green;
+}
 
-    .green:hover {
-        color: yellowgreen
-    }
+.green:hover {
+  color: yellowgreen;
+}
 </style>

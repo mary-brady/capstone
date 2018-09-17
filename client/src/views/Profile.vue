@@ -1,7 +1,7 @@
 <template>
     <div class="profile container-fluid">
         <div class="row mt-1 mb-1 d-flex justify-content-center">
-            <div class="col-4">
+            <div class="col-5">
         <img src="../assets/image41.png" class="img-fluid" alt="health tracker logo">
       </div>
         </div>
@@ -68,8 +68,8 @@
             </div>
             <div class="col-8">
                 <div class="progress">
-                    <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 50%"
-                        aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar progress-bar-striped bg-info" id="progress" role="progressbar" :style="{width: barWidth+'%'}"
+                        :aria-valuenow="barWidth" aria-valuemin="0" aria-valuemax="100" @loadstart="moveLevel()">
                     </div>
                 </div>
             </div>
@@ -98,7 +98,7 @@ import { bus } from "../index.js";
 export default {
   name: "profile",
   mounted() {
-    this.$store.dispatch("getPosts", this.user._id);
+    //this.$store.dispatch("getPosts", this.user._id);
   },
   data() {
     return {
@@ -109,14 +109,46 @@ export default {
   computed: {
     user() {
       return this.$store.state.user;
+    },
+    posts() {
+      return this.$store.state.posts;
+    },
+    weightGoals() {
+      return this.$store.state.weightGoals;
+    },
+    enduranceGoals() {
+      return this.$store.state.enduranceGoals;
+    },
+    strengthGoals() {
+      return this.$store.state.strengthGoals;
+    },
+    barWidth() {
+      let width = 0;
+      for (let i = 0; i < this.posts.length; i++) {
+        width += 5;
+      }
+      for (let i = 0; i < this.weightGoals.length; i++) {
+        width += 1;
+      }
+      for (let i = 0; i < this.enduranceGoals.length; i++) {
+        width += 1;
+      }
+      for (let i = 0; i < this.strengthGoals.length; i++) {
+        width += 1;
+      }
+      return width;
     }
   },
   created() {
     bus.$on("switchComp", comp => {
       this.currentComp = comp;
     });
+    if (!this.$store.state.user._id) {
+      this.$router.push({ name: "home" });
+    }
   },
   methods: {
+    moveLevel() {},
     switchComponents(comp) {
       bus.$emit("switchComp", comp);
     },

@@ -17,10 +17,10 @@
         <div class="modal-footer">
         <slot class="footer">
             <p>Do you accept?</p>
-            <button type="button" class="btn btn-primary" @click="close">
+            <button type="button" class="btn btn-success" @click="close">
                 Yep
                 </button>
-            <button type="button" class="btn btn-secondary" @click="close">
+            <button type="button" class="btn btn-danger" @click="close">
                 Nope
                 </button>
         </slot>

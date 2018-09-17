@@ -6,7 +6,7 @@ let Users = require('../models/User');
 let session = require('./session')
 
 //NEVER TELL USERS WHICH FAILED
-let loginError = new Error('Bad Email or Password')
+let loginError = new Error('Bad Username or Password')
 
 //CREATE A NEW USER
 router.post('/auth/register', (req, res) => {

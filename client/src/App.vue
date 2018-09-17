@@ -21,8 +21,8 @@
         <router-link to="/goal">Goals</router-link>
         </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-    </form>
+    <br>
+    <button class="btn btn-outline-warning" @click="logout">Logout</button>
   </div>
 </nav>
     <router-view />
@@ -32,7 +32,12 @@
 <script>
 import { Slide } from "vue-burger-menu";
 export default {
-  name: "App"
+  name: "App",
+  methods: {
+    logout() {
+      this.$store.dispatch("logout");
+    }
+  }
 };
 </script>
 
@@ -49,5 +54,6 @@ export default {
   font-weight: bold;
   color: #ffffff;
   font-family: "Oldenburg", cursive;
+  font-size: larger;
 }
 </style>
