@@ -97,15 +97,14 @@ import modal from "@/components/MakePost.vue";
 import { bus } from "../index.js";
 export default {
   name: "profile",
-  mounted() {
-    //this.$store.dispatch("getPosts", this.user._id);
-  },
   data() {
     return {
       currentComp: Posts,
-      isModalVisible: false
+      isModalVisible: false,
+      level: this.$store.state.user.level
     };
   },
+  mounted() {},
   computed: {
     user() {
       return this.$store.state.user;
@@ -136,27 +135,23 @@ export default {
       for (let i = 0; i < this.strengthGoals.length; i++) {
         width += 1;
       }
-      if (width == 100) {
-        this.user.level++;
-        editLevel();
-        width = 0;
-      }
-      return width;
+      return width % 100;
     }
   },
   created() {
     bus.$on("switchComp", comp => {
       this.currentComp = comp;
     });
+
     if (!this.$store.state.user._id) {
       this.$router.push({ name: "home" });
     }
   },
   methods: {
-    editLevel() {
+    editLevel(level) {
       this.$store.dispatch("updateLevel", {
         userId: user._id,
-        level: this.level
+        level: level
       });
     },
     switchComponents(comp) {

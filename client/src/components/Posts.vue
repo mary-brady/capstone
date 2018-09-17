@@ -1,11 +1,11 @@
 <template>
 <div class="posts">
-        <div class="row justify-content-center">
+        <div class="row d-flex justify-content-center">
             <div class="col-12">
                 <h1 class="font-size">Your Posts</h1>
             </div>
             <div v-for="post in posts" :key="post._id" class="col-xs-12 col-md-6 mb-2 mt-2">
-                <div class="card border-info">
+            <div class="card border-info">
             <div class="card-header bg-light-blue">
             <h3 class="font-size">{{post.title}}</h3>
             </div>

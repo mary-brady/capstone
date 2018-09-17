@@ -5,6 +5,8 @@ import router from "./router"
 
 Vue.use(Vuex)
 
+
+
 let auth = Axios.create({
   baseURL: "//localhost:3000/auth/",
   timeout: 3000,
@@ -16,6 +18,13 @@ let api = Axios.create({
   timeout: 3000,
   withCredentials: true
 })
+
+// let weatherApi = axios.create({
+//   baseURL: 'http://api.openweathermap.org/data/2.5/weather?q=boise&&APPID=bd82255fd0a21fa1238699b9eda2ee35',
+//   timeout: 3000
+// })
+
+
 
 let healthTip = Axios.create({
   baseURL: "https://healthfinder.gov/FreeContent/Developer/Search.xml?api_key=demo_api_key&CategoryID=17",
@@ -33,7 +42,8 @@ export default new Vuex.Store({
     strengthGoals: [],
     posts: [],
     feed: [],
-    tips: []
+    tips: [],
+    weather: {}
   },
   mutations: {
     setUser(state, user) {
@@ -91,9 +101,12 @@ export default new Vuex.Store({
         feed.created = new Date(feed.created).toDateString()
       })
     },
-    // setTips(state, data) {
-    //   state.tips = data.match(/[^\.!\?]+[\.!\?]+/g)
-    // }
+    setTips(state, data) {
+      state.tips = data.match(/[^\.!\?]+[\.!\?]+/g)
+    },
+    setWeather(state, weather) {
+      state.weather = weather
+    }
   },
   actions: {
     //AUTH
@@ -356,6 +369,59 @@ export default new Vuex.Store({
         chartData.data.datasets[0].data.push(eData.weight)
       })
       return chartData
+    },
+    strengthChartData(state) {
+      let data = state.strength
+      let chartData = {
+        type: 'bar',
+        data: {
+          labels: [],
+          datasets: [{
+            label: 'Squats',
+            data: [],
+            backgroundColor: "rgba(92, 205, 240, 0.4)"
+            
+          },
+          {label: 'Row',
+          data: [],
+          backgroundColor: "rgba(213, 14, 253, 0.4)"
+        },
+        {
+        label: 'Bench Press',
+        data: [],
+        backgroundColor: " rgba(27, 172, 59, 0.4)"
+        },
+        {
+          label: 'Shoulder Press',
+          data: [],
+          backgroundColor: "rgba(250, 183, 39, 0.4)"
+          },
+          {
+            label: 'Deadlift',
+            data: [],
+            backgroundColor: "rgba(253, 14, 14, 0.4)"
+            }
+          ]
+        }
+      }
+      data.forEach(sData => {
+        let myLabel = sData.created.split('T').join("-").substr(5, 5)
+        chartData.data.labels.push(myLabel)
+        chartData.data.datasets[0].data.push(sData.squats)
+        chartData.data.datasets[1].data.push(sData.rows)
+        chartData.data.datasets[2].data.push(sData.benches)
+        chartData.data.datasets[3].data.push(sData.shoulders)
+        chartData.data.datasets[4].data.push(sData.deadlifts)
+      })
+      return chartData
     }
+
+    //Weather
+    // getWeather({ commit }) {
+    //   weatherApi.get()
+    //     .then(res => {
+    //       commit('setWeather', res.data)
+    //     })
+    // }
   }
 })
