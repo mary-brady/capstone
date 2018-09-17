@@ -55,7 +55,7 @@
 
         <h1>Endurance Goals</h1>
         <div v-for="eGoal in enduranceGoals">
-          <i class="fas fa-check-circle green"></i>
+          <i class="fas fa-check-circle green" @click="editEnduranceGoal(eGoal)"></i>
           {{eGoal.title}} - {{eGoal.description}}
           <i class="fas fa-times red" @click="deleteEnduranceGoal(eGoal._id)" title="Delete"></i>
         </div>
@@ -73,7 +73,7 @@
 
         <h1>Strength Goals</h1>
         <div v-for="sGoal in strengthGoals">
-          <i class="fas fa-check-circle green"></i>
+          <i class="fas fa-check-circle green" @click="editStrengthGoal(sGoal)"></i>
           {{sGoal.title}} - {{sGoal.description}}
           <i class="fas fa-times red" @click="deleteStrengthGoal(sGoal._id)" title="Delete"></i>
         </div>
@@ -131,14 +131,16 @@
           description: "",
           authorId: "",
           created: "",
-          completed: false
+          completed: false,
+          _id: ""
         },
         strengthGoal: {
           title: "",
           description: "",
           authorId: "",
           created: "",
-          completed: false
+          completed: false,
+          _id: ""
         }
       };
     },
@@ -195,10 +197,19 @@
         this.$store.dispatch("deleteStrengthGoal", id);
       },
       editWeightGoal(wGoal) {
-        console.log(wGoal)
         this.weightGoal._id = wGoal._id
         this.weightGoal.completed = true;
         this.$store.dispatch('editWeightGoal', this.weightGoal)
+      },
+      editEnduranceGoal(eGoal) {
+        this.enduranceGoal._id = eGoal._id
+        this.enduranceGoal.completed = true;
+        this.$store.dispatch('editEnduranceGoal', this.enduranceGoal)
+      },
+      editStrengthGoal(sGoal) {
+        this.strengthGoal._id = sGoal._id
+        this.strengthGoal.completed = true;
+        this.$store.dispatch('editStrengthGoal', this.strengthGoal)
       }
     },
     components: {

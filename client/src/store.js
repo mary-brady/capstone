@@ -205,8 +205,6 @@ export default new Vuex.Store({
         })
     },
     editWeightGoal({ commit, dispatch }, weightGoal) {
-      debugger
-      console.log(weightGoal)
       api.put('weight-goal/' + weightGoal._id)
         .then(goal => {
           dispatch('getWeightGoals')
@@ -231,6 +229,13 @@ export default new Vuex.Store({
           dispatch('getStrengthGoals')
         })
     },
+    editStrengthGoal({ commit, dispatch }, strengthGoal) {
+      api.put('strength-goal/' + strengthGoal._id)
+        .then(goal => {
+          dispatch('getStrengthGoals')
+        }
+        )
+    },
     getEnduranceGoals({ commit }) {
       api.get('endurance-goal')
         .then(goal => {
@@ -248,6 +253,13 @@ export default new Vuex.Store({
         .then(res => {
           dispatch('getEnduranceGoals')
         })
+    },
+    editEnduranceGoal({ commit, dispatch }, enduranceGoal) {
+      api.put('endurance-goal/' + enduranceGoal._id)
+        .then(goal => {
+          dispatch('getEnduranceGoals')
+        }
+        )
     },
 
     //USER PROFILE EDITS
