@@ -1,8 +1,9 @@
 <template>
     <div class="profile container-fluid">
-        <div class="row mt-1 mb-1">
-            <div class="col-12">
-            </div>
+        <div class="row mt-1 mb-1 d-flex justify-content-center">
+            <div class="col-4">
+        <img src="../assets/image41.png" class="img-fluid" alt="health tracker logo">
+      </div>
         </div>
         <div class="row mt-1 mb-1">
             <div class="col-12 ">

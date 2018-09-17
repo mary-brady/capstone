@@ -25,12 +25,12 @@ let schema = new Schema({
 //THESE TWO METHODS CAN BE COPIED FOR ALL USER SCHEMA'S
 
 //statics are used to create Model methods
-schema.statics.generateHash = function(password) {
+schema.statics.generateHash = function (password) {
     return bcrypt.hashSync(password, SALT)
 }
 
 //schema.methods are used to add a method to a Model instance
-schema.methods.validatePassword = function(password) {
+schema.methods.validatePassword = function (password) {
     return bcrypt.compare(password, this.password)
 }
 
