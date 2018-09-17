@@ -1,6 +1,8 @@
 <template>
     <div class="weather row">
         <div class="col-12">
+            <h1>What Be The Weather</h1>
+        </div><div class="col-12">
             <h1>10000 F</h1>
         </div>
         <div class="col-12">

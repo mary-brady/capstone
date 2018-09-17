@@ -135,11 +135,6 @@ export default {
       for (let i = 0; i < this.strengthGoals.length; i++) {
         width += 1;
       }
-
-      if (width >= 100) {
-        this.level++;
-        width = 0;
-      }
       return width % 100;
     }
   },
@@ -153,7 +148,7 @@ export default {
     }
   },
   methods: {
-    editLevel() {
+    editLevel(level) {
       this.$store.dispatch("updateLevel", {
         userId: user._id,
         level: level
