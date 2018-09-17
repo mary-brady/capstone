@@ -297,6 +297,12 @@ export default new Vuex.Store({
         .then(res => {
           dispatch('getPosts', postData.authorId)
         })
+    },
+    deleteFeedPost({ dispatch }, postData) {
+      api.delete('posts/' + postData._id)
+        .then(res => {
+          dispatch('getFeed')
+        })
     }
   },
   getters: {

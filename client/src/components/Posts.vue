@@ -32,7 +32,8 @@ export default {
   },
   methods: {
     deletePost(post) {
-      console.log("post: ", post);
+      if (post.authorId == this.userId) {
+      }
       this.$store.dispatch("deletePost", post);
     }
   }
