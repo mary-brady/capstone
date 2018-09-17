@@ -149,6 +149,9 @@ export default {
     bus.$on("switchComp", comp => {
       this.currentComp = comp;
     });
+    if (!this.$store.state.user._id) {
+      this.$router.push({ name: "home" });
+    }
   },
   methods: {
     editLevel() {
