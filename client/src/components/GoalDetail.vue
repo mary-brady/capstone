@@ -1,19 +1,22 @@
 <template>
   <div id="">
     <div>
-      <!-- <canvas id="endurance-chart"></canvas> -->
+      <h1> Endurance Chart</h1>
+      <canvas id="endurance-chart"></canvas>
     </div>
     <form @submit.prevent="addEndurance">
       <input type="number" placeholder="Time" v-model="newTime.time" required>
       <button class="btn-success" type="submit">Create New Time</button>
     </form>
     <div>
-      <!-- <canvas id="weight-chart"></canvas> -->
+      <h1> Weight Chart</h1>
+      <canvas id="weight-chart"></canvas>
     </div>
     <form @submit.prevent="addWeight">
       <input type="number" placeholder="Weight" v-model="newWeight.weight" required>
       <button class="btn-success" type="submit">Create New Weight</button>
     </form>
+    <h1> Strength Chart</h1>
     <canvas id="strength-chart"></canvas>
     <div class='junk'>
       {{endurance}} {{weight}}
@@ -62,22 +65,24 @@
               backgroundColor: "rgba(153,255,51,0.4)"
             },
             {
-              labels: ['Sep. 1', 'Sep. 2', 'Sep. 3', 'Sep. 4'],
-              datasets: [{
-                label: 'Strength',
-                data: [20, 30, 10, 50],
-                backgroundColor: "rgba(153,255,51,0.4)"
-              },
-              {
-                labels: [],
-                datasets: [{
-                  label: 'Strength',
-                  data: [],
-                  backgroundColor: "rgba(153,255,51,0.4)"
-                }
-                ]
-              }
-              ]
+              label: 'Strength2',
+              data: [20, 30, 10, 50],
+              backgroundColor: "rgba(53,255,51,0.4)"
+            },
+            {
+              label: 'Strength3',
+              data: [20, 10, 20, 40],
+              backgroundColor: "rgba(83,255,51,0.4)"
+            },
+            {
+              label: 'Strength4',
+              data: [10, 30, 25, 60],
+              backgroundColor: "rgba(103,255,51,0.4)"
+            },
+            {
+              label: 'Strength5',
+              data: [15, 20, 27, 50],
+              backgroundColor: "rgba(37,255,51,0.4)"
             }
             ]
           }
