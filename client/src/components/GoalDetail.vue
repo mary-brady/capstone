@@ -1,23 +1,38 @@
 <template>
   <div id="">
-    <div>
+
+    <div class="dropdown col-sm-4 mb-5">
+      <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+        aria-expanded="false">
+        Progress Charts
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="#" @click="weightChart = !weightChart">Weight Chart</a>
+        <a class="dropdown-item" href="#" @click="enduranceChart = !enduranceChart">Endurance Chart</a>
+        <a class="dropdown-item" href="#" @click="strengthChart = !strengthChart">Strength Chart</a>
+      </div>
+    </div>
+    <div v-if="enduranceChart">
       <h1> Endurance Chart</h1>
       <canvas id="endurance-chart"></canvas>
+      <form @submit.prevent="addEndurance">
+        <input type="number" placeholder="Time" v-model="newTime.time" required>
+        <button class="btn-success" type="submit">Create New Time</button>
+      </form>
     </div>
-    <form @submit.prevent="addEndurance">
-      <input type="number" placeholder="Time" v-model="newTime.time" required>
-      <button class="btn-success" type="submit">Create New Time</button>
-    </form>
-    <div>
+    <div v-if="weightChart">
       <h1> Weight Chart</h1>
       <canvas id="weight-chart"></canvas>
+
+      <form @submit.prevent="addWeight">
+        <input type="number" placeholder="Weight" v-model="newWeight.weight" required>
+        <button class="btn-success" type="submit">Create New Weight</button>
+      </form>
     </div>
-    <form @submit.prevent="addWeight">
-      <input type="number" placeholder="Weight" v-model="newWeight.weight" required>
-      <button class="btn-success" type="submit">Create New Weight</button>
-    </form>
-    <h1> Strength Chart</h1>
-    <canvas id="strength-chart"></canvas>
+    <div v-if="strengthChart">
+      <h1> Strength Chart</h1>
+      <canvas id="strength-chart"></canvas>
+    </div>
     <div class='junk'>
       {{endurance}} {{weight}}
     </div>
@@ -31,6 +46,9 @@
     name: "goalDetail",
     data() {
       return {
+        weightChart: false,
+        enduranceChart: false,
+        strengthChart: false,
         enduranceChartData: {
           type: 'line',
           data: {
