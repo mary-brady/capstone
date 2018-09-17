@@ -55,12 +55,12 @@
             labels: ['Sep. 1', 'Sep. 2', 'Sep. 3', 'Sep. 4'],
             datasets: [{
               label: 'Strength',
-              data: [50, 55, 50, 70],
+              data: [10, 55, 50, 70],
               backgroundColor: "rgba(153,255,51,0.4)"
             },
             {
               label: 'Strength2',
-              data: [20, 30, 10, 50],
+              data: [20, 15, 10, 50],
               backgroundColor: "rgba(53,255,51,0.4)"
             },
             {
@@ -79,6 +79,18 @@
               backgroundColor: "rgba(37,255,51,0.4)"
             }
             ]
+          },
+          options: {
+            responsive: true,
+            lineTension: 1,
+            scales: {
+              yAxes: [{
+                ticks: {
+                  beginAtZero: true,
+                  padding: 10,
+                }
+              }]
+            }
           }
         },
         newTime: {
@@ -115,7 +127,7 @@
     mounted() {
       this.$store.dispatch('getEndurance')
       this.$store.dispatch('getWeight')
-      // this.createChart('strength-chart', this.strengthChartData);
+      this.createChart('strength-chart', this.strengthChartData);
     },
     //temp mount
     methods: {
