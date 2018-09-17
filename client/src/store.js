@@ -5,6 +5,8 @@ import router from "./router"
 
 Vue.use(Vuex)
 
+
+
 let auth = Axios.create({
   baseURL: "//localhost:3000/auth/",
   timeout: 3000,
@@ -16,6 +18,13 @@ let api = Axios.create({
   timeout: 3000,
   withCredentials: true
 })
+
+// let weatherApi = axios.create({
+//   baseURL: 'http://api.openweathermap.org/data/2.5/weather?q=boise&&APPID=bd82255fd0a21fa1238699b9eda2ee35',
+//   timeout: 3000
+// })
+
+
 
 let healthTip = Axios.create({
   baseURL: "https://healthfinder.gov/FreeContent/Developer/Search.xml?api_key=demo_api_key&CategoryID=17",
@@ -33,7 +42,8 @@ export default new Vuex.Store({
     strengthGoals: [],
     posts: [],
     feed: [],
-    tips: []
+    tips: [],
+    weather: {}
   },
   mutations: {
     setUser(state, user) {
@@ -82,9 +92,12 @@ export default new Vuex.Store({
         feed.created = new Date(feed.created).toDateString()
       })
     },
-    // setTips(state, data) {
-    //   state.tips = data.match(/[^\.!\?]+[\.!\?]+/g)
-    // }
+    setTips(state, data) {
+      state.tips = data.match(/[^\.!\?]+[\.!\?]+/g)
+    },
+    setWeather(state, weather) {
+      state.weather = weather
+    }
   },
   actions: {
     //AUTH
@@ -297,6 +310,12 @@ export default new Vuex.Store({
         .then(res => {
           dispatch('getPosts', postData.authorId)
         })
+    },
+    deleteFeedPost({ dispatch }, postData) {
+      api.delete('posts/' + postData._id)
+        .then(res => {
+          dispatch('getFeed')
+        })
     }
   },
   getters: {
@@ -342,6 +361,7 @@ export default new Vuex.Store({
       })
       return chartData
     },
+<<<<<<< HEAD
     strengthChartData(state) {
       let data = state.strength
       let chartData = {
@@ -387,5 +407,15 @@ export default new Vuex.Store({
       })
       return chartData
     }
+=======
+
+    //Weather
+    // getWeather({ commit }) {
+    //   weatherApi.get()
+    //     .then(res => {
+    //       commit('setWeather', res.data)
+    //     })
+    // }
+>>>>>>> 604d482406e9ef1a396c7bc05e654961151254be
   }
 })

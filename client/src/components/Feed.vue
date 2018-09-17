@@ -9,8 +9,8 @@
         <div class="card-body ">
             <p>{{post.description}}</p>
         </div>
-        <div >
-            <p class="card-text"> <small class="text-muted"><strong>Created</strong>: {{post.created}}</small></p>
+        <div>
+            <p class="card-text"> <small class="text-muted"><strong>Created</strong>: {{post.created}}<span v-if="post.authorId == user._id" class="clickable" @click="deleteFeedPost(post)"> | <i class="far fa-trash-alt"></i></span></small></p>
         </div>
     </div>
 </div>
@@ -22,9 +22,18 @@
 <script>
 export default {
   name: "feed",
+  props: ["userId"],
   computed: {
     feed() {
       return this.$store.state.feed;
+    },
+    user() {
+      return this.$store.state.user;
+    }
+  },
+  methods: {
+    deleteFeedPost(post) {
+      this.$store.dispatch("deleteFeedPost", post);
     }
   }
 };
@@ -36,5 +45,8 @@ export default {
 
 .bg-light-blue {
   background-color: #a0dee7;
+}
+.clickable:hover {
+  cursor: pointer;
 }
 </style>
