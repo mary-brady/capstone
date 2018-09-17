@@ -63,7 +63,7 @@
         </div>
         <div class="row mt-1 mb-1">
             <div class="col-4">
-                <p><strong>Level: 10</strong></p>
+                <p><strong>Level: {{user.level}}</strong></p>
             </div>
             <div class="col-8">
                 <div class="progress">
