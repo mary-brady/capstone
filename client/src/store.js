@@ -255,7 +255,15 @@ export default new Vuex.Store({
         })
     },
 
-    //posts
+    //TIP
+    getTip({commit}) {
+      api.get('tips/')
+        .then(res => {
+          commit('setTips', res.data)
+        })
+    },
+
+    //POSTS
     getPosts({ commit }, userId) {
       api.get('posts/' + userId)
         .then(res => {
