@@ -103,8 +103,7 @@ export default {
   data() {
     return {
       currentComp: Posts,
-      isModalVisible: false,
-      level: user.level
+      isModalVisible: false
     };
   },
   computed: {
@@ -138,7 +137,7 @@ export default {
         width += 1;
       }
       if (width == 100) {
-        level++;
+        this.user.level++;
         editLevel();
         width = 0;
       }
