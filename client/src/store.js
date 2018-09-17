@@ -254,7 +254,7 @@ export default new Vuex.Store({
         })
     },
     addPost({ dispatch }, postData) {
-      api.post('posts/' + postData.postData)
+      api.post('posts/', postData.postData)
         .then(res => {
           dispatch('getPosts', postData.userId)
         })

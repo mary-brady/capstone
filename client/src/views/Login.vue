@@ -1,8 +1,11 @@
 <template>
   <div class="login container">
-    <div class="row">
-      <div class="col">
-        <h1 class="font-size">Ye Olde Health Tracker</h1>
+    <div class="row d-flex justify-content-center">
+      <div class="col-4">
+        <img src="../assets/image41.png" class="img-fluid" alt="health tracker logo">
+      </div>
+      <div class="col-12">
+        <h1 class="font-size">Ye Olde Fitness Tracker</h1>
       </div>
     </div>
     <div class="row">
