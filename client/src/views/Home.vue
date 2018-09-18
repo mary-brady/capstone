@@ -70,6 +70,8 @@ export default {
   },
   mounted() {
     this.$store.dispatch("getFeed");
+    this.$store.dispatch("getWeather");
+
     // this.$store.dispatch("getTip");
   },
   methods: {
