@@ -1,5 +1,6 @@
 <template>
   <div class="container-fluid mt-4">
+      {{quotes[Math.floor(Math.random() * quotes.length)]}}
     <h1>{{user.name}}'s Goals</h1>
     <div class="row">
       <div class="dropdown offset-sm-4 col-sm-4 mb-5 mt-3">
@@ -178,6 +179,9 @@
       },
       strengthGoals() {
         return this.$store.state.strengthGoals;
+      },
+      quotes() {
+          return this.$store.state.quotes;
       }
     },
     methods: {
