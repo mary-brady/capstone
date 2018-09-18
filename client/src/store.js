@@ -109,7 +109,7 @@ export default new Vuex.Store({
       })
     },
     setTips(state, data) {
-      state.tips = data.match(/[^\.!\?]+[\.!\?]+/g)
+      state.tips = data
     },
     setWeather(state, weather) {
       state.weather = weather

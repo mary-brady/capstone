@@ -69,9 +69,6 @@ export default {
       isModalVisible: false
     };
   },
-  mounted() {
-    this.$store.dispatch("getFeed");
-  },
   methods: {
     showModal() {
       this.isModalVisible = true;
