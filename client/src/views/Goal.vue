@@ -31,15 +31,16 @@
 
         <h1>Weight Goals</h1>
         <div v-for="wGoal in weightGoals" :wGoalData="wGoal">
-          <i class="fas fa-check-circle green" @click="editWeightGoal(wGoal)"></i>
-          <div>
-
+          <div v-if="!wGoal.completed">
+            <i class="fas fa-check-circle green" @click="editWeightGoal(wGoal)"></i>
+            {{wGoal.title}} - {{wGoal.description}}
+            <i class="fas fa-times red" @click="deleteWeightGoal(wGoal._id)" title="Delete"></i>
           </div>
-          <div>
-
+          <div v-else>
+            <strike> {{wGoal.title}} - {{wGoal.description}} </strike>
+            <i class="fas fa-times red" @click="deleteWeightGoal(wGoal._id)" title="Delete"></i>
+            +10xp (no/yes?)
           </div>
-          {{wGoal.title}} - {{wGoal.description}}
-          <i class="fas fa-times red" @click="deleteWeightGoal(wGoal._id)" title="Delete"></i>
         </div>
         <div v-if="weight">
           <form @submit.prevent="addWeightGoal" class="col d-flex justify-content-center">
@@ -52,12 +53,18 @@
         </div>
       </div>
       <div class="col-sm-3 text-justify text-left">
-
         <h1>Endurance Goals</h1>
         <div v-for="eGoal in enduranceGoals">
-          <i class="fas fa-check-circle green" @click="editEnduranceGoal(eGoal)"></i>
-          {{eGoal.title}} - {{eGoal.description}}
-          <i class="fas fa-times red" @click="deleteEnduranceGoal(eGoal._id)" title="Delete"></i>
+          <div v-if="!eGoal.completed">
+            <i class="fas fa-check-circle green" @click="editEnduranceGoal(eGoal)"></i>
+            {{eGoal.title}} - {{eGoal.description}}
+            <i class="fas fa-times red" @click="deleteEnduranceGoal(eGoal._id)" title="Delete"></i>
+          </div>
+          <div v-else>
+            <strike> {{eGoal.title}} - {{eGoal.description}} </strike>
+            <i class="fas fa-times red" @click="deleteWnduranceGoal(eGoal._id)" title="Delete"></i>
+            +10xp (no/yes?)
+          </div>
         </div>
         <div v-if="endurance">
           <form @submit.prevent="addEnduranceGoal" class="col d-flex justify-content-center">
@@ -73,9 +80,15 @@
 
         <h1>Strength Goals</h1>
         <div v-for="sGoal in strengthGoals">
-          <i class="fas fa-check-circle green" @click="editStrengthGoal(sGoal)"></i>
-          {{sGoal.title}} - {{sGoal.description}}
-          <i class="fas fa-times red" @click="deleteStrengthGoal(sGoal._id)" title="Delete"></i>
+          <div v-if="!sGoal.completed">
+            <i class="fas fa-check-circle green" @click="editStrengthGoal(sGoal)"></i>
+            {{sGoal.title}} - {{sGoal.description}}
+            <i class="fas fa-times red" @click="deleteStrengthGoal(sGoal._id)" title="Delete"></i>
+          </div>
+          <div v-else>
+            <strike> {{sGoal.title}} - {{sGoal.description}} </strike>
+            <i class="fas fa-times red" @click="deleteStrengthGoal(sGoal._id)" title="Delete"></i> +10xp (no/yes?)
+          </div>
         </div>
         <div v-if="strength">
           <form @submit.prevent="addStrengthGoal" class="col d-flex justify-content-center">
@@ -123,24 +136,21 @@
           description: "",
           authorId: "",
           created: "",
-          completed: false,
-          _id: ""
+          completed: false
         },
         enduranceGoal: {
           title: "",
           description: "",
           authorId: "",
           created: "",
-          completed: false,
-          _id: ""
+          completed: false
         },
         strengthGoal: {
           title: "",
           description: "",
           authorId: "",
           created: "",
-          completed: false,
-          _id: ""
+          completed: false
         }
       };
     },
