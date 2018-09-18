@@ -15,7 +15,27 @@
       </div>
     </div>
     <div class="row d-flex justify-content-center">
-      <div class="col-8">
+      <div class="col-md-4 col-xs-12">
+        <div class="row">
+          <div class="col-12 mb-2 mt-2">
+            <button type="button" class="btn btn-success" @click="showModal">Daily Quest</button>
+        <modal v-show="isModalVisible" @close="closeModal" class="row"/></div>
+          <div class="col-12  mb-2 mt-2 bg-yellow">
+            <Weather />
+          </div>
+          <div class="col-12 d-flex justify-content-center">
+            <div class="row">
+              <div class="col-12">
+                  <h3 class="font-size">Health Tip</h3>
+              </div>
+              <div class="col-12">
+                <!-- {{tips[Math.floor(Math.random() * tips.length)]}} -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8 col-xs-12">
         <div class="row">
         <div class="col-12">
         <h3 class="font-size">Feed</h3>
@@ -25,25 +45,7 @@
       </div>
         </div>
       </div>
-      <div class="col-4">
-        <div class="row">
-          <div class="col-12 mb-2 mt-2">
-            <button type="button" class="btn btn-danger" @click="showModal">Daily Quest</button>
-        <modal v-show="isModalVisible" @close="closeModal" class="row"/></div>
-          <div class="col-12  mb-2 mt-2 bg-yellow">
-            <Weather />
-          </div>
-        </div>
-        
-      </div>
-    </div>
-    <div class="row d-flex justify-content-center">
-      <div class="col-12">
-        <h3 class="font-size">Health Tip</h3>
-      </div>
-      <div class="col-12">
-        <!-- {{tips[Math.floor(Math.random() * tips.length)]}} -->
-      </div>
+      
     </div>
   </div>
 </template>
@@ -61,7 +63,7 @@ export default {
   components: {
     Weather,
     modal,
-    Feed,
+    Feed
     //HealthTip
   },
   data() {
