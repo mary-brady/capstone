@@ -225,12 +225,13 @@
         this.editXp();
       },
       editXp() {
-      let points = this.$store.state.user.xp + 10;
-      this.$store.dispatch("updateXp", {
-        userId: this.userId,
-        xp: points
-      });
-    },
+        let points = this.$store.state.user.xp + 10;
+        console.log(points)
+        this.$store.dispatch("updateXp", {
+          userId: this.userId,
+          xp: points
+        });
+      },
     },
     components: {
       GoalDetail
