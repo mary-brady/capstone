@@ -19,13 +19,6 @@ let api = Axios.create({
   withCredentials: true
 })
 
-// let weatherApi = axios.create({
-//   baseURL: 'http://api.openweathermap.org/data/2.5/weather?q=boise&&APPID=bd82255fd0a21fa1238699b9eda2ee35',
-//   timeout: 3000
-// })
-
-
-
 let healthTip = Axios.create({
   baseURL: "https://healthfinder.gov/FreeContent/Developer/Search.xml?api_key=demo_api_key&CategoryID=17",
   timeout: 3000
@@ -328,14 +321,6 @@ export default new Vuex.Store({
           commit('setFeed', res.data)
         })
     },
-
-    //TIP
-    // getTip({commit}) {
-    //   api.get('tips/')
-    //     .then(res => {
-    //       commit('setTips', res.data)
-    //     })
-    // },
 
     //POSTS
     getPosts({ commit }, userId) {
