@@ -332,7 +332,6 @@ export default new Vuex.Store({
     getFeed({ commit }) {
       api.get('feed/')
         .then(res => {
-          debugger
           commit('setFeed', res.data)
         })
     },
@@ -370,11 +369,11 @@ export default new Vuex.Store({
         })
     },
     ////Quote
-    getQuote({commit}) {
+    getQuote({ commit }) {
       api.get('quotes')
-      .then(res => {
-        commit('setQuotes')
-      })
+        .then(res => {
+          commit('setQuotes')
+        })
     }
   },
   getters: {
