@@ -23,6 +23,18 @@ router.put('/:id', (req, res, next) => {
         })
 })
 
+//get pre-set workouts not logged in
+router.get('/built', (req, res, next) => {
+    Workouts.find({})
+        .then(workout => {
+            res.send(workout)
+        })
+        .catch(err => {
+            res.status(400).send(err)
+            next()
+        })
+})
+
 //Get workouts logged in
 router.get('/:id', (req, res, next) => {
     Workouts.find({ authorId: req.params.id })
@@ -60,8 +72,6 @@ router.post('/', (req, res, next) => {
             next()
         })
 })
-
-
 
 //delete workout
 router.delete('/:id', (req, res, next) => {
