@@ -23,9 +23,9 @@ router.put('/:id', (req, res, next) => {
         })
 })
 
-//get pre-set workouts not logged in
-router.get('/built', (req, res, next) => {
-    Workouts.find({})
+//Get workouts logged in
+router.get('/:id', (req, res, next) => {
+    Workouts.find({ authorId: req.params.id })
         .then(workout => {
             res.send(workout)
         })
@@ -35,11 +35,11 @@ router.get('/built', (req, res, next) => {
         })
 })
 
-//Get workouts logged in
-router.get('/:id', (req, res, next) => {
-    Workouts.find({ authorId: req.params.id })
-        .then(workout => {
-            res.send(workout)
+//get all workouts
+router.get('/', (req, res, next) => {
+    Workouts.find({})
+        .then(workouts => {
+            res.send(workouts)
         })
         .catch(err => {
             res.status(400).send(err)
