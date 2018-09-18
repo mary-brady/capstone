@@ -367,6 +367,13 @@ export default new Vuex.Store({
         .then(res => {
           commit('setWeather', res.data)
         })
+    },
+    ////Quote
+    getQuote({commit}) {
+      api.get('quotes')
+      .then(res => {
+        commit('setQuotes')
+      })
     }
   },
   getters: {
