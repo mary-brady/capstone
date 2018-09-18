@@ -1,7 +1,7 @@
 <template>
     <div class="row">
         <div class="col-12">
-            {{tips[Math.floor(Math.random() * tips.length)]}}
+            {{tip[Math.floor(Math.random() * tip.length)]}}
         </div>
     </div>
 </template>

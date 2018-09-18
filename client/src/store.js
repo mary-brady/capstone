@@ -109,7 +109,7 @@ export default new Vuex.Store({
       })
     },
     setTips(state, data) {
-      state.tips = data.match(/[^\.!\?]+[\.!\?]+/g)
+      state.tips = data
     },
     setWeather(state, weather) {
       state.weather = weather
@@ -367,6 +367,13 @@ export default new Vuex.Store({
         .then(res => {
           commit('setWeather', res.data)
         })
+    },
+    ////Quote
+    getQuote({commit}) {
+      api.get('quotes')
+      .then(res => {
+        commit('setQuotes')
+      })
     }
   },
   getters: {
