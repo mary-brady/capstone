@@ -16,6 +16,13 @@
         <div class="col-12">
             <p>{{weather.weather[0].description}}</p>
         </div>
+        <div class="col-12">
+            <h5 v-if="temp >= 60 || temp <= 85">Time For A Run</h5>
+            <h5 v-else-if="temp <= 59 || temp >= 40">Just Wear A Coat</h5>
+            <h5 v-else-if="temp <= 39 || temp <= 0">Gyms Are A Thing</h5>
+            <h5 v-else-if="temp >= 86 || temp >= 110">Gyms Are A Thing</h5>
+            <h5 v-else>There's Always Time for An Excersice</h5>
+        </div>
     </div>
 </template>
 
