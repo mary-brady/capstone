@@ -72,7 +72,7 @@ let strengthRoutes = require('./server-assets/routes/strength-route')
 server.use('/api/strength', strengthRoutes)
 
 let quoteRoutes = require('./server-assets/routes/quote-routes')
-server.use('api/quotes', quoteRoutes)
+server.use('/api/quotes', quoteRoutes)
 
 //Catch all
 server.get('*', (req, res, next) => {
