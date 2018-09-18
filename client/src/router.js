@@ -47,11 +47,7 @@ export default new Router({
     {
       path: '/workouts',
       name: 'workouts',
-<<<<<<< HEAD
       component: Workout
-=======
-      component: () => import(/* webpackChunkName: "workout" */ './views/Workouts.vue')
->>>>>>> eb68de3dd1b19df81dffa21c95f2bf90436aadbe
     }
   ]
 })
