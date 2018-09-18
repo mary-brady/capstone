@@ -1,5 +1,7 @@
 let router = require('express').Router()
 let Workouts = require('../models/Workout')
+let strengthExercise = require('../models/StrengthExercise')
+let cardioExercise = require('../models/CardioExercise')
 
 //Edit Workout
 router.put('/:id', (req, res, next) => {
@@ -23,27 +25,36 @@ router.put('/:id', (req, res, next) => {
         })
 })
 
-//Get workouts logged in
-router.get('/:id', (req, res, next) => {
-    Workouts.find({ authorId: req.params.id })
+//this will add exercise to workout
+//front end needs to send a type: 'either strength or cardio flag'
+//id: 'lasdkfklsadjf823xc'
+router.put('/:id/exercise/', (req, res, next) => {
+    let type = req.body.type
+    Workouts.findById(req.params.id)
         .then(workout => {
-            res.send(workout)
+            workout[type].push(req.body.id)
+            workout.save(err => {
+                if (err) {
+                    return res.status(500).send(err)
+                }
+                res.send(workout)
+            })
         })
         .catch(err => {
-            res.status(400).send(err)
-            next()
+            res.status(500).send(err)
         })
 })
 
 //get all workouts
 router.get('/', (req, res, next) => {
     Workouts.find({})
-        .then(workouts => {
-            res.send(workouts)
-        })
-        .catch(err => {
-            res.status(400).send(err)
-            next()
+        .populate('strength', 'title')
+        .populate('cardio', 'name')
+        .exec((err, workout) => {
+            if (err) {
+                res.status(500).send(err)
+            }
+            res.send(workout)
         })
 })
 
