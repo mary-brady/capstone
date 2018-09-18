@@ -12,7 +12,7 @@
         </div>
         <div class="row mt-1 mb-1">
             <div class="col-6">
-                <img src="//placehold.it/200x200" class="img-fluid" alt="" />
+                <img src="../assets/knight3.png" class="img-fluid" alt="" />
             </div>
             <div class="col-6">
                 <div class="row">
@@ -75,7 +75,7 @@
             </div>
         </div>
         <div class="row mt-1 mb-1">
-            <div class="col-4"><button class="btn btn-info">My Goals</button></div>
+             <div class="col-4"><router-link :to="{name: 'goal'}"><button class="btn btn-info">My Goals</button></router-link></div>
             <div class="col-4"><button class="btn btn-warning" @click="showModal">Make Post</button>
             <modal v-show="isModalVisible" :userId="user._id" @close="closeModal"></modal>
             </div>
@@ -175,5 +175,8 @@ export default {
 <style scoped>
 .font-size {
   font-family: "Oldenburg", cursive;
+}
+.img-fluid {
+  max-width: 70%;
 }
 </style>
