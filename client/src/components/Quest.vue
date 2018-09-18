@@ -33,7 +33,9 @@
 <script>
 export default {
   name: "modal",
+  data() {
 
+  },
   methods: {
     close() {
       this.$emit("close");

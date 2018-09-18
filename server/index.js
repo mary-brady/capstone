@@ -47,6 +47,12 @@ server.use((req, res, next) => {
 let workoutRoutes = require('./server-assets/routes/workout-routes')
 server.use('/api/workouts', workoutRoutes)
 
+let cardioRoutes = require('./server-assets/routes/cardioexercise-routes')
+server.use('/api/cardio-exercise', cardioRoutes)
+
+let strengthExerciseRoutes = require('./server-assets/routes/strengthexercise-routes')
+server.use('/api/strength-exercise', strengthExerciseRoutes)
+
 let postRoutes = require('./server-assets/routes/post-routes')
 server.use('/api/posts', postRoutes)
 
