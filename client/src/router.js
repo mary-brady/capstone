@@ -9,6 +9,7 @@ import GoalDetail from './components/GoalDetail.vue'
 // @ts-ignore
 import Profile from './views/Profile.vue'
 import Goal from './views/Goal.vue'
+import Workout from './views/Workouts.vue'
 
 Vue.use(Router)
 
@@ -51,7 +52,8 @@ export default new Router({
     },
     {
       path: '/workouts',
-      name: 'Workouts'
+      name: 'workouts',
+      component: () => import(/* webpackChunkName: "profile" */ './views/Workouts.vue')
     }
   ]
 })

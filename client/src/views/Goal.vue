@@ -1,5 +1,6 @@
 <template>
   <div class="container-fluid mt-4">
+      {{quotes[Math.floor(Math.random() * quotes.length)]}}
     <h1>{{user.name}}'s Goals</h1>
     <div class="row">
       <div class="dropdown offset-sm-4 col-sm-4 mb-5 mt-3">
@@ -38,8 +39,7 @@
           </div>
           <div v-else>
             <strike> {{wGoal.title}} - {{wGoal.description}} </strike>
-            <i class="fas fa-times red" @click="deleteWeightGoal(wGoal._id)" title="Delete"></i>
-            +10xp (no/yes?)
+            <i class="fas fa-times red" @click="deleteWeightGoal(wGoal._id)" title="Delete"></i><span id="xp" class="ml-2">+10xp</span>
           </div>
         </div>
         <div v-if="weight">
@@ -48,8 +48,10 @@
               <input type="text" placeholder="Weight Goal Title" v-model="weightGoal.title" class="form-control mb-1 mt-1">
               <input type="text" placeholder="Weight Goal Description" v-model="weightGoal.description" class="form-control mb-1 mt-1">
               <button type="submit" class="btn btn-success mb-1 mt-1">Add Goal</button>
+              <button class="btn btn-info" @click="weight = !weight">Close</button>
             </div>
           </form>
+
         </div>
       </div>
       <div class="col-sm-3 text-justify text-left">
@@ -62,8 +64,7 @@
           </div>
           <div v-else>
             <strike> {{eGoal.title}} - {{eGoal.description}} </strike>
-            <i class="fas fa-times red" @click="deleteWnduranceGoal(eGoal._id)" title="Delete"></i>
-            +10xp (no/yes?)
+            <i class="fas fa-times red" @click="deleteEnduranceGoal(eGoal._id)" title="Delete"></i><span id="xp" class="ml-2">+10xp</span>
           </div>
         </div>
         <div v-if="endurance">
@@ -72,6 +73,7 @@
               <input type="text" placeholder="Endurance Goal Title" v-model="enduranceGoal.title" class="form-control mb-1 mt-1">
               <input type="text" placeholder="Endurance Goal Description" v-model="enduranceGoal.description" class="form-control mb-1 mt-1">
               <button type="submit" class="btn btn-success mb-1 mt-1">Add Goal</button>
+              <button class="btn btn-info" @click="endurance = !endurance">Close</button>
             </div>
           </form>
         </div>
@@ -87,7 +89,7 @@
           </div>
           <div v-else>
             <strike> {{sGoal.title}} - {{sGoal.description}} </strike>
-            <i class="fas fa-times red" @click="deleteStrengthGoal(sGoal._id)" title="Delete"></i> +10xp (no/yes?)
+            <i class="fas fa-times red" @click="deleteStrengthGoal(sGoal._id)" title="Delete"></i> <span id="xp" class="ml-2">+10xp</span>
           </div>
         </div>
         <div v-if="strength">
@@ -96,6 +98,7 @@
               <input type="text" placeholder="Strength Goal Title" v-model="strengthGoal.title" class="form-control mb-1 mt-1">
               <input type="text" placeholder="Strength Goal Description" v-model="strengthGoal.description" class="form-control mb-1 mt-1">
               <button type="submit" class="btn btn-success mb-1 mt-1">Add Goal</button>
+              <button class="btn btn-info" @click="strength = !strength">Close</button>
             </div>
           </form>
         </div>
@@ -176,6 +179,9 @@
       },
       strengthGoals() {
         return this.$store.state.strengthGoals;
+      },
+      quotes() {
+          return this.$store.state.quotes;
       }
     },
     methods: {
@@ -226,9 +232,8 @@
       },
       editXp() {
         let points = this.$store.state.user.xp + 10;
-        console.log(points)
         this.$store.dispatch("updateXp", {
-          userId: this.userId,
+          userId: this.user._id,
           xp: points
         });
       },
@@ -260,5 +265,13 @@
 
   .green:hover {
     color: yellowgreen;
+  }
+
+  strike {
+    text-decoration-color: red
+  }
+
+  #xp {
+    color: green
   }
 </style>

@@ -28,7 +28,8 @@
               <div class="col-12">
                   <h3 class="font-size">Health Tip</h3>
               </div>
-              <div class="col-12">
+              <div class="col-12"> 
+                <Tips/>
                 <!-- {{tips[Math.floor(Math.random() * tips.length)]}} -->
               </div>
             </div>
@@ -56,26 +57,20 @@
 import modal from "@/components/Quest.vue";
 import Feed from "@/components/Feed.vue";
 import Weather from "@/components/Weather.vue";
-//import HealthTip from "@/components/HealthTip.vue";
+import Tips from "@/components/HealthTip.vue";
 
 export default {
   name: "home",
   components: {
     Weather,
     modal,
-    Feed
-    //HealthTip
+    Feed,
+    Tips
   },
   data() {
     return {
       isModalVisible: false
     };
-  },
-  mounted() {
-    this.$store.dispatch("getFeed");
-    this.$store.dispatch("getWeather");
-
-    // this.$store.dispatch("getTip");
   },
   methods: {
     showModal() {

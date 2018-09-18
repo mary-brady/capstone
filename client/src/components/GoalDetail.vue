@@ -209,4 +209,8 @@
   input[type=number] {
     width: 200px;
   }
+
+  h1 {
+    font-weight: 700;
+  }
 </style>

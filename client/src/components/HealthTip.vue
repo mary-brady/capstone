@@ -1,12 +1,16 @@
 <template>
-    
+    <div class="row">
+        <div class="col-12">
+            {{tip[Math.floor(Math.random() * tip.length)]}}
+        </div>
+    </div>
 </template>
 
 <script>
 export default {
-    name: "tip",
+    name: "Tips",
     data() {
-        tips: [
+        tip: [
             "Aim for 2 hours and 30 minutes of moderate activity each week.",
             "To get all the health benefits of physical activity, do a combination of aerobic and muscle-strengthening activities.",
             "Muscle-strengthening activities include lifting weights, using resistance bands, and doing push-ups.",
