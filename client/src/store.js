@@ -332,6 +332,7 @@ export default new Vuex.Store({
     getFeed({ commit }) {
       api.get('feed/')
         .then(res => {
+          debugger
           commit('setFeed', res.data)
         })
     },
