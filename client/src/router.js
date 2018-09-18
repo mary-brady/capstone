@@ -48,6 +48,10 @@ export default new Router({
       path: '/test',
       name: 'goalDetail',
       component: GoalDetail
+    },
+    {
+      path: '/workouts',
+      name: 'Workouts'
     }
   ]
 })
