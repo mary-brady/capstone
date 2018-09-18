@@ -33,13 +33,13 @@
       <h1> Strength Chart</h1>
       <canvas id="strength-chart"></canvas>
       <form @submit.prevent="addStrength">
-          <input type="number" placeholder="Max lbs Squatted" v-model="newStrength.squats" required>
-          <input type="number" placeholder="Max lbs Rowed" v-model="newStrength.rows" required>
-          <input type="number" placeholder="Max lbs Bench Pressed" v-model="newStrength.benches" required>
-          <input type="number" placeholder="Max lbs Shoulder Pressed" v-model="newStrength.shoulders" required>
-          <input type="number" placeholder="Max lbs Deadlifted" v-model="newStrength.deadlifts" required>
-          <button class="btn-success" type="submit">Add Strength Data</button>
-        </form>
+        <input type="number" placeholder="Max lbs Squatted" v-model="newStrength.squats">
+        <input type="number" placeholder="Max lbs Rowed" v-model="newStrength.rows">
+        <input type="number" placeholder="Max lbs Bench Pressed" v-model="newStrength.benches">
+        <input type="number" placeholder="Max lbs Shoulder Pressed" v-model="newStrength.shoulders">
+        <input type="number" placeholder="Max lbs Deadlifted" v-model="newStrength.deadlifts">
+        <button class="btn-success" type="submit">Add Strength Data</button>
+      </form>
     </div>
     <div class='junk'>
       {{endurance}} {{weight}} {{strength}}
@@ -114,11 +114,11 @@
         newStrength: {
           squats: "",
           deadlifts: "",
-          rows:"",
-          benches:"",
-          shoulders:"",
-          authorId:"",
-          created:""
+          rows: "",
+          benches: "",
+          shoulders: "",
+          authorId: "",
+          created: ""
         }
       }
     },
@@ -183,29 +183,30 @@
       addEndurance() {
         this.newTime.authorId = this.user._id
         this.newTime.created = Date.now()
-        console.log(this.newTime)
         this.$store.dispatch("addEndurance", this.newTime);
         // this.newTime = { time: "", authorId: "", created: "" };
       },
       addWeight() {
         this.newWeight.authorId = this.user._id
         this.newWeight.created = Date.now()
-        console.log(this.newWeight)
         this.$store.dispatch("addWeight", this.newWeight);
       },
       addStrength() {
         this.newStrength.authorId = this.user._id
         this.newStrength.created = Date.now()
-        console.log(this.newStrength)
         this.$store.dispatch("addStrength", this.newStrength);
       },
     }
   }
-  ///strength - squat, deadlift, bench, shoulder, press, row
+
 </script>
 
 <style>
   .junk {
     display: none
+  }
+
+  input[type=number] {
+    width: 200px;
   }
 </style>
