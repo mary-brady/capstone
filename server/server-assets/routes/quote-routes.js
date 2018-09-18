@@ -3,7 +3,7 @@ let Quote = require('../models/Quote')
 
 //GET
 router.get('/', (req, res, next) => {
-  Quote.find({ authorId: req.session.uid })
+  Quote.find()
     .then(data => {
       res.send(data)
     })

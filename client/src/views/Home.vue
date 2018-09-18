@@ -61,7 +61,8 @@ export default {
   components: {
     Weather,
     modal,
-    Feed
+    Feed,
+    //HealthTip
   },
   data() {
     return {

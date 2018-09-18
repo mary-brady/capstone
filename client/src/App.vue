@@ -19,7 +19,10 @@
       </li>&nbsp; &nbsp;
       <li class="nav-item">
         <router-link to="/goal">Goals</router-link>
-        </li>
+        </li>&nbsp; &nbsp;
+      <li class="nav-item">
+        <router-link to="/workouts">Workouts</router-link>
+      </li>
     </ul>
     <br>
     <button class="btn btn-outline-warning btn-sm" @click="logout">Logout</button>

@@ -210,17 +210,28 @@
         this.weightGoal._id = wGoal._id
         this.weightGoal.completed = true;
         this.$store.dispatch('editWeightGoal', this.weightGoal)
+        this.editXp();
       },
       editEnduranceGoal(eGoal) {
         this.enduranceGoal._id = eGoal._id
         this.enduranceGoal.completed = true;
         this.$store.dispatch('editEnduranceGoal', this.enduranceGoal)
+        this.editXp();
       },
       editStrengthGoal(sGoal) {
         this.strengthGoal._id = sGoal._id
         this.strengthGoal.completed = true;
         this.$store.dispatch('editStrengthGoal', this.strengthGoal)
-      }
+        this.editXp();
+      },
+      editXp() {
+        let points = this.$store.state.user.xp + 10;
+        console.log(points)
+        this.$store.dispatch("updateXp", {
+          userId: this.userId,
+          xp: points
+        });
+      },
     },
     components: {
       GoalDetail
