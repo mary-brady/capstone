@@ -6,10 +6,7 @@
 <script>
 export default {
   name: "workouts",
-  components: {
-    StrengthExercise,
-    CardioExercise
-  }
+  components: {}
 };
 </script>
 <style scoped>
