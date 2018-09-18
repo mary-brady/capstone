@@ -6,9 +6,22 @@ router.get('/', (req, res, next) => {
     StrengthEx.find({})
         .then(ex => {
             res.send(ex)
+            console.log('strengthEx get: ', ex)
         })
         .catch(err => {
             res.status(400).send(err)
+            next()
+        })
+})
+//get by workout
+router.get('/by-workout/:id', (req, res, next) => {
+    StrengthEx.find({ workoutId: req.params.workoutId })
+        .then(ex => {
+            res.send(ex)
+            console.log('cardio by workout get: ', ex)
+        })
+        .catch(err => {
+            console.log(err)
             next()
         })
 })
