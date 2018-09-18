@@ -64,7 +64,7 @@
         </div>
         <div class="row mt-1 mb-1">
             <div class="col-4">
-                <p><strong>Level: {{user.level}}</strong></p>
+                <p><strong>Level: {{level}}</strong></p>
             </div>
             <div class="col-8">
                 <div class="progress">
@@ -100,12 +100,13 @@ export default {
   data() {
     return {
       currentComp: Posts,
-      isModalVisible: false,
-      level: this.$store.state.user.level,
-      xp: this.$store.state.user.xp
+      isModalVisible: false
     };
   },
   computed: {
+    xp() {
+      return this.$store.state.user.xp;
+    },
     user() {
       return this.$store.state.user;
     },
@@ -124,6 +125,45 @@ export default {
     barWidth() {
       let width = this.xp;
       return width % 100;
+    },
+    level() {
+      let level = 0;
+      switch (Math.floor(this.xp / 100)) {
+        case 0:
+          level = 0;
+          break;
+        case 1:
+          level = 1;
+          break;
+        case 2:
+          level = 2;
+          break;
+        case 3:
+          level = 3;
+          break;
+        case 4:
+          level = 4;
+          break;
+        case 5:
+          level = 5;
+          break;
+        case 6:
+          level = 6;
+          break;
+        case 7:
+          level = 7;
+          break;
+        case 8:
+          level = 8;
+          break;
+        case 9:
+          level = 9;
+          break;
+        case 10:
+          level = 10;
+          break;
+      }
+      return level;
     }
   },
   created() {
