@@ -36,13 +36,8 @@ export default new Vuex.Store({
     posts: [],
     feed: [],
     tips: [],
-<<<<<<< HEAD
     weather: {},
     quotes: []
-=======
-    weather: {}
-
->>>>>>> eaf8c8a7e0c9bc8c2eaa08f497f1955f3c331863
   },
   mutations: {
     setUser(state, user) {
