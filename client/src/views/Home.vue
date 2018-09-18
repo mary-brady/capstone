@@ -54,6 +54,7 @@
 import modal from "@/components/Quest.vue";
 import Feed from "@/components/Feed.vue";
 import Weather from "@/components/Weather.vue";
+//import HealthTip from "@/components/HealthTip.vue";
 
 export default {
   name: "home",
