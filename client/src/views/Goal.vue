@@ -216,11 +216,13 @@
         this.enduranceGoal._id = eGoal._id
         this.enduranceGoal.completed = true;
         this.$store.dispatch('editEnduranceGoal', this.enduranceGoal)
+        this.editXp();
       },
       editStrengthGoal(sGoal) {
         this.strengthGoal._id = sGoal._id
         this.strengthGoal.completed = true;
         this.$store.dispatch('editStrengthGoal', this.strengthGoal)
+        this.editXp();
       },
       editXp() {
         let points = this.$store.state.user.xp + 10;
