@@ -209,7 +209,6 @@
       editWeightGoal(wGoal) {
         this.weightGoal._id = wGoal._id
         this.weightGoal.completed = true;
-        console.log(this.weightGoal)
         this.$store.dispatch('editWeightGoal', this.weightGoal)
       },
       editEnduranceGoal(eGoal) {
@@ -220,7 +219,6 @@
       editStrengthGoal(sGoal) {
         this.strengthGoal._id = sGoal._id
         this.strengthGoal.completed = true;
-        console.log(this.strengthGoal)
         this.$store.dispatch('editStrengthGoal', this.strengthGoal)
       }
     },

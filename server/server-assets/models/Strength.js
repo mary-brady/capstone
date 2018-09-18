@@ -6,11 +6,11 @@ let ObjectId = Schema.Types.ObjectId
 let schema = new Schema({
     authorId: { type: ObjectId, ref: 'User', required: true },
     created: { type: Date, default: Date.now(), required: true },
-    squats: {type: Number, required:true},
-    deadlifts: {type: Number, required:true},
-    shoulders: {type:Number, required:true},
-    benches: {type:Number, required:true},
-    rows: {type:Number, required:true}
+    squats: { type: Number },
+    deadlifts: { type: Number },
+    shoulders: { type: Number },
+    benches: { type: Number },
+    rows: { type: Number }
 })
 
 
