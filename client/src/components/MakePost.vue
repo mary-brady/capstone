@@ -29,12 +29,13 @@
 <script>
 export default {
   name: "modal",
-  props: ["userId"],
+  props: ["userId", "username"],
   data() {
     return {
       newPost: {
         title: "",
-        description: ""
+        description: "",
+        author: this.username
       }
     };
   },
@@ -44,7 +45,15 @@ export default {
         userId: this.userId,
         postData: this.newPost
       });
+      this.editXp();
       this.newPost = { title: "", description: "" };
+    },
+    editXp() {
+      let points = this.$store.state.user.xp + 2;
+      this.$store.dispatch("updateXp", {
+        userId: this.userId,
+        xp: points
+      });
     },
     close() {
       this.$emit("close");

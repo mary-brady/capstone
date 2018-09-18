@@ -36,8 +36,13 @@ export default new Vuex.Store({
     posts: [],
     feed: [],
     tips: [],
+<<<<<<< HEAD
     weather: {},
     quotes: []
+=======
+    weather: {}
+
+>>>>>>> eaf8c8a7e0c9bc8c2eaa08f497f1955f3c331863
   },
   mutations: {
     setUser(state, user) {
@@ -51,8 +56,7 @@ export default new Vuex.Store({
         state.weightGoals = [],
         state.enduranceGoals = [],
         state.strengthGoals = [],
-        state.posts = [],
-        state.tips = []
+        state.posts = []
     },
     setWeight(state, weight) {
       Vue.set(state, "weight", weight)
@@ -308,6 +312,12 @@ export default new Vuex.Store({
     },
     updateLevel({ dispatch }, profileData) {
       auth.put(profileData.userId, { level: profileData.level })
+        .then(res => {
+          dispatch('getUser', profileData.userId)
+        })
+    },
+    updateXp({ dispatch }, profileData) {
+      auth.put(profileData.userId, { xp: profileData.xp })
         .then(res => {
           dispatch('getUser', profileData.userId)
         })

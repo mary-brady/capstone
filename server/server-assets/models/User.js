@@ -16,6 +16,7 @@ let schema = new Schema({
     gym: { type: String },
     level: { type: Number, required: true, default: 0 },
     description: { type: String },
+    xp: { type: Number, required: true, default: 0 },
     userType: { type: String },
     password: { type: String, required: true },
     created: { type: Number, required: true, default: Date.now() }
