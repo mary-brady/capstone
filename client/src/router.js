@@ -26,7 +26,7 @@ export default new Router({
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "login" */ './views/Login.vue')
+      component: Login
     },
     {
       path: '/profile',
@@ -34,7 +34,7 @@ export default new Router({
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "profile" */ './views/Profile.vue')
+      component: Profile
     },
     {
       path: '/goal',
@@ -42,7 +42,7 @@ export default new Router({
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "goal" */ './views/Goal.vue')
+      component: Goal
     },
     {
       ///creating temporary path for chart tests
@@ -53,7 +53,7 @@ export default new Router({
     {
       path: '/workouts',
       name: 'workouts',
-      component: () => import(/* webpackChunkName: "profile" */ './views/Workouts.vue')
+      component: Workout
     }
   ]
 })
