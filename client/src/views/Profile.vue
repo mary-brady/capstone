@@ -77,7 +77,7 @@
         <div class="row mt-1 mb-1">
              <div class="col-4"><router-link :to="{name: 'goal'}"><button class="btn btn-info">My Goals</button></router-link></div>
             <div class="col-4"><button class="btn btn-warning" @click="showModal">Make Post</button>
-            <modal v-show="isModalVisible" :userId="user._id" @close="closeModal"></modal>
+            <modal v-show="isModalVisible" :userId="user._id" :username="user.username" @close="closeModal"></modal>
             </div>
             <div class="col-4"> <button class="btn btn-info" @click="switchComponents('ProfileEdit')" :disabled="currentComp === 'ProfileEdit'">Edit
                     Profile</button></div>
@@ -101,10 +101,10 @@ export default {
     return {
       currentComp: Posts,
       isModalVisible: false,
-      level: this.$store.state.user.level
+      level: this.$store.state.user.level,
+      xp: this.$store.state.user.xp
     };
   },
-  mounted() {},
   computed: {
     user() {
       return this.$store.state.user;
@@ -122,19 +122,7 @@ export default {
       return this.$store.state.strengthGoals;
     },
     barWidth() {
-      let width = 0;
-      for (let i = 0; i < this.posts.length; i++) {
-        width += 10;
-      }
-      for (let i = 0; i < this.weightGoals.length; i++) {
-        width += 1;
-      }
-      for (let i = 0; i < this.enduranceGoals.length; i++) {
-        width += 1;
-      }
-      for (let i = 0; i < this.strengthGoals.length; i++) {
-        width += 1;
-      }
+      let width = this.xp;
       return width % 100;
     }
   },
@@ -148,12 +136,6 @@ export default {
     }
   },
   methods: {
-    editLevel(level) {
-      this.$store.dispatch("updateLevel", {
-        userId: user._id,
-        level: level
-      });
-    },
     switchComponents(comp) {
       bus.$emit("switchComp", comp);
     },

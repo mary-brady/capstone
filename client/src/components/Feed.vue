@@ -10,7 +10,7 @@
             <p>{{post.description}}</p>
         </div>
         <div>
-            <p class="card-text"> <small class="text-muted"><strong>Created</strong>: {{post.created}}<span v-if="post.authorId == user._id" class="clickable" @click="deleteFeedPost(post)"> | <i class="far fa-trash-alt"></i></span></small></p>
+            <p class="card-text"> <small class="text-muted"><strong>Created By</strong>: {{post.author}} <strong>Created</strong>: {{post.created}}<span v-if="post.authorId == user._id" class="clickable" @click="deleteFeedPost(post)"> | <i class="far fa-trash-alt"></i></span></small></p>
         </div>
     </div>
 </div>
