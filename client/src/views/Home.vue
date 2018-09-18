@@ -29,7 +29,7 @@
                   <h3 class="font-size">Health Tip</h3>
               </div>
               <div class="col-12"> 
-                <Tips/>
+                <!-- <Tips/> -->
                 <!-- {{tips[Math.floor(Math.random() * tips.length)]}} -->
               </div>
             </div>
@@ -71,6 +71,10 @@ export default {
     return {
       isModalVisible: false
     };
+  },
+  mounted() {
+    this.$store.dispatch("getWeather");
+    this.$store.dispatch("getFeed");
   },
   methods: {
     showModal() {

@@ -45,15 +45,9 @@ export default new Router({
       component: () => import(/* webpackChunkName: "goal" */ './views/Goal.vue')
     },
     {
-      ///creating temporary path for chart tests
-      path: '/test',
-      name: 'goalDetail',
-      component: GoalDetail
-    },
-    {
       path: '/workouts',
       name: 'workouts',
-      component: () => import(/* webpackChunkName: "profile" */ './views/Workouts.vue')
+      component: () => import(/* webpackChunkName: "workout" */ './views/Workouts.vue')
     }
   ]
 })
