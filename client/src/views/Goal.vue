@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid mt-4">
     <div>
-      <h2 v-if="quotes.length">"{{quote.quote}}"</h2>
+      <h2 class="mb-5" v-if="quotes.length">"{{quote.quote}}"</h2>
     </div>
     <h1>{{user.name}}'s Goals</h1>
     <div class="row">

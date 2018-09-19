@@ -213,4 +213,11 @@
   h1 {
     font-weight: 700;
   }
+  .dropdown-menu {
+    color:white;
+  }
+  a:not([href]):not([tabindex]) {
+    color:black;
+  }
+  
 </style>
