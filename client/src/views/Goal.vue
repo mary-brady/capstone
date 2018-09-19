@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid mt-4">
-    {{quotes}}
+    {{quotes[Math.floor(Math.random() * quotes.length)].quote}}
     <h1>{{user.name}}'s Goals</h1>
     <div class="row">
       <div class="dropdown offset-sm-4 col-sm-4 mb-5 mt-3">
@@ -161,6 +161,7 @@
       this.$store.dispatch("getWeightGoals");
       this.$store.dispatch("getEnduranceGoals");
       this.$store.dispatch("getStrengthGoals");
+      this.$store.dispatch("getQuote");
     },
     created() {
       if (!this.$store.state.user._id) {

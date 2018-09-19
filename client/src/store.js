@@ -372,7 +372,7 @@ export default new Vuex.Store({
     getQuote({ commit }) {
       api.get('quotes')
         .then(res => {
-          commit('setQuotes')
+          commit('setQuotes', res.data)
         })
     }
   },
