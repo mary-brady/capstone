@@ -10,6 +10,7 @@
     
 </template>
 <script>
+import { bus } from "../index.js";
 export default {
   name: "CardioExercise",
   mounted() {
@@ -18,6 +19,11 @@ export default {
   computed: {
     cardioEx() {
       return this.$store.state.cardioExercises;
+    }
+  },
+  methods: {
+    switchComponents(comp) {
+      bus.$emit("switchComp", comp);
     }
   }
 };

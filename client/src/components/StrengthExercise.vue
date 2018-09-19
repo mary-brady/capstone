@@ -9,6 +9,7 @@
 </div>
 </template>
 <script>
+import { bus } from "../index.js";
 export default {
   name: "StrengthExercise",
   mounted() {

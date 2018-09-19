@@ -18,15 +18,16 @@
           <li>{{cardio.title}}</li>
         </ul>
       </div>
-      <button class="btn btn-primary">Strength Exercises</button>
-      <button class="btn btn-secondary">Cardio Exercises</button>
-      <CardioExercise />
+      <button class="btn btn-primary" @click="switchComponents('StrengthExercise')" :disabled="currentComp === 'StrengthExercise'">Strength Exercises</button>
+      <button class="btn btn-secondary" @click="switchComponents('CardioExercise')" :disabled="currentComp === 'CardioExercise'">Cardio Exercises</button>
+      <component id="StrengthExercise" :is="currentComp"></component>
     </div>
 </template>
 <script>
 import CardioExercise from "@/components/CardioExercise.vue";
 import StrengthExercise from "@/components/StrengthExercise.vue";
 import modal from "@/components/CreateWorkout.vue";
+import { bus } from "../index.js";
 
 export default {
   name: "workouts",
@@ -37,11 +38,17 @@ export default {
   },
   data() {
     return {
-      isModalVisible: false
+      isModalVisible: false,
+      currentComp: StrengthExercise
     };
   },
   mounted() {
     this.$store.dispatch("getWorkouts");
+  },
+  created() {
+    bus.$on("switchComp", comp => {
+      this.currentComp = comp;
+    });
   },
   computed: {
     workouts() {
@@ -57,6 +64,9 @@ export default {
     },
     closeModal() {
       this.isModalVisible = false;
+    },
+    switchComponents(comp) {
+      bus.$emit("switchComp", comp);
     }
   }
 };
