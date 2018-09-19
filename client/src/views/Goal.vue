@@ -49,11 +49,7 @@
             <div class="form-group">
               <input type="text" placeholder="Weight Goal Title" v-model="weightGoal.title" class="form-control mb-1 mt-1">
               <input type="text" placeholder="Weight Goal Description" v-model="weightGoal.description" class="form-control mb-1 mt-1">
-<<<<<<< HEAD
-              <button type="submit" class="btn btn-success mb-1 mt-1">Add Goal</button>
-=======
               <button type="submit" class="btn btn-success mb-1 mt-1" @click="editXpAddGoal">Add Goal</button>
->>>>>>> 822a81632d23058e44a286d3148377e8014b274d
               <button type="button" class="btn btn-info" @click="weight = !weight">Close</button>
             </div>
           </form>
