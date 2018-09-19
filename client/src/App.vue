@@ -59,4 +59,8 @@ a {
   color: #ffffff;
   font-family: "Oldenburg", cursive;
 }
+.size {
+  max-width: 5%;
+  max-height: 5%;
+}
 </style>

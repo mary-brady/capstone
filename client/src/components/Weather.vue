@@ -1,7 +1,7 @@
 <template>
     <div class="weather row">
         <div class="col-12">
-            <h1 class="font-size">What Be The Weather In...</h1>
+            <h3 class="font-size">What Be The Weather In...</h3>
             <p>{{weather.name}}</p>
         </div>
         <div class="col-12">
