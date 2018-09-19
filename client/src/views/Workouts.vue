@@ -20,6 +20,7 @@
       </div>
       <button class="btn btn-primary">Strength Exercises</button>
       <button class="btn btn-secondary">Cardio Exercises</button>
+      <CardioExercise />
     </div>
 </template>
 <script>
