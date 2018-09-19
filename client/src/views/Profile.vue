@@ -178,6 +178,21 @@ export default {
         case 15:
           level = 15;
           break;
+        case 16:
+          level = 16;
+          break;
+        case 17:
+          level = 17;
+          break;
+        case 18:
+          level = 18;
+          break;
+        case 19:
+          level = 19;
+          break;
+        case 20:
+          level = 20;
+          break;
       }
       return level;
     }
