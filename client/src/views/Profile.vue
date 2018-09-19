@@ -95,6 +95,7 @@ import GoalDetail from "@/components/GoalDetail.vue";
 import Posts from "@/components/Posts.vue";
 import modal from "@/components/MakePost.vue";
 import { bus } from "../index.js";
+
 export default {
   name: "profile",
   data() {
