@@ -27,7 +27,7 @@ server.use(bp.urlencoded({
 let feed = require('./server-assets/routes/feed-routes')
 server.use('/api/feed', feed)
 let feedComments = require('./server-assets/routes/feedComments-routes')
-server.unsubscribe('api/feed/comments', feedComments)
+server.use('/api/feed/comments', feedComments)
 
 //REGISTER YOUR AUTH ROUTES BEFORE YOUR GATEKEEPER, OTHERWISE YOU WILL NEVER GET LOGGED IN
 let auth = require('./server-assets/auth/routes')

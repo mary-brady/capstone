@@ -2,8 +2,8 @@ let router = require('express').Router()
 let Comments = require('../models/Comments')
 
 //GET ALL
-router.get('/', (req, res, next) => {
-    Comments.find({})
+router.get('/:postId', (req, res, next) => {
+    Comments.find({ postId: req.params.postId })
         .then(post => {
             res.send(post)
         })
