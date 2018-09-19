@@ -15,13 +15,14 @@
             <div>
              <p class="card-text"> <small class="text-muted"><strong>Created</strong>: {{post.created}} | <span class="clickable" @click="deletePost(post)"><i class="far fa-trash-alt"></i></span></small></p>
             </div>
-                </div>
-            
-                </div>
+            </div>
+              <Comment :postId="post._id" />
+            </div>
         </div>
 </div>
 </template>
 <script>
+import Comment from "@/components/Comment.vue";
 export default {
   name: "posts",
   props: ["userId"],
@@ -36,6 +37,9 @@ export default {
       }
       this.$store.dispatch("deletePost", post);
     }
+  },
+  components: {
+    Comment
   }
 };
 </script>

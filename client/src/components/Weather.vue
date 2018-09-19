@@ -7,12 +7,7 @@
         <div class="col-12">
             <h1>{{temp}}&#176;F</h1>
         </div>
-        <div class="col-12">
-            <div class="row">
-                <div class="col-6"> <p>MinTemp: {{minTemp}}&#176;F</p>  </div>
-                <div class="col-6"> <p>MaxTemp: {{maxTemp}}&#176;F</p> </div>
-            </div>
-        </div>
+        
         <div class="col-12">
             <p>{{weather.weather[0].description}}</p>
         </div>
@@ -32,14 +27,6 @@ export default {
     temp() {
       let temperature = Math.floor(9 / 5 * (this.weather.main.temp - 273) + 32);
       return temperature;
-    },
-    minTemp() {
-      let tempMin = Math.floor(9 / 5 * (this.weather.main.temp_min - 273) + 32);
-      return tempMin;
-    },
-    maxTemp() {
-      let tempMax = Math.floor(9 / 5 * (this.weather.main.temp_max - 273) + 32);
-      return tempMax;
     }
   }
 };

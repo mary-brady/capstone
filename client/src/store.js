@@ -45,7 +45,9 @@ export default new Vuex.Store({
     quotes: [],
     workouts: [],
     strengthExercises: [],
-    cardioExercises: []
+    cardioExercises: [],
+    comments: {},
+    feedComments: {}
   },
   mutations: {
     setUser(state, user) {
@@ -80,6 +82,12 @@ export default new Vuex.Store({
     },
     setStrengthGoals(state, data) {
       state.strengthGoals = data
+    },
+    setComments(state, data) {
+      Vue.set(state.comments, data.postId, data.comments);
+    },
+    setFeedComments(state, data) {
+      Vue.set(state.feedComments, data.postId, data.comments);
     },
     setPosts(state, posts) {
       state.posts = posts.sort((a, b) => {
@@ -367,6 +375,32 @@ export default new Vuex.Store({
           dispatch('getFeed')
         })
     },
+    //Comments
+    deleteComment({ dispatch }, commentData) {
+      api.delete('comments/' + commentData._id)
+        .then(res => {
+          dispatch('getComments', commentData.postId)
+        })
+    },
+    editUp({ dispatch }, commentData) {
+      api.put('comments/' + commentData.commentId, { numUp: commentData.num })
+        .then(res => {
+          dispatch('getComments', commentData.postId)
+        })
+    },
+    editDown({ dispatch }, commentData) {
+      api.put('comments/' + commentData.commentId, { numDown: commentData.num })
+        .then(res => {
+          dispatch('getComments', commentData.postId)
+        })
+    },
+    getComments({ commit }, postId) {
+      api.get('comments/post/' + postId)
+        .then(res => {
+          commit('setComments', { postId, comments: res.data })
+        })
+    },
+
     //Weather
     getWeather({ commit }) {
       weatherApi.get("")
