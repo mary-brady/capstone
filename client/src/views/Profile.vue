@@ -94,6 +94,7 @@ import ProfileEdit from "@/components/ProfileEdit.vue";
 import GoalDetail from "@/components/GoalDetail.vue";
 import Posts from "@/components/Posts.vue";
 import modal from "@/components/MakePost.vue";
+
 import { bus } from "../index.js";
 export default {
   name: "profile",
@@ -161,6 +162,36 @@ export default {
           break;
         case 10:
           level = 10;
+          break;
+        case 11:
+          level = 11;
+          break;
+        case 12:
+          level = 12;
+          break;
+        case 13:
+          level = 13;
+          break;
+        case 14:
+          level = 14;
+          break;
+        case 15:
+          level = 15;
+          break;
+        case 16:
+          level = 16;
+          break;
+        case 17:
+          level = 17;
+          break;
+        case 18:
+          level = 18;
+          break;
+        case 19:
+          level = 19;
+          break;
+        case 20:
+          level = 20;
           break;
       }
       return level;
