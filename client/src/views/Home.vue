@@ -7,7 +7,7 @@
       <div class="col-6">
         <img src="../assets/knight6.png" class="img-fluid" alt="health tracker logo">
       </div>
-      <div>
+      <div class="col-12">
         <h2 class="mb-5" v-if="quotes.length">"{{quote.quote}}"</h2>
       </div>
     </div>
@@ -33,8 +33,7 @@
                 <h3 class="font-size">Health Tip</h3>
               </div>
               <div class="col-12">
-                <!-- <Tips/> -->
-                <!-- {{tips[Math.floor(Math.random() * tips.length)]}} -->
+                <Tips />
               </div>
             </div>
           </div>
