@@ -55,7 +55,7 @@
                 </div>
               </div>
             </div>
-        <div class="col-12">
+        <div class="col-12 mb-4 mt-4">
           <div class="row">
             <div class="col-12">
               <div class="row">
