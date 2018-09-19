@@ -26,6 +26,8 @@ server.use(bp.urlencoded({
 
 let feed = require('./server-assets/routes/feed-routes')
 server.use('/api/feed', feed)
+let feedComments = require('./server-assets/routes/feedComments-routes')
+server.use('/api/feed/comments', feedComments)
 
 //REGISTER YOUR AUTH ROUTES BEFORE YOUR GATEKEEPER, OTHERWISE YOU WILL NEVER GET LOGGED IN
 let auth = require('./server-assets/auth/routes')
@@ -79,6 +81,9 @@ server.use('/api/strength', strengthRoutes)
 
 let quoteRoutes = require('./server-assets/routes/quote-routes')
 server.use('/api/quotes', quoteRoutes)
+
+let comments = require('./server-assets/routes/comments-routes')
+server.use('api/comments', comments)
 
 //Catch all
 server.get('*', (req, res, next) => {
