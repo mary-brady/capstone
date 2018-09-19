@@ -33,8 +33,7 @@
                 <h3 class="font-size">Health Tip</h3>
               </div>
               <div class="col-12">
-                <!-- <Tips/> -->
-                <!-- {{tips[Math.floor(Math.random() * tips.length)]}} -->
+                <Tips />
               </div>
             </div>
           </div>
