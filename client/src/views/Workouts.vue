@@ -20,9 +20,14 @@
     </div>
 </template>
 <script>
+import CardioExercise from "@/components/CardioExercise.vue";
+import StrengthExercise from "@/components/StrengthExercise.vue";
 export default {
   name: "workouts",
-  components: {}
+  components: {
+    StrengthExercise,
+    CardioExercise
+  }
 };
 </script>
 <style scoped>

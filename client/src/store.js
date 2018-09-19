@@ -42,7 +42,8 @@ export default new Vuex.Store({
     feed: [],
     tips: [],
     weather: {},
-    quotes: []
+    quotes: [],
+    workouts: {}
   },
   mutations: {
     setUser(state, user) {
