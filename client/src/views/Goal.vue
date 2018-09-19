@@ -16,18 +16,6 @@
           <a class="dropdown-item" href="#" @click="strength = !strength">Strength</a>
         </div>
       </div>
-      <!-- 
-            <div class="dropdown col-sm-4 mb-5">
-                <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false">
-                    Progress Charts
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#" @click="weightChart = !weightChart">Weight Chart</a>
-                    <a class="dropdown-item" href="#" @click="enduranceChart = !enduranceChart">Endurance Chart</a>
-                    <a class="dropdown-item" href="#" @click="strengthChart = !strengthChart">Strength Chart</a>
-                </div>
-            </div> -->
     </div>
     <div class="row">
       <div class="col-sm-3 offset-lg-2 text-justify text-left">
@@ -49,11 +37,7 @@
             <div class="form-group">
               <input type="text" placeholder="Weight Goal Title" v-model="weightGoal.title" class="form-control mb-1 mt-1">
               <input type="text" placeholder="Weight Goal Description" v-model="weightGoal.description" class="form-control mb-1 mt-1">
-<<<<<<< HEAD
-              <button type="submit" class="btn btn-success mb-1 mt-1">Add Goal</button>
-=======
               <button type="submit" class="btn btn-success mb-1 mt-1" @click="editXpAddGoal">Add Goal</button>
->>>>>>> 822a81632d23058e44a286d3148377e8014b274d
               <button type="button" class="btn btn-info" @click="weight = !weight">Close</button>
             </div>
           </form>
@@ -110,22 +94,6 @@
         </div>
       </div>
     </div>
-    <!-- <h3>Weight Goal:</h3>
-      
-      <h3>Endurance Goal:</h3>
-      <form @submit.prevent="addEnduranceGoal" class="col-12 d-flex justify-content-center mb-5">
-        <div class="form-group">
-          <input type="text"  placeholder="Goal Description" class="form-control mb-1 mt-1">
-          <button type="submit" class="btn btn-success mb-1 mt-1">Add Goal</button>
-        </div>
-      </form>
-      <h3>Strength Goal:</h3>
-      <form @submit.prevent="addStrengthGoal" class="col-12 d-flex justify-content-center">
-        <div class="form-group">
-          <input type="text"  placeholder="Goal Description" class="form-control mb-1 mt-1">
-          <button type="submit" class="btn btn-success mb-1 mt-1">Add Goal</button>
-        </div>
-      </form> -->
 
     <GoalDetail />
   </div>
