@@ -389,6 +389,14 @@ export default new Vuex.Store({
           commit('setWorkouts', res.data)
           console.log('getworkouts :', res.data)
         })
+    },
+    addWorkout({ commit, dispatch }, workoutData) {
+      debugger
+      api.post('workouts/', workoutData.workoutData)
+        .then(res => {
+          console.log(workoutData)
+          dispatch('getWorkouts')
+        })
     }
   },
   getters: {
