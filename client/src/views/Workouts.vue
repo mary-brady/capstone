@@ -10,9 +10,12 @@
         <p class="card-text">
           {{workout.description}}
         </p>
-        <ul>
-          <li v-if="(workout.strength.length > 0)">{{workout.strength}}</li>
-          <li v-if="(workout.cardio.length > 0)">{{workout.cardio}}</li>
+        <ul v-for="strength in workout.strength" :key="strength._id">
+          <li>{{strength.title}}</li>
+        </ul>
+        <hr />
+        <ul v-for="cardio in workout.cardio" :key="cardio._id">
+          <li>{{cardio.title}}</li>
         </ul>
       </div>
       <button class="btn btn-primary">Strength Exercises</button>
