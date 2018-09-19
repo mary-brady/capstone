@@ -49,7 +49,11 @@
             <div class="form-group">
               <input type="text" placeholder="Weight Goal Title" v-model="weightGoal.title" class="form-control mb-1 mt-1">
               <input type="text" placeholder="Weight Goal Description" v-model="weightGoal.description" class="form-control mb-1 mt-1">
+<<<<<<< HEAD
               <button type="submit" class="btn btn-success mb-1 mt-1">Add Goal</button>
+=======
+              <button type="submit" class="btn btn-success mb-1 mt-1" @click="editXpAddGoal">Add Goal</button>
+>>>>>>> 822a81632d23058e44a286d3148377e8014b274d
               <button type="button" class="btn btn-info" @click="weight = !weight">Close</button>
             </div>
           </form>
@@ -74,8 +78,8 @@
             <div class="form-group">
               <input type="text" placeholder="Endurance Goal Title" v-model="enduranceGoal.title" class="form-control mb-1 mt-1">
               <input type="text" placeholder="Endurance Goal Description" v-model="enduranceGoal.description" class="form-control mb-1 mt-1">
-              <button type="submit" class="btn btn-success mb-1 mt-1">Add Goal</button>
-              <button class="btn btn-info" @click="endurance = !endurance">Close</button>
+              <button type="submit" class="btn btn-success mb-1 mt-1" @click="editXpAddGoal">Add Goal</button>
+              <button type="button" class="btn btn-info" @click="endurance = !endurance">Close</button>
             </div>
           </form>
         </div>
@@ -99,8 +103,8 @@
             <div class="form-group">
               <input type="text" placeholder="Strength Goal Title" v-model="strengthGoal.title" class="form-control mb-1 mt-1">
               <input type="text" placeholder="Strength Goal Description" v-model="strengthGoal.description" class="form-control mb-1 mt-1">
-              <button type="submit" class="btn btn-success mb-1 mt-1">Add Goal</button>
-              <button class="btn btn-info" @click="strength = !strength">Close</button>
+              <button type="submit" class="btn btn-success mb-1 mt-1" @click="editXpAddGoal">Add Goal</button>
+              <button type="button" class="btn btn-info" @click="strength = !strength">Close</button>
             </div>
           </form>
         </div>
@@ -199,18 +203,21 @@
         this.weightGoal.created = Date.now();
         this.weightGoal.completed = false;
         this.$store.dispatch("addWeightGoal", this.weightGoal);
+        this.editXpAddGoal;
       },
       addEnduranceGoal() {
         this.enduranceGoal.authorId = this.user._id;
         this.enduranceGoal.created = Date.now();
         this.enduranceGoal.completed = false;
         this.$store.dispatch("addEnduranceGoal", this.enduranceGoal);
+        this.editXpAddGoal;
       },
       addStrengthGoal() {
         this.strengthGoal.authorId = this.user._id;
         this.strengthGoal.created = Date.now();
         this.strengthGoal.completed = false;
         this.$store.dispatch("addStrengthGoal", this.strengthGoal);
+        this.editXpAddGoal;
       },
       deleteWeightGoal(id) {
         this.$store.dispatch("deleteWeightGoal", id);
@@ -246,6 +253,13 @@
           xp: points
         });
       },
+      editXpAddGoal() {
+        let points = this.$store.state.user.xp + 2;
+        this.$store.dispatch("updateXp", {
+          userId: this.user._id,
+          xp: points
+        });
+      }
     },
     components: {
       GoalDetail
