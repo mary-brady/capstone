@@ -82,8 +82,8 @@ server.use('/api/strength', strengthRoutes)
 let quoteRoutes = require('./server-assets/routes/quote-routes')
 server.use('/api/quotes', quoteRoutes)
 
-let comments = require('./server-assets/routes/comments-routes')
-server.use('api/comments', comments)
+let commentRoutes = require('./server-assets/routes/comments-routes')
+server.use('/api/comments', commentRoutes)
 
 //Catch all
 server.get('*', (req, res, next) => {

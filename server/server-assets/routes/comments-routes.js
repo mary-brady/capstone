@@ -35,6 +35,16 @@ router.get('/:id', (req, res, next) => {
             next()
         })
 })
+router.get('/post/:id', (req, res, next) => {
+    Comments.find({ postId: req.params.id })
+        .then(comment => {
+            res.send(comment)
+        })
+        .catch(err => {
+            res.status(400).send(err)
+            next()
+        })
+})
 
 //GET ONE
 router.get('/:id', (req, res, next) => {
