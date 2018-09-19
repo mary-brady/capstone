@@ -42,7 +42,10 @@ export default new Vuex.Store({
     feed: [],
     tips: [],
     weather: {},
-    quotes: []
+    quotes: [],
+    workouts: [],
+    strengthExercises: [],
+    cardioExercises: []
   },
   mutations: {
     setUser(state, user) {
@@ -116,6 +119,9 @@ export default new Vuex.Store({
     },
     setQuotes(state, data) {
       state.quotes = data
+    },
+    setWorkouts(state, data) {
+      state.workouts = data
     }
   },
   actions: {
@@ -373,6 +379,15 @@ export default new Vuex.Store({
       api.get('quotes')
         .then(res => {
           commit('setQuotes', res.data)
+        })
+    },
+
+    //Workouts & Exercises
+    getWorkouts({ commit }) {
+      api.get('workouts/')
+        .then(res => {
+          commit('setWorkouts', res.data)
+          console.log('getworkouts :', res.data)
         })
     }
   },

@@ -1,7 +1,5 @@
 let router = require('express').Router()
 let Workouts = require('../models/Workout')
-let strengthExercise = require('../models/StrengthExercise')
-let cardioExercise = require('../models/CardioExercise')
 
 //Edit Workout
 router.put('/:id', (req, res, next) => {

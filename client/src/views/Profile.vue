@@ -119,6 +119,7 @@ import modal from "@/components/MakePost.vue";
 import Weather from "@/components/Weather.vue";
 
 import { bus } from "../index.js";
+
 export default {
   name: "profile",
   data() {
