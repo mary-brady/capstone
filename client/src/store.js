@@ -130,6 +130,12 @@ export default new Vuex.Store({
     },
     setWorkouts(state, data) {
       state.workouts = data
+    },
+    setStrengthEx(state, data) {
+      state.strengthExercises = data
+    },
+    setCardioEx(state, data) {
+      state.cardioExercises = data
     }
   },
   actions: {
@@ -422,6 +428,26 @@ export default new Vuex.Store({
         .then(res => {
           commit('setWorkouts', res.data)
           console.log('getworkouts :', res.data)
+        })
+    },
+    addWorkout({ dispatch }, workoutData) {
+      api.post('workouts/', workoutData.workoutData)
+        .then(res => {
+          dispatch('getWorkouts')
+        })
+    },
+    getStrengthEx({ commit }) {
+      api.get('strength-exercise')
+        .then(res => {
+          commit('setStrengthEx', res.data)
+          console.log('strengthEx: ', res.data)
+        })
+    },
+    getCardioEx({ commit }) {
+      api.get('cardio-exercise')
+        .then(res => {
+          commit('setCardioEx', res.data)
+          console.log('cardioEx: ', res.data)
         })
     }
   },
