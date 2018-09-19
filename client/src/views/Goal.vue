@@ -1,6 +1,8 @@
 <template>
   <div class="container-fluid mt-4">
-    {{quotes[Math.floor(Math.random() * quotes.length)].quote}}
+    <div>
+      <h2 v-if="quotes.length">{{quote.quote}}</h2>
+    </div>
     <h1>{{user.name}}'s Goals</h1>
     <div class="row">
       <div class="dropdown offset-sm-4 col-sm-4 mb-5 mt-3">
@@ -48,7 +50,7 @@
               <input type="text" placeholder="Weight Goal Title" v-model="weightGoal.title" class="form-control mb-1 mt-1">
               <input type="text" placeholder="Weight Goal Description" v-model="weightGoal.description" class="form-control mb-1 mt-1">
               <button type="submit" class="btn btn-success mb-1 mt-1">Add Goal</button>
-              <button class="btn btn-info" @click="weight = !weight">Close</button>
+              <button type="button" class="btn btn-info" @click="weight = !weight">Close</button>
             </div>
           </form>
 
@@ -134,6 +136,7 @@
         weight: false,
         endurance: false,
         strength: false,
+        quote: {},
         weightGoal: {
           title: "",
           description: "",
@@ -182,10 +185,15 @@
         return this.$store.state.strengthGoals;
       },
       quotes() {
+        this.setQuote(this.$store.state.quotes)
         return this.$store.state.quotes;
-      }
+      },
     },
     methods: {
+      setQuote(quotes) {
+        let i = Math.floor(Math.random() * quotes.length)
+        this.quote = quotes[i]
+      },
       addWeightGoal() {
         this.weightGoal.authorId = this.user._id;
         this.weightGoal.created = Date.now();
