@@ -1,13 +1,13 @@
 <template>
     <div id="workouts" class="container-fluid">
       <h1>WELCOME TO WORKOUT TOWN</h1>
-      <div class="card border-primary mb-3" style="max-width: 20rem">
+      <div class="card border-primary mb-3" style="max-width: 20rem" v-for="workout in workouts" :key="workout._id">
         <div class="card-header">
           Workouts?
         </div>
-        <h4 class="card-title">{{workouts.title}}</h4>
+        <h4 class="card-title">{{workout.title}}</h4>
         <p class="card-text">
-          {{workouts.description}}
+          {{workout.description}}
         </p>
       </div>
       <button class="btn btn-primary">Strength Exercises</button>
@@ -27,7 +27,8 @@ export default {
     return {
       newWorkout: {
         title: "",
-        description: ""
+        description: "",
+        authorId: this.user._id
       }
     };
   },
