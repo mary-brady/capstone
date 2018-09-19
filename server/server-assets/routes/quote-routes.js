@@ -30,9 +30,9 @@ router.post('/', (req, res, next) => {
 router.delete('/:id', (req, res, next) => {
   Quote.findById(req.params.id)
     .then(quote => {
-      if (!quote.authorId.equals(req.session.uid)) {
-        return res.status(401).send("Not authorized")
-      }
+      // if (!quote.authorId.equals(req.session.uid)) {
+      //   return res.status(401).send("Not authorized")
+      // }
       Quote.findByIdAndRemove(req.params.id)
         .then(quote => {
           res.send('Delorted!')
