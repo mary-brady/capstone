@@ -3,17 +3,12 @@
       <h1>WELCOME TO WORKOUT TOWN</h1>
       <div class="card border-primary mb-3" style="max-width: 20rem">
         <div class="card-header">
-          Workouts
+          Workouts?
         </div>
-        <h4 class="card-title">Workout Title Here</h4>
+        <h4 class="card-title">{{workouts.title}}</h4>
         <p class="card-text">
-          Blahblahblah
+          {{workouts.description}}
         </p>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">Test</li>
-          <li class="list-group-item">Testing</li>
-          <li class="list-group-item">1 2 3</li>
-        </ul>
       </div>
       <button class="btn btn-primary">Strength Exercises</button>
       <button class="btn btn-secondary">Cardio Exercises</button>
@@ -27,6 +22,25 @@ export default {
   components: {
     StrengthExercise,
     CardioExercise
+  },
+  data() {
+    return {
+      newWorkout: {
+        title: "",
+        description: ""
+      }
+    };
+  },
+  mounted() {
+    this.$store.dispatch("getWorkouts");
+  },
+  computed: {
+    workouts() {
+      return this.$store.state.workouts;
+    },
+    user() {
+      return this.$store.state.user;
+    }
   }
 };
 </script>
