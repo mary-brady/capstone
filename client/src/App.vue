@@ -2,7 +2,7 @@
   <div id="app">
     <div id="nav">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="/#/"><strong>Y O F T</strong></a>
+  <a class="navbar-brand pr-3" href="/#/"><strong>Y O F T</strong></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -58,5 +58,8 @@ a {
   font-weight: bold;
   color: #ffffff;
   font-family: "Oldenburg", cursive;
+}
+.navbar-brand {
+  font-size: x-large;
 }
 </style>
