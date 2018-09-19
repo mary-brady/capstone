@@ -7,9 +7,9 @@
         Progress Charts
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="#" @click="setChart('weight')">Weight Chart</a>
-        <a class="dropdown-item" href="#" @click="setChart('endurance')">Endurance Chart</a>
-        <a class="dropdown-item" href="#" @click="setChart('strength')">Strength Chart</a>
+        <a class="dropdown-item" @click="setChart('weight')">Weight Chart</a>
+        <a class="dropdown-item" @click="setChart('endurance')">Endurance Chart</a>
+        <a class="dropdown-item" @click="setChart('strength')">Strength Chart</a>
       </div>
     </div>
     <div v-show="enduranceChart">

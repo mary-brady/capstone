@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid mt-4">
     <div>
-      <h2 v-if="quotes.length">{{quote.quote}}</h2>
+      <h2 v-if="quotes.length">"{{quote.quote}}"</h2>
     </div>
     <h1>{{user.name}}'s Goals</h1>
     <div class="row">
@@ -11,9 +11,9 @@
           Goal Type
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="#" @click="weight = !weight">Weight Loss/Gain</a>
-          <a class="dropdown-item" href="#" @click="endurance = !endurance">Endurance</a>
-          <a class="dropdown-item" href="#" @click="strength = !strength">Strength</a>
+          <a class="dropdown-item" @click="weight = !weight">Weight Loss/Gain</a>
+          <a class="dropdown-item" @click="endurance = !endurance">Endurance</a>
+          <a class="dropdown-item" @click="strength = !strength">Strength</a>
         </div>
       </div>
     </div>
