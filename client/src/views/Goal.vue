@@ -203,8 +203,10 @@
         </div>
       </div>
     </div>
-    <div>
-      <GoalDetail />
+    <div class="row">
+      <div class="col-6 offset-3">
+        <GoalDetail />
+      </div>
     </div>
   </div>
 </template>
