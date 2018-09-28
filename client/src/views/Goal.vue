@@ -68,7 +68,7 @@
           </form>
         </div>
       </div>
-      <div class="col-sm-3 text-justify">
+      <!-- <div class="col-sm-3 text-justify">
 
         <h1>Strength Goals</h1>
         <div v-for="sGoal in strengthGoals">
@@ -92,10 +92,68 @@
             </div>
           </form>
         </div>
+      </div> -->
+      <div class="col-sm-3">
+        <h1>Strength Goals</h1>
+        <div v-if="strength">
+          <form @submit.prevent="addStrengthGoal" class="col d-flex justify-content-center">
+            <div class="form-group">
+              <input type="text" placeholder="Strength Goal Title" v-model="strengthGoal.title" class="form-control mb-1 mt-1">
+              <input type="text" placeholder="Strength Goal Description" v-model="strengthGoal.description" class="form-control mb-1 mt-1">
+              <button type="submit" class="btn btn-success mb-1 mt-1" @click="editXpAddGoal">Add Goal</button>
+              <button type="button" class="btn btn-info" @click="strength = !strength">Close</button>
+            </div>
+          </form>
+        </div>
+        <div v-for="sGoal in strengthGoals" :key="sGoal._id" class="">
+          <div class="card border-info">
+            <div v-if="!sGoal.completed">
+              <div class="card-header bg-light-blue">
+                <i class="fas fa-check-circle green float-right fa-2x" @click="editStrengthGoal(sGoal)"></i>
+                <h3 class="font-size">{{sGoal.title}}</h3>
+              </div>
+              <div class="card-body font-size">
+                <p>{{sGoal.description}}</p>
+              </div>
+              <!-- {{sGoal.title}} - {{sGoal.description}} -->
+              <!-- <i class="fas fa-times red" @click="deleteStrengthGoal(sGoal._id)" title="Delete"></i> -->
+            </div>
+            <div v-else>
+              <!-- <strike> {{sGoal.title}} - {{sGoal.description}} </strike> -->
+              <!-- <i class="fas fa-times red" @click="deleteStrengthGoal(sGoal._id)" title="Delete"></i>  -->
+              <div class="card-header bg-light-blue">
+
+                <span id="xp" class="ml-2 float-right">
+                  <h3>+10xp</h3>
+                </span>
+                <strike>
+                  <h3 class="font-size">{{sGoal.title}}</h3>
+                </strike>
+
+              </div>
+              <div class="card-body font-size">
+                <strike>
+                  <p>{{sGoal.description}}</p>
+                </strike>
+              </div>
+            </div>
+            <!-- <div class="card-header bg-light-blue">
+              <h3 class="font-size">{{sGoal.title}}</h3>
+            </div>
+            <div class="card-body ">
+              <p>{{sGoal.description}}</p>
+            </div> -->
+            <div>
+              <p class="card-text"> <small class="text-muted"><strong>Created</strong>: {{sGoal.created}} | <span class="clickable"
+                    @click="deleteStrengthGoal(sGoal._id)"><i class="far fa-trash-alt"></i></span></small></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <GoalDetail />
       </div>
     </div>
-
-    <GoalDetail />
   </div>
 </template>
 
@@ -240,6 +298,10 @@
     font-weight: 700;
   }
 
+  h3 {
+    font-weight: 700;
+  }
+
   .red {
     /* font-size: 500px; */
     color: #8b0000;
@@ -264,5 +326,9 @@
 
   #xp {
     color: green
+  }
+
+  .font-size {
+    font-family: "Oldenburg", cursive;
   }
 </style>

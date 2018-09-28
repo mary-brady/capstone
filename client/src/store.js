@@ -81,7 +81,19 @@ export default new Vuex.Store({
       state.enduranceGoals = data
     },
     setStrengthGoals(state, data) {
-      state.strengthGoals = data
+      state.strengthGoals = data.sort((a, b) => {
+        let dateOne = Date.parse(a.created)
+        let dateTwo = Date.parse(b.created)
+        if (dateOne < dateTwo) {
+          return 1
+        } else if (dateOne > dateTwo) {
+          return -1
+        }
+        return 0
+      })
+      state.strengthGoals.forEach(strengthGoals => {
+        strengthGoals.created = new Date(strengthGoals.created).toDateString()
+      })
     },
     setComments(state, data) {
       Vue.set(state.comments, data.postId, data.comments);
