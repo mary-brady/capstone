@@ -8,7 +8,7 @@ let schema = new Schema({
     authorId: { type: ObjectId, ref: 'User', required: true },
     time: { type: Number, required: true },
     created: { type: Date, default: Date.now(), required: true }, // this is being set in post route
-    description: { type: String, },
+    description: { type: String, }
 
 })
 

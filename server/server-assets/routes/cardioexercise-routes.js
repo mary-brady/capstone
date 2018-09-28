@@ -52,6 +52,7 @@ router.get('/by-workout/:id', (req, res, next) => {
 
 //get one exercise
 router.get('/:id', (req, res, next) => {
+    req.body.authorId = req.session.uid
     CardioEx.findById(req.params.id)
         .then(ex => {
             res.send(ex)
