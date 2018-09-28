@@ -59,7 +59,7 @@
               </div>
               <div>
                 <p class="card-text"> <small class="text-muted"><strong>Created</strong>: {{wGoal.created}} | <span class="clickable"
-                      @click="deleteWeightGoal(sGoal._id)"><i class="far fa-trash-alt"></i></span></small></p>
+                      @click="deleteWeightGoal(wGoal._id)"><i class="far fa-trash-alt"></i></span></small></p>
               </div>
             </div>
           </div>
