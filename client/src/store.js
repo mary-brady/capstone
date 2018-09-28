@@ -388,6 +388,12 @@ export default new Vuex.Store({
           dispatch('getComments', commentData.postId)
         })
     },
+    addComment({ dispatch }, commentData) {
+      api.post('comments/', commentData.comment)
+        .then(res => {
+          dispatch('getComments', commentData.postId)
+        })
+    },
     editUp({ dispatch }, commentData) {
       api.put('comments/' + commentData.commentId, { numUp: commentData.num })
         .then(res => {

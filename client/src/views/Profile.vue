@@ -100,7 +100,7 @@
             </div>
             <div class="col-3"> <button class="btn btn-success" @click="switchComponents('ProfileEdit')" :disabled="currentComp === 'ProfileEdit'">EditProfile</button></div>
             <div class="col-12 mb-2 mt-2">
-              <component id="profile" :is="currentComp" :userId="user._id"></component>
+              <component id="profile" :is="currentComp" :userId="user._id" :username="user.username"></component>
             </div> 
           </div>
         </div>
