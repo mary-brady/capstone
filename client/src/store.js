@@ -75,13 +75,49 @@ export default new Vuex.Store({
       state.strength = strength;
     },
     setWeightGoals(state, data) {
-      state.weightGoals = data
+      state.weightGoals = data.sort((a, b) => {
+        let dateOne = Date.parse(a.created)
+        let dateTwo = Date.parse(b.created)
+        if (dateOne < dateTwo) {
+          return 1
+        } else if (dateOne > dateTwo) {
+          return -1
+        }
+        return 0
+      })
+      state.weightGoals.forEach(weightGoals => {
+        weightGoals.created = new Date(weightGoals.created).toDateString()
+      })
     },
     setEnduranceGoals(state, data) {
-      state.enduranceGoals = data
+      state.enduranceGoals = data.sort((a, b) => {
+        let dateOne = Date.parse(a.created)
+        let dateTwo = Date.parse(b.created)
+        if (dateOne < dateTwo) {
+          return 1
+        } else if (dateOne > dateTwo) {
+          return -1
+        }
+        return 0
+      })
+      state.enduranceGoals.forEach(enduranceGoals => {
+        enduranceGoals.created = new Date(enduranceGoals.created).toDateString()
+      })
     },
     setStrengthGoals(state, data) {
-      state.strengthGoals = data
+      state.strengthGoals = data.sort((a, b) => {
+        let dateOne = Date.parse(a.created)
+        let dateTwo = Date.parse(b.created)
+        if (dateOne < dateTwo) {
+          return 1
+        } else if (dateOne > dateTwo) {
+          return -1
+        }
+        return 0
+      })
+      state.strengthGoals.forEach(strengthGoals => {
+        strengthGoals.created = new Date(strengthGoals.created).toDateString()
+      })
     },
     setComments(state, data) {
       Vue.set(state.comments, data.postId, data.comments);
@@ -384,6 +420,12 @@ export default new Vuex.Store({
     //Comments
     deleteComment({ dispatch }, commentData) {
       api.delete('comments/' + commentData._id)
+        .then(res => {
+          dispatch('getComments', commentData.postId)
+        })
+    },
+    addComment({ dispatch }, commentData) {
+      api.post('comments/', commentData.comment)
         .then(res => {
           dispatch('getComments', commentData.postId)
         })

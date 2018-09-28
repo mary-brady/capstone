@@ -13,10 +13,26 @@
                 <p>{{post.description}}</p>
             </div>
             <div>
-             <p class="card-text"> <small class="text-muted"><strong>Created</strong>: {{post.created}} | <span class="clickable" @click="deletePost(post)"><i class="far fa-trash-alt"></i></span></small></p>
+             <div class="card-text">
+               <small class="text-muted">
+                 <p><span @click="commentVisible(post._id)" class="clickable">See Comments</span> |
+                 <span @click="commentEditVisible(post._id)" class="clickable">Make A Comment?</span>
+                 </p>
+                <p><strong>Created</strong>: {{post.created}} | 
+                <span class="clickable" @click="deletePost(post)"><i class="far fa-trash-alt"></i>
+                </span></p>
+                
+                </small>
+              </div>
+            </div>
+            <div v-if="commentEdit == post._id">
+              <form @submit.prevent="makeComment(post._id)">
+                <input class="form-control" type="text" placeholder="This Is SOOOOOO Great" v-model="description"/>
+                <button type="submit" class="btn">Sumbit</button>
+              </form>
             </div>
             </div>
-              <Comment :postId="post._id" />
+              <Comment v-if="commentsVisible == post._id" :postId="post._id" />
             </div>
         </div>
 </div>
@@ -25,7 +41,14 @@
 import Comment from "@/components/Comment.vue";
 export default {
   name: "posts",
-  props: ["userId"],
+  data() {
+    return {
+      description: "",
+      commentEdit: "",
+      commentsVisible: ""
+    };
+  },
+  props: ["userId", "username"],
   computed: {
     posts() {
       return this.$store.state.posts;
@@ -36,6 +59,32 @@ export default {
       if (post.authorId == this.userId) {
       }
       this.$store.dispatch("deletePost", post);
+    },
+    commentEditVisible(postId) {
+      if (postId != this.commentEdit) {
+        this.commentEdit = postId;
+      } else {
+        this.commentEdit = "";
+      }
+    },
+    commentVisible(postId) {
+      if (postId != this.commentsVisible) {
+        this.commentsVisible = postId;
+      } else {
+        this.commentsVisible = "";
+      }
+    },
+    makeComment(postId) {
+      debugger;
+      this.$store.dispatch("addComment", {
+        postId: postId,
+        comment: {
+          postId: postId,
+          description: this.description,
+          author: this.username
+        }
+      });
+      this.description = "";
     }
   },
   components: {

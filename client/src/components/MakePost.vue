@@ -11,7 +11,7 @@
         <div class="modal-body">
         <slot class="body">
             <div class="mw">
-             <form @submit.prevent="addPost">
+             <form class="form-inline" @submit.prevent="addPost">
                <div class="form-group">
                  <input type="text" class="form-control mt-1 mb-1" v-model="newPost.title" placeholder="Delicious Cucumber"/>
                   <textarea type="text" class="form-control mt-1 mb-1" v-model="newPost.description" placeholder="I ate A Ton Of Cucumbers"></textarea>
