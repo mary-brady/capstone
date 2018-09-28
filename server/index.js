@@ -3,6 +3,7 @@ var bp = require('body-parser')
 var server = express()
 var cors = require('cors')
 var port = process.env.PORT || 3000
+server.use(express.static(__dirname + '/../client/dist'))
 
 var whitelist = ['http://localhost:8080', 'https://yoft.heroku.com'];
 var corsOptions = {
@@ -13,7 +14,7 @@ var corsOptions = {
     credentials: true
 };
 server.use(cors(corsOptions))
-server.use(express.static(__dirname + '/../client/dist'))
+
 
 //Fire up database connection
 require('./server-assets/db/mlab-config')
