@@ -20,7 +20,7 @@ let auth = Axios.create({
 })
 
 let weatherApi = Axios.create({
-  baseURL: "http://api.openweathermap.org/data/2.5/weather?q=boise&&APPID=bd82255fd0a21fa1238699b9eda2ee35",
+  baseURL: "https://api.openweathermap.org/data/2.5/weather?q=boise&&APPID=bd82255fd0a21fa1238699b9eda2ee35",
   timeout: 3000,
 })
 
