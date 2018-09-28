@@ -115,21 +115,15 @@
               <div class="card-body font-size">
                 <p>{{sGoal.description}}</p>
               </div>
-              <!-- {{sGoal.title}} - {{sGoal.description}} -->
-              <!-- <i class="fas fa-times red" @click="deleteStrengthGoal(sGoal._id)" title="Delete"></i> -->
             </div>
             <div v-else>
-              <!-- <strike> {{sGoal.title}} - {{sGoal.description}} </strike> -->
-              <!-- <i class="fas fa-times red" @click="deleteStrengthGoal(sGoal._id)" title="Delete"></i>  -->
               <div class="card-header bg-light-blue">
-
                 <span id="xp" class="ml-2 float-right">
                   <h3>+10xp</h3>
                 </span>
                 <strike>
                   <h3 class="font-size">{{sGoal.title}}</h3>
                 </strike>
-
               </div>
               <div class="card-body font-size">
                 <strike>
@@ -137,12 +131,6 @@
                 </strike>
               </div>
             </div>
-            <!-- <div class="card-header bg-light-blue">
-              <h3 class="font-size">{{sGoal.title}}</h3>
-            </div>
-            <div class="card-body ">
-              <p>{{sGoal.description}}</p>
-            </div> -->
             <div>
               <p class="card-text"> <small class="text-muted"><strong>Created</strong>: {{sGoal.created}} | <span class="clickable"
                     @click="deleteStrengthGoal(sGoal._id)"><i class="far fa-trash-alt"></i></span></small></p>
