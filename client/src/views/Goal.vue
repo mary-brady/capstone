@@ -35,7 +35,7 @@
             <div class="card border-info">
               <div v-if="!wGoal.completed">
                 <div class="card-header bg-light-blue">
-                  <i class="fas fa-check-circle green float-right fa-2x" @click="editWeightGoal(wGoal)"></i>
+                  <i class="fas fa-check-circle green float-right fa-2x" @click="editWeightGoal(wGoal)" title="Completed"></i>
                   <h3 class="font-size">{{wGoal.title}}</h3>
                 </div>
                 <div class="card-body font-size">
@@ -92,7 +92,7 @@
             <div class="card border-info">
               <div v-if="!eGoal.completed">
                 <div class="card-header bg-light-blue">
-                  <i class="fas fa-check-circle green float-right fa-2x" @click="editEnduranceGoal(eGoal)"></i>
+                  <i class="fas fa-check-circle green float-right fa-2x" @click="editEnduranceGoal(eGoal)" title="Completed"></i>
                   <h3 class="font-size">{{eGoal.title}}</h3>
                 </div>
                 <div class="card-body font-size">
@@ -173,7 +173,7 @@
           <div class="card border-info">
             <div v-if="!sGoal.completed">
               <div class="card-header bg-light-blue">
-                <i class="fas fa-check-circle green float-right fa-2x" @click="editStrengthGoal(sGoal)"></i>
+                <i class="fas fa-check-circle green float-right fa-2x" @click="editStrengthGoal(sGoal)" title="Completed"></i>
                 <h3 class="font-size">{{sGoal.title}}</h3>
               </div>
               <div class="card-body font-size">
