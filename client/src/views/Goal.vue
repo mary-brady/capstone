@@ -18,10 +18,53 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-3 offset-lg-2 text-justify text-left">
-
+      <div class="col-sm-3 offset-lg-2 text-justify text-center">
+        
         <h1>Weight Goals</h1>
-        <div v-for="wGoal in weightGoals" :wGoalData="wGoal">
+        <div v-if="weight">
+          <form @submit.prevent="addWeightGoal" class="col d-flex justify-content-center">
+            <div class="form-group">
+              <input type="text" placeholder="Weight Goal Title" v-model="weightGoal.title" class="form-control mb-1 mt-1">
+              <input type="text" placeholder="Weight Goal Description" v-model="weightGoal.description" class="form-control mb-1 mt-1">
+              <button type="submit" class="btn btn-success mb-1 mt-1" @click="editXpAddGoal">Add Goal</button>
+              <button type="button" class="btn btn-info" @click="weight = !weight">Close</button>
+            </div>
+          </form>
+        </div>
+        <div v-for="wGoal in weightGoals" :key="wGoal._id" class="">
+            <div class="card border-info">
+              <div v-if="!wGoal.completed">
+                <div class="card-header bg-light-blue">
+                  <i class="fas fa-check-circle green float-right fa-2x" @click="editWeightGoal(wGoal)"></i>
+                  <h3 class="font-size">{{wGoal.title}}</h3>
+                </div>
+                <div class="card-body font-size">
+                  <p>{{wGoal.description}}</p>
+                </div>
+              </div>
+              <div v-else>
+                <div class="card-header bg-light-blue">
+                  <span id="xp" class="ml-2 float-right">
+                    <h3>+10xp</h3>
+                  </span>
+                  <strike>
+                    <h3 class="font-size">{{wGoal.title}}</h3>
+                  </strike>
+                </div>
+                <div class="card-body font-size">
+                  <strike>
+                    <p>{{wGoal.description}}</p>
+                  </strike>
+                </div>
+              </div>
+              <div>
+                <p class="card-text"> <small class="text-muted"><strong>Created</strong>: {{wGoal.created}} | <span class="clickable"
+                      @click="deleteWeightGoal(sGoal._id)"><i class="far fa-trash-alt"></i></span></small></p>
+              </div>
+            </div>
+          </div>
+          </div>
+        <!-- <div v-for="wGoal in weightGoals" :wGoalData="wGoal">
           <div v-if="!wGoal.completed">
             <i class="fas fa-check-circle green" @click="editWeightGoal(wGoal)"></i>
             {{wGoal.title}} - {{wGoal.description}}
@@ -32,31 +75,9 @@
             <i class="fas fa-times red" @click="deleteWeightGoal(wGoal._id)" title="Delete"></i><span id="xp" class="ml-2">+10xp</span>
           </div>
         </div>
-        <div v-if="weight">
-          <form @submit.prevent="addWeightGoal" class="col d-flex justify-content-center">
-            <div class="form-group">
-              <input type="text" placeholder="Weight Goal Title" v-model="weightGoal.title" class="form-control mb-1 mt-1">
-              <input type="text" placeholder="Weight Goal Description" v-model="weightGoal.description" class="form-control mb-1 mt-1">
-              <button type="submit" class="btn btn-success mb-1 mt-1" @click="editXpAddGoal">Add Goal</button>
-              <button type="button" class="btn btn-info" @click="weight = !weight">Close</button>
-            </div>
-          </form>
-
-        </div>
-      </div>
-      <div class="col-sm-3 text-justify text-left">
+      </div> -->
+      <div class="col-sm-3 text-justify text-center">
         <h1>Endurance Goals</h1>
-        <div v-for="eGoal in enduranceGoals">
-          <div v-if="!eGoal.completed">
-            <i class="fas fa-check-circle green" @click="editEnduranceGoal(eGoal)"></i>
-            {{eGoal.title}} - {{eGoal.description}}
-            <i class="fas fa-times red" @click="deleteEnduranceGoal(eGoal._id)" title="Delete"></i>
-          </div>
-          <div v-else>
-            <strike> {{eGoal.title}} - {{eGoal.description}} </strike>
-            <i class="fas fa-times red" @click="deleteEnduranceGoal(eGoal._id)" title="Delete"></i><span id="xp" class="ml-2">+10xp</span>
-          </div>
-        </div>
         <div v-if="endurance">
           <form @submit.prevent="addEnduranceGoal" class="col d-flex justify-content-center">
             <div class="form-group">
@@ -67,6 +88,49 @@
             </div>
           </form>
         </div>
+        <div v-for="eGoal in enduranceGoals" :key="eGoal._id" class="">
+            <div class="card border-info">
+              <div v-if="!eGoal.completed">
+                <div class="card-header bg-light-blue">
+                  <i class="fas fa-check-circle green float-right fa-2x" @click="editEnduranceGoal(eGoal)"></i>
+                  <h3 class="font-size">{{eGoal.title}}</h3>
+                </div>
+                <div class="card-body font-size">
+                  <p>{{eGoal.description}}</p>
+                </div>
+              </div>
+              <div v-else>
+                <div class="card-header bg-light-blue">
+                  <span id="xp" class="ml-2 float-right">
+                    <h3>+10xp</h3>
+                  </span>
+                  <strike>
+                    <h3 class="font-size">{{eGoal.title}}</h3>
+                  </strike>
+                </div>
+                <div class="card-body font-size">
+                  <strike>
+                    <p>{{eGoal.description}}</p>
+                  </strike>
+                </div>
+              </div>
+              <div>
+                <p class="card-text"> <small class="text-muted"><strong>Created</strong>: {{eGoal.created}} | <span class="clickable"
+                      @click="deleteEnduranceGoal(eGoal._id)"><i class="far fa-trash-alt"></i></span></small></p>
+              </div>
+            </div>
+          </div>
+        <!-- <div v-for="eGoal in enduranceGoals">
+          <div v-if="!eGoal.completed">
+            <i class="fas fa-check-circle green" @click="editEnduranceGoal(eGoal)"></i>
+            {{eGoal.title}} - {{eGoal.description}}
+            <i class="fas fa-times red" @click="deleteEnduranceGoal(eGoal._id)" title="Delete"></i>
+          </div>
+          <div v-else>
+            <strike> {{eGoal.title}} - {{eGoal.description}} </strike>
+            <i class="fas fa-times red" @click="deleteEnduranceGoal(eGoal._id)" title="Delete"></i><span id="xp" class="ml-2">+10xp</span>
+          </div>
+        </div> -->
       </div>
       <!-- <div class="col-sm-3 text-justify">
 
