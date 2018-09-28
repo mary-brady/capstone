@@ -138,9 +138,9 @@
           </div>
         </div>
       </div>
-      <div>
-        <GoalDetail />
-      </div>
+    </div>
+    <div>
+      <GoalDetail />
     </div>
   </div>
 </template>
