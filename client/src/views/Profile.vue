@@ -11,45 +11,27 @@
             <div class="col-12">
               <div class="row">
                 <div class="col-6">
-                  <img src="../assets/knight3.png" class="img-fluid" alt="" />
+                  <img src="../assets/glamour4.png" class="img-fluid" alt="" />
                 </div>
                 <div class="col-6"> 
               <div class="row">
-                <div class="col-4 mb-1 mt-1">
-                  <img src="//placehold.it/50x50" class="img-fluid" alt="">
+                <div class="col-6 mb-1 mt-1">
+                  <img src="../assets/glamour3.png" class="img-fluid" alt="">
                 </div>
-                <div class="col-4 mb-1 mt-1">
-                  <img src="//placehold.it/50x50" class="img-fluid" alt="">
+                <div class="col-6 mb-1 mt-1">
+                  <img src="../assets/knight1.png" class="img-fluid" alt="">
                 </div>
-                <div class="col-4 mb-1 mt-1">
-                  <img src="//placehold.it/50x50" class="img-fluid" alt="">
+                <div class="col-6 mb-1 mt-1">
+                  <img src="../assets/knight2.png" class="img-fluid" alt="">
                 </div>
-                <div class="col-4 mb-1 mt-1">
-                  <img src="//placehold.it/50x50" class="img-fluid" alt="">
+                <div class="col-6 mb-1 mt-1">
+                  <img src="../assets/knight3.png" class="img-fluid" alt="">
                 </div>
-                <div class="col-4 mb-1 mt-1">
-                  <img src="//placehold.it/50x50" class="img-fluid" alt="">
+                <div class="col-6 mb-1 mt-1">
+                  <img src="../assets/glamour5.png" class="img-fluid" alt="">
                 </div>
-                <div class="col-4 mb-1 mt-1">
-                  <img src="//placehold.it/50x50" class="img-fluid" alt="">
-                </div>
-                <div class="col-4 mb-1 mt-1">
-                  <img src="//placehold.it/50x50" class="img-fluid" alt="">
-                </div>
-                <div class="col-4 mb-1 mt-1">
-                  <img src="//placehold.it/50x50" class="img-fluid" alt="">
-                </div>
-                <div class="col-4 mb-1 mt-1">
-                  <img src="//placehold.it/50x50" class="img-fluid" alt="">
-                </div>
-                <div class="col-4 mb-1 mt-1">
-                  <img src="//placehold.it/50x50" class="img-fluid" alt="">
-                </div>
-                <div class="col-4 mb-1 mt-1">
-                  <img src="//placehold.it/50x50" class="img-fluid" alt="">
-                </div>
-                <div class="col-4 mb-1 mt-1">
-                  <img src="//placehold.it/50x50" class="img-fluid" alt="">
+                <div class="col-6 mb-1 mt-1">
+                  <img src="../assets/glamour7.png" class="img-fluid" alt="">
                 </div>
               </div>
                 </div>

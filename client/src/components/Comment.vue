@@ -5,7 +5,7 @@
                 <div class="card-body"><p>{{comment.description}}</p></div>
                 <div class="card-text yellow">
                     <small class="text-muted">
-                        <p class="mb-1 mt-1">{{comment.author}}</p>
+                        <p class="mb-1 mt-1">{{comment.author}} <span v-if="comment.authorId == user._id" class="clickable" @click="deleteComment(comment)"> | <i class="far fa-trash-alt"></i></span></p>
                     </small>
                 </div>
             </div>
@@ -26,10 +26,17 @@ export default {
   computed: {
     comments() {
       return this.$store.state.comments[this.postId];
+    },
+    user() {
+      return this.$store.state.user;
     }
   },
-  methods: {},
-  props: ["comment", "postId"]
+  methods: {
+    deleteComment(comment) {
+      this.$store.dispatch("deleteComment", comment);
+    }
+  },
+  props: ["comment", "postId", "userId"]
 };
 </script>
 
