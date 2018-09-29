@@ -31,7 +31,7 @@
     </div>
     <div v-show="strengthChart">
       <h1> Strength Chart</h1>
-      <canvas id="strength-chart"></canvas>
+      <canvas id="strength-chart" height="200"></canvas>
       <form @submit.prevent="addStrength">
         <input type="number" placeholder="Max lbs Squatted" v-model="newStrength.squats">
         <input type="number" placeholder="Max lbs Rowed" v-model="newStrength.rows">
