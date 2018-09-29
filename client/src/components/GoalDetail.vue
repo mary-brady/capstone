@@ -14,7 +14,7 @@
     </div>
     <div v-show="enduranceChart">
       <h1> Endurance Chart</h1>
-      <canvas id="endurance-chart"></canvas>
+      <canvas id="endurance-chart" height="200"></canvas>
       <form @submit.prevent="addEndurance">
         <input type="number" placeholder="Time" v-model="newTime.time" required>
         <button class="btn-success" type="submit">Create New Time</button>
@@ -22,7 +22,7 @@
     </div>
     <div v-show="weightChart">
       <h1> Weight Chart</h1>
-      <canvas id="weight-chart"></canvas>
+      <canvas id="weight-chart" height="200"></canvas>
 
       <form @submit.prevent="addWeight">
         <input type="number" placeholder="Weight" v-model="newWeight.weight" required>
