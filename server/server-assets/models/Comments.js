@@ -9,8 +9,6 @@ let schema = new Schema({
     created: { type: Date, default: Date.now(), required: true }, // this is being set in post route
     description: { type: String, required: true },
     postId: { type: ObjectId, ref: 'Post', required: true },
-    numUp: { type: Number, required: true, default: 0 },
-    numDown: { type: Number, required: true, default: 0 }
 
 })
 
