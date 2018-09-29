@@ -244,7 +244,7 @@
                 <h3 class="font-size">Create a Progress Chart</h3>
               </div>
               <div class="card-body font-size">
-                <p>Create a new progress chart by clicking the dropdown menu above and selecting a category!</p>
+                <p>Create a new progress chart by clicking the dropdown menu above and selecting a category! Once you enter data your chart will appear!</p>
               </div>
               <div>
                 <p class="card-text"> <small class="text-muted"><strong></strong> <span class="clickable" @click="defT = !defT"><i

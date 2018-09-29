@@ -17,7 +17,7 @@
         <div class="modal-footer">
         <slot class="footer">
             <p>Do you accept?</p>
-            <button type="button" class="btn btn-success" @click="close">
+            <button type="button" class="btn btn-success" @click="editXp">
                 Yep
                 </button>
             <button type="button" class="btn btn-danger" @click="close">
@@ -48,13 +48,25 @@ export default {
       var zone = moment().utcOffset();
       var time = moment.utc(this.created_at).utcOffset(zone);
       return time.format('HH:mm MMM Do') + ', ' + time.fromNow();     
-    }
+    },
+    user() {
+        return this.$store.state.user;
+      }
   },
   methods: {
     close() {
       this.$emit("close");
-    }
+    },
+    editXp() {
+      let points = this.$store.state.user.xp + 10;
+      this.$store.dispatch("updateXp", {
+        userId: this.user._id,
+        xp: points
+      });
+      this.$emit("close");
+      }
   }
+  
 };
 </script>
 
