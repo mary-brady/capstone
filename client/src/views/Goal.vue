@@ -3,7 +3,7 @@
     <div>
       <h2 class="mb-5" v-if="quotes.length">"{{quote.quote}}"</h2>
     </div>
-    <h1>{{user.name}}'s Goals</h1>
+    <h1>Mighty {{user.name}}'s Goals</h1>
     <div class="row">
       <div class="dropdown offset-sm-4 col-sm-4 mb-5 mt-3">
         <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
@@ -37,7 +37,7 @@
               <h3 class="font-size">Example Weight Goal</h3>
             </div>
             <div class="card-body font-size">
-              <p>Create a new weight goal!</p>
+              <p>Create a new weight goal by clicking the dropdown menu above and selecting weight loss/gain!</p>
             </div>
             <div>
               <p class="card-text"> <small class="text-muted"><strong></strong> <span class="clickable" @click="def = !def"><i
@@ -96,7 +96,7 @@
               <h3 class="font-size">Example Endurance Goal</h3>
             </div>
             <div class="card-body font-size">
-              <p>Create a new endurance goal!</p>
+              <p>Create a new endurance goal by clicking the dropdown menu above and selecting endurance!</p>
             </div>
             <div>
               <p class="card-text"> <small class="text-muted"><strong></strong> <span class="clickable" @click="defE = !defE"><i
@@ -191,7 +191,7 @@
               <h3 class="font-size">Example Strength Goal</h3>
             </div>
             <div class="card-body font-size">
-              <p>Create a new strength goal!</p>
+              <p>Create a new weight goal by clicking the dropdown menu above and selecting strength!</p>
             </div>
             <div>
               <p class="card-text"> <small class="text-muted"><strong></strong> <span class="clickable" @click="defS = !defS"><i
@@ -234,8 +234,24 @@
       </div>
     </div>
     <div class="row">
+      
       <div class="col-lg-6 offset-lg-3 col-xs-12">
+
         <GoalDetail />
+        <div v-if="defT" class="col-sm-8 offset-sm-2">
+            <div class="card border-info mb-2 defT">
+              <div class="card-header bg-light-blue">
+                <h3 class="font-size">Create a Progress Chart</h3>
+              </div>
+              <div class="card-body font-size">
+                <p>Create a new progress chart by clicking the dropdown menu above and selecting a category!</p>
+              </div>
+              <div>
+                <p class="card-text"> <small class="text-muted"><strong></strong> <span class="clickable" @click="defT = !defT"><i
+                        class="far fa-trash-alt"></i></span></small></p>
+              </div>
+            </div>
+          </div>
       </div>
     </div>
   </div>
@@ -253,6 +269,7 @@
         def: true,
         defE: true,
         defS: true,
+        defT: true,
         quote: {},
         weightGoal: {
           title: "",
