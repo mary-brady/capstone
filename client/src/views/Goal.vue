@@ -78,18 +78,6 @@
           </div>
         </div>
       </div>
-      <!-- <div v-for="wGoal in weightGoals" :wGoalData="wGoal">
-          <div v-if="!wGoal.completed">
-            <i class="fas fa-check-circle green" @click="editWeightGoal(wGoal)"></i>
-            {{wGoal.title}} - {{wGoal.description}}
-            <i class="fas fa-times red" @click="deleteWeightGoal(wGoal._id)" title="Delete"></i>
-          </div>
-          <div v-else>
-            <strike> {{wGoal.title}} - {{wGoal.description}} </strike>
-            <i class="fas fa-times red" @click="deleteWeightGoal(wGoal._id)" title="Delete"></i><span id="xp" class="ml-2">+10xp</span>
-          </div>
-        </div>
-      </div> -->
       <div class="col-sm-3 text-justify text-center">
         <h1>Endurance Goals</h1>
         <div v-if="endurance">
@@ -148,6 +136,7 @@
             </div>
           </div>
         </div>
+      </div>
         <!-- <div v-for="eGoal in enduranceGoals">
           <div v-if="!eGoal.completed">
             <i class="fas fa-check-circle green" @click="editEnduranceGoal(eGoal)"></i>
@@ -159,7 +148,6 @@
             <i class="fas fa-times red" @click="deleteEnduranceGoal(eGoal._id)" title="Delete"></i><span id="xp" class="ml-2">+10xp</span>
           </div>
         </div> -->
-      </div>
       <!-- <div class="col-sm-3 text-justify">
 
         <h1>Strength Goals</h1>
