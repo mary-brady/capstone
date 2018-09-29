@@ -10,28 +10,45 @@
           <div class="row">
             <div class="col-12">
               <div class="row">
-                <div class="col-6">
+                <div class="col-6" >
                   <img src="../assets/glamour4.png" class="img-fluid" alt="" />
                 </div>
                 <div class="col-6"> 
               <div class="row">
-                <div class="col-6 mb-1 mt-1">
+                <div class="col-6 mb-1 mt-1" v-if="user.xp >= 100">
                   <img src="../assets/glamour3.png" class="img-fluid" alt="">
                 </div>
-                <div class="col-6 mb-1 mt-1">
-                  <img src="../assets/knight1.png" class="img-fluid" alt="">
+                <div class="col-6 mb-1 mt-1" v-else>
+                  <img src="../assets/glamour3.png" class="img-fluid fade" alt="">
                 </div>
-                <div class="col-6 mb-1 mt-1">
+                <div class="col-6 mb-1 mt-1"  v-if="user.xp >= 500">
+                  <img src="../assets/knight1.png" class="img-fluid" alt="">
+                </div><div class="col-6 mb-1 mt-1"  v-else>
+                  <img src="../assets/knight1.png" class="img-fluid fade" alt="">
+                </div>
+                <div class="col-6 mb-1 mt-1"  v-if="user.xp >= 1000">
                   <img src="../assets/knight2.png" class="img-fluid" alt="">
                 </div>
-                <div class="col-6 mb-1 mt-1">
+                <div class="col-6 mb-1 mt-1"  v-else>
+                  <img src="../assets/knight2.png" class="img-fluid fade" alt="">
+                </div>
+                <div class="col-6 mb-1 mt-1"  v-if="user.xp >= 1500">
                   <img src="../assets/knight3.png" class="img-fluid" alt="">
                 </div>
-                <div class="col-6 mb-1 mt-1">
+                <div class="col-6 mb-1 mt-1"  v-else>
+                  <img src="../assets/knight3.png" class="img-fluid fade" alt="">
+                </div>
+                <div class="col-6 mb-1 mt-1"  v-if="user.xp >= 2000">
                   <img src="../assets/glamour5.png" class="img-fluid" alt="">
                 </div>
-                <div class="col-6 mb-1 mt-1">
+                <div class="col-6 mb-1 mt-1"  v-else>
+                  <img src="../assets/glamour5.png" class="img-fluid fade" alt="">
+                </div>
+                <div class="col-6 mb-1 mt-1" v-if="user.xp == 10000">
                   <img src="../assets/glamour7.png" class="img-fluid" alt="">
+                </div>
+                <div class="col-6 mb-1 mt-1" v-else>
+                  <img src="../assets/glamour7.png" class="img-fluid fade" alt="">
                 </div>
               </div>
                 </div>
@@ -238,6 +255,9 @@ export default {
 }
 .img-fluid {
   max-width: 70%;
+}
+.fade {
+  opacity: 0.5;
 }
 /* .size {
   height: 50%;
