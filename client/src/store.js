@@ -10,12 +10,12 @@ var baseUrl = production ? '//yoft.herokuapp.com/' : '//localhost:3000/';
 
 let api = Axios.create({
   baseURL: baseUrl + 'api/',
-  timeout: 2000,
+  timeout: 3000,
   withCredentials: true
 })
 let auth = Axios.create({
   baseURL: baseUrl + 'auth/',
-  timeout: 2000,
+  timeout: 3000,
   withCredentials: true
 })
 
@@ -473,7 +473,7 @@ export default new Vuex.Store({
         })
     },
     addWorkout({ dispatch }, workoutData) {
-      api.post('workouts/', workoutData.workoutData)
+      api.post('workouts', workoutData.workoutData)
         .then(res => {
           dispatch('getWorkouts')
         })
@@ -492,6 +492,13 @@ export default new Vuex.Store({
           console.log('cardioEx: ', res.data)
         })
     },
+    addToWorkout({ dispatch }, workout) {
+      api.put("workouts/" + workout._id + '/exercise', workout)
+        .then(res => {
+          dispatch('getWorkouts')
+        })
+
+    }
   },
   getters: {
     enduranceChartData(state) {

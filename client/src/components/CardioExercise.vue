@@ -7,12 +7,13 @@
     <h4 class="header">{{exercise.title}}</h4>
     <span class="clickable" v-on:click="isHidden = !isHidden"><i class="fas fa-plus"></i></span>
   <div class="form-group" v-if="isHidden">
-    <select class="custom-select">
-      <option v-for="workout in workouts" :key="workout._id">{{workout.title}}</option>
+    <select class="custom-select" v-model="workout">
+      <option v-for="workout in workouts" :key="workout._id" v-bind:value="workout">{{workout.title}}</option>
     </select>
   </div>
   </div>
   <div class="card-body">
+    <h4>{{exercise.title}}</h4>
     <p class="card-text">{{exercise.description}}</p>
   </div>
 </div>
@@ -27,8 +28,15 @@ export default {
   name: "CardioExercise",
   data() {
     return {
-      isHidden: false
+      isHidden: false,
+      workout: []
     };
+  },
+  watch: {
+    workout: function(newWorkout, oldWorkout) {
+      debugger;
+      this.addToWorkout(newWorkout);
+    }
   },
   mounted() {
     this.$store.dispatch("getCardioEx");
@@ -45,8 +53,9 @@ export default {
     switchComponents(comp) {
       bus.$emit("switchComp", comp);
     },
-    addToWorkout() {
-      this.$store.dispatch("addToWorkout");
+    addToWorkout(workout) {
+      workout.type = "cardio";
+      this.$store.dispatch("addToWorkout", workout);
     }
   }
 };

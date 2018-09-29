@@ -30,13 +30,9 @@ router.put('/:id/exercise/', (req, res, next) => {
     let type = req.body.type
     Workouts.findById(req.params.id)
         .then(workout => {
-            workout[type].push(req.body.id)
-            workout.save(err => {
-                if (err) {
-                    return res.status(500).send(err)
-                }
-                res.send(workout)
-            })
+            workout[type].push(req.body._id)
+            workout.save()
+            res.send(workout)
         })
         .catch(err => {
             res.status(500).send(err)
@@ -46,8 +42,8 @@ router.put('/:id/exercise/', (req, res, next) => {
 //get all workouts
 router.get('/', (req, res, next) => {
     Workouts.find({})
+        .populate('cardio', 'title')
         .populate('strength', 'title')
-        .populate('cardio', 'name')
         .exec((err, workout) => {
             if (err) {
                 res.status(500).send(err)
