@@ -10,9 +10,14 @@
             <p>{{post.description}}</p>
         </div>
         <div>
-            <p class="card-text"> <small class="text-muted"><strong>Created By</strong>: {{post.author}} | {{post.created}}<span v-if="post.authorId == user._id" class="clickable" @click="deleteFeedPost(post)"> | <i class="far fa-trash-alt"></i></span></small></p>
+            <div class="card-text"> <small class="text-muted">
+              <p><strong>Created By</strong>: {{post.author}} | {{post.created}}<span v-if="post.authorId == user._id" class="clickable" @click="deleteFeedPost(post)"> | <i class="far fa-trash-alt"></i></span></p>
+              <p><span @click="commentVisible(post._id)" class="clickable">See Comments</span> |
+                 <span @click="commentEditVisible(post._id)" class="clickable">Make A Comment?</span>
+                 </p></small></div>
         </div>
     </div>
+      <Comment v-if="commentsVisible == post._id" :postId="post._id" />
 </div>
     </div>
     </div>
@@ -20,9 +25,16 @@
 </template>
 
 <script>
+import Comment from "@/components/Comment.vue";
 export default {
   name: "feed",
   props: ["userId"],
+  data() {
+    return {
+      commentEdit: "",
+      commentsVisible: ""
+    };
+  },
   computed: {
     feed() {
       return this.$store.state.feed;
@@ -32,9 +44,26 @@ export default {
     }
   },
   methods: {
+    commentEditVisible(postId) {
+      if (postId != this.commentEdit) {
+        this.commentEdit = postId;
+      } else {
+        this.commentEdit = "";
+      }
+    },
+    commentVisible(postId) {
+      if (postId != this.commentsVisible) {
+        this.commentsVisible = postId;
+      } else {
+        this.commentsVisible = "";
+      }
+    },
     deleteFeedPost(post) {
       this.$store.dispatch("deleteFeedPost", post);
     }
+  },
+  components: {
+    Comment
   }
 };
 </script>
