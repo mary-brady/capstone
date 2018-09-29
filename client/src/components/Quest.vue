@@ -10,7 +10,7 @@
         <div class="modal-body">
         <slot class="body">
             <div class="mw">
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quis et eos corporis cupiditate, inventore libero illo, ratione perferendis debitis architecto aperiam aspernatur repellat blanditiis. Cumque ab, amet esse quis sit modi fuga quam in, ullam ipsam officiis velit autem accusamus recusandae sequi vero numquam dicta repudiandae ipsa a. Repudiandae, eos.</p>
+            <p>{{quest[Math.floor(Math.random() * quest.length)]}}</p>
             </div>
         </slot>
         </div>
@@ -33,6 +33,23 @@
 <script>
 export default {
   name: "modal",
+  data() {
+    return {
+      quest: [
+        "Do a total of 120 calf raises throughout the day.",
+        "Do 6 sets of 10 jumping jacks and side jacks at 30 second intervals with 1 minute rest in between each.",
+        "Do 3 sets of 20 lunges with 20 second rests in between.",
+        "Do 6 sets of 8 squats with 30 second rests in between."
+      ]
+    }
+  },
+  computed: {
+    time: function() {
+      var zone = moment().utcOffset();
+      var time = moment.utc(this.created_at).utcOffset(zone);
+      return time.format('HH:mm MMM Do') + ', ' + time.fromNow();     
+    }
+  },
   methods: {
     close() {
       this.$emit("close");
