@@ -491,7 +491,7 @@ export default new Vuex.Store({
           commit('setCardioEx', res.data)
           console.log('cardioEx: ', res.data)
         })
-    }
+    },
   },
   getters: {
     enduranceChartData(state) {
