@@ -60,9 +60,6 @@ server.use('/api/strength-exercise', strengthExerciseRoutes)
 let postRoutes = require('./server-assets/routes/post-routes')
 server.use('/api/posts', postRoutes)
 
-let badgeRoutes = require('./server-assets/routes/badge-routes')
-server.use('/api/badges', badgeRoutes)
-
 let weightGoalRoutes = require('./server-assets/routes/weightgoal-routes')
 server.use('/api/weight-goal', weightGoalRoutes)
 
