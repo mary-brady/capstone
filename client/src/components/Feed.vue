@@ -17,6 +17,12 @@
                  </p></small></div>
         </div>
     </div>
+    <div v-if="commentEdit == post._id ">
+              <form @submit.prevent="makeComment(post._id)">
+                <input class="form-control" type="text" placeholder="This Is SOOOOOO Great" v-model="description"/>
+                <button type="submit" class="btn">Sumbit</button>
+              </form>
+            </div>
       <Comment v-if="commentsVisible == post._id" :postId="post._id" />
 </div>
     </div>
@@ -31,6 +37,7 @@ export default {
   props: ["userId"],
   data() {
     return {
+      description: "",
       commentEdit: "",
       commentsVisible: ""
     };
@@ -44,6 +51,17 @@ export default {
     }
   },
   methods: {
+    makeComment(postId) {
+      this.$store.dispatch("addComment", {
+        postId: postId,
+        comment: {
+          postId: postId,
+          description: this.description,
+          author: this.user.username
+        }
+      });
+      this.description = "";
+    },
     commentEditVisible(postId) {
       if (postId != this.commentEdit) {
         this.commentEdit = postId;

@@ -75,7 +75,6 @@ export default {
       }
     },
     makeComment(postId) {
-      debugger;
       this.$store.dispatch("addComment", {
         postId: postId,
         comment: {
