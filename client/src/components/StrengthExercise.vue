@@ -10,6 +10,7 @@
     <select class="custom-select" v-model="workout">
       <option v-for="workout in workouts" :key="workout._id" v-bind:value="workout">{{workout.title}}</option>
     </select>
+    <button @click="addToWorkout(exercise)">Add Exercise</button>
   </div>
   </div>
   <div class="card-body">
@@ -32,12 +33,12 @@ export default {
       workout: {}
     };
   },
-  watch: {
-    workout: function(newWorkout, oldWorkout) {
-      debugger;
-      this.addToWorkout(newWorkout);
-    }
-  },
+  // watch: {
+  //   workout: function(newWorkout, oldWorkout) {
+  //     debugger;
+  //     this.addToWorkout(newWorkout);
+  //   }
+  // },
   mounted() {
     this.$store.dispatch("getStrengthEx");
   },
@@ -53,10 +54,10 @@ export default {
     switchComponents(comp) {
       bus.$emit("switchComp", comp);
     },
-    addToWorkout(workout) {
-      workout.type = "strength";
-      debugger;
-      this.$store.dispatch("addToWorkout", workout);
+    addToWorkout(exercise) {
+      this.workout.type = "strength";
+      this.workout.exercise = exercise._id;
+      this.$store.dispatch("addToWorkout", this.workout);
     }
   }
 };
