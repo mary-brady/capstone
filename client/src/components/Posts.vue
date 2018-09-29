@@ -19,7 +19,7 @@
                  <span @click="commentEditVisible(post._id)" class="clickable">Make A Comment?</span>
                  </p>
                 <p><strong>Created</strong>: {{post.created}} | 
-                <span class="clickable" @click="deletePost(post)"><i class="far fa-trash-alt"></i>
+                <span class="clickable" @click="deletePost(post)"><i class="far fa-trash-alt"></i> 
                 </span></p>
                 
                 </small>
@@ -85,6 +85,24 @@ export default {
         }
       });
       this.description = "";
+    },
+    editUp(postId) {
+      let num = this.numUp;
+      num++;
+      this.$store.dispatch("editUp", {
+        userId: this.userId,
+        postId: postId,
+        num: num
+      });
+    },
+    editDown(postId) {
+      let num = this.numDown;
+      num++;
+      this.$store.dispatch("editDown", {
+        userId: this.userId,
+        postId: postId,
+        num: num
+      });
     }
   },
   components: {

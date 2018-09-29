@@ -5,7 +5,7 @@
                 <div class="card-body"><p>{{comment.description}}</p></div>
                 <div class="card-text yellow">
                     <small class="text-muted">
-                        <p class="mb-1 mt-1">{{comment.author}}  |  {{numUp}} <i class="fas fa-crown" @click="editUp(comment._id)"></i>  |  {{numDown}} <i class="fas fa-skull" @click="editDown(comment._id)"></i></p>
+                        <p class="mb-1 mt-1">{{comment.author}}</p>
                     </small>
                 </div>
             </div>
@@ -15,40 +15,20 @@
 <script>
 export default {
   name: "Comment",
+  data() {
+    return {
+      commentId: ""
+    };
+  },
   mounted() {
     return this.$store.dispatch("getComments", this.postId);
   },
   computed: {
-    numUp() {
-      return this.$store.state.comments[this.postId][0].numUp;
-    },
-    numDown() {
-      return this.$store.state.comments[this.postId][0].numDown;
-    },
     comments() {
       return this.$store.state.comments[this.postId];
     }
   },
-  methods: {
-    editUp(commentId) {
-      let num = this.numUp;
-      num++;
-      this.$store.dispatch("editUp", {
-        postId: this.postId,
-        commentId: commentId,
-        num: num
-      });
-    },
-    editDown(commentId) {
-      let num = this.numDown;
-      num++;
-      this.$store.dispatch("editDown", {
-        postId: this.postId,
-        commentId: commentId,
-        num: num
-      });
-    }
-  },
+  methods: {},
   props: ["comment", "postId"]
 };
 </script>
