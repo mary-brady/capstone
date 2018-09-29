@@ -90,6 +90,7 @@
           },
           options: {
             responsive: true,
+            maintainAspectRatio: false,
             lineTension: 1,
             scales: {
               yAxes: [{
@@ -213,11 +214,12 @@
   h1 {
     font-weight: 700;
   }
+
   .dropdown-menu {
-    color:white;
+    color: white;
   }
+
   a:not([href]):not([tabindex]) {
-    color:black;
+    color: black;
   }
-  
 </style>

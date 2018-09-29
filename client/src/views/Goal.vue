@@ -31,16 +31,18 @@
             </div>
           </form>
         </div>
-        <div class="card border-info mb-2">
-          <div class="card-header bg-light-blue">
-            <h3 class="font-size">Example Weight Goal</h3>
-          </div>
-          <div class="card-body font-size">
-            <p>Create a new weight goal!</p>
-          </div>
-          <div>
-            <p class="card-text"> <small class="text-muted"><strong></strong> <span class="clickable" @click="deleteWeightGoal(wGoal._id)"><i
-                    class="far fa-trash-alt"></i></span></small></p>
+        <div v-if="def">
+          <div class="card border-info mb-2 def">
+            <div class="card-header bg-light-blue">
+              <h3 class="font-size">Example Weight Goal</h3>
+            </div>
+            <div class="card-body font-size">
+              <p>Create a new weight goal!</p>
+            </div>
+            <div>
+              <p class="card-text"> <small class="text-muted"><strong></strong> <span class="clickable" @click="def = !def"><i
+                      class="far fa-trash-alt"></i></span></small></p>
+            </div>
           </div>
         </div>
         <div v-for="wGoal in weightGoals" :key="wGoal._id" class="">
@@ -100,16 +102,18 @@
             </div>
           </form>
         </div>
-        <div class="card border-info mb-2">
-          <div class="card-header bg-light-blue">
-            <h3 class="font-size">Example Endurance Goal</h3>
-          </div>
-          <div class="card-body font-size">
-            <p>Create a new endurance goal!</p>
-          </div>
-          <div>
-            <p class="card-text"> <small class="text-muted"><strong></strong> <span class="clickable" @click="deleteEnduranceGoal(eGoal._id)"><i
-                    class="far fa-trash-alt"></i></span></small></p>
+        <div v-if="defE">
+          <div class="card border-info mb-2">
+            <div class="card-header bg-light-blue">
+              <h3 class="font-size">Example Endurance Goal</h3>
+            </div>
+            <div class="card-body font-size">
+              <p>Create a new endurance goal!</p>
+            </div>
+            <div>
+              <p class="card-text"> <small class="text-muted"><strong></strong> <span class="clickable" @click="defE = !defE"><i
+                      class="far fa-trash-alt"></i></span></small></p>
+            </div>
           </div>
         </div>
         <div v-for="eGoal in enduranceGoals" :key="eGoal._id" class="">
@@ -193,16 +197,18 @@
             </div>
           </form>
         </div>
-        <div class="card border-info mb-2">
-          <div class="card-header bg-light-blue">
-            <h3 class="font-size">Example Strength Goal</h3>
-          </div>
-          <div class="card-body font-size">
-            <p>Create a new strength goal!</p>
-          </div>
-          <div>
-            <p class="card-text"> <small class="text-muted"><strong></strong> <span class="clickable" @click="deleteWeightGoal(wGoal._id)"><i
-                    class="far fa-trash-alt"></i></span></small></p>
+        <div v-if="defS">
+          <div class="card border-info mb-2">
+            <div class="card-header bg-light-blue">
+              <h3 class="font-size">Example Strength Goal</h3>
+            </div>
+            <div class="card-body font-size">
+              <p>Create a new strength goal!</p>
+            </div>
+            <div>
+              <p class="card-text"> <small class="text-muted"><strong></strong> <span class="clickable" @click="defS = !defS"><i
+                      class="far fa-trash-alt"></i></span></small></p>
+            </div>
           </div>
         </div>
         <div v-for="sGoal in strengthGoals" :key="sGoal._id" class="">
@@ -232,15 +238,15 @@
               </div>
             </div>
             <div>
-              <p class="card-text"> <small class="text-muted"><strong>Created</strong>: {{sGoal.created}} | 
-                <span class="clickable" @click="deleteStrengthGoal(sGoal._id)"><i class="far fa-trash-alt"></i></span></small></p>
+              <p class="card-text"> <small class="text-muted"><strong>Created</strong>: {{sGoal.created}} |
+                  <span class="clickable" @click="deleteStrengthGoal(sGoal._id)"><i class="far fa-trash-alt"></i></span></small></p>
             </div>
           </div>
         </div>
       </div>
     </div>
     <div class="row">
-      <div class="col-lg-6 offset-lg-3">
+      <div class="col-lg-6 offset-lg-3 col-xs-12">
         <GoalDetail />
       </div>
     </div>
@@ -256,6 +262,9 @@
         weight: false,
         endurance: false,
         strength: false,
+        def: true,
+        defE: true,
+        defS: true,
         quote: {},
         weightGoal: {
           title: "",
@@ -391,9 +400,10 @@
   h3 {
     font-weight: 700;
   }
+
   .bg-light-blue {
-  background-color: #a0dee7;
-}
+    background-color: #a0dee7;
+  }
 
   .red {
     /* font-size: 500px; */
@@ -424,7 +434,8 @@
   .font-size {
     font-family: "Oldenburg", cursive;
   }
+
   .clickable:hover {
-  cursor: pointer;
-}
+    cursor: pointer;
+  }
 </style>
