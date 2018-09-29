@@ -1,5 +1,7 @@
 let router = require('express').Router()
 let Workouts = require('../models/Workout')
+// let Cardios = require('../models/CardioExercise')
+// let mongoose = require('mongoose')
 
 //Edit Workout
 router.put('/:id', (req, res, next) => {
@@ -30,7 +32,7 @@ router.put('/:id/exercise/', (req, res, next) => {
     let type = req.body.type
     Workouts.findById(req.params.id)
         .then(workout => {
-            workout[type].push(req.body._id)
+            workout[type].push(req.body.id)
             workout.save()
             res.send(workout)
         })
@@ -41,15 +43,9 @@ router.put('/:id/exercise/', (req, res, next) => {
 
 //get all workouts
 router.get('/', (req, res, next) => {
-    Workouts.find({})
-        .populate('cardio', 'title')
-        .populate('strength', 'title')
-        .exec((err, workout) => {
-            if (err) {
-                res.status(500).send(err)
-            }
-            res.send(workout)
-        })
+    Workouts.find({}).populate("cardio").exec((err, docs) => {
+        res.send(docs);
+    })
 })
 
 //get one workout

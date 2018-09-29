@@ -8,7 +8,7 @@
     <span class="clickable" v-on:click="isHidden = !isHidden"><i class="fas fa-plus"></i></span>
   <div class="form-group" v-if="isHidden">
     <select class="custom-select" v-model="workout">
-      <option v-for="workout in workouts" :key="workout._id" v-bind:value="workout">{{workout.title}}</option>
+      <option v-for="workout in workouts" :key="workout._id" :value="workout">{{workout.title}}</option>
     </select>
   </div>
   </div>

@@ -55,6 +55,7 @@ export default {
     },
     addToWorkout(workout) {
       workout.type = "strength";
+      debugger;
       this.$store.dispatch("addToWorkout", workout);
     }
   }
