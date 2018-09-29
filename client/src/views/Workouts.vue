@@ -14,7 +14,7 @@
           <li>{{strength.title}}</li>
         </ul>
         <hr />
-        <ul v-for="cardio in workout.cardio" :key="cardio._id">
+        <ul v-for="cardio in workout.cardio" v-if="workout.cardio.length > 0" :key="cardio._id">
           <li>{{cardio.title}}</li>
         </ul>
       </div>
