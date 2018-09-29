@@ -31,12 +31,12 @@
             </div>
           </form>
         </div>
-        <div class="card border-info">
+        <div class="card border-info mb-2">
           <div class="card-header bg-light-blue">
-            <h3 class="font-size">blah blah blah</h3>
+            <h3 class="font-size">Example Weight Goal</h3>
           </div>
           <div class="card-body font-size">
-            <p>yooooooooooooooooooooooooooooo</p>
+            <p>Create a new weight goal!</p>
           </div>
           <div>
             <p class="card-text"> <small class="text-muted"><strong></strong> <span class="clickable" @click="deleteWeightGoal(wGoal._id)"><i
@@ -44,7 +44,7 @@
           </div>
         </div>
         <div v-for="wGoal in weightGoals" :key="wGoal._id" class="">
-          <div class="card border-info">
+          <div class="card border-info mb-2">
             <div v-if="!wGoal.completed">
               <div class="card-header bg-light-blue">
                 <i class="fas fa-check-circle green float-right fa-2x" @click="editWeightGoal(wGoal)" title="Completed"></i>
@@ -100,12 +100,12 @@
             </div>
           </form>
         </div>
-        <div class="card border-info">
+        <div class="card border-info mb-2">
           <div class="card-header bg-light-blue">
-            <h3 class="font-size">blah blah blah</h3>
+            <h3 class="font-size">Example Endurance Goal</h3>
           </div>
           <div class="card-body font-size">
-            <p>yooooooooooooooooooooooooooooo</p>
+            <p>Create a new endurance goal!</p>
           </div>
           <div>
             <p class="card-text"> <small class="text-muted"><strong></strong> <span class="clickable" @click="deleteEnduranceGoal(eGoal._id)"><i
@@ -113,7 +113,7 @@
           </div>
         </div>
         <div v-for="eGoal in enduranceGoals" :key="eGoal._id" class="">
-          <div class="card border-info">
+          <div class="card border-info mb-2">
             <div v-if="!eGoal.completed">
               <div class="card-header bg-light-blue">
                 <i class="fas fa-check-circle green float-right fa-2x" @click="editEnduranceGoal(eGoal)" title="Completed"></i>
@@ -193,12 +193,12 @@
             </div>
           </form>
         </div>
-        <div class="card border-info">
+        <div class="card border-info mb-2">
           <div class="card-header bg-light-blue">
-            <h3 class="font-size">blah blah blah</h3>
+            <h3 class="font-size">Example Strength Goal</h3>
           </div>
           <div class="card-body font-size">
-            <p>yooooooooooooooooooooooooooooo</p>
+            <p>Create a new strength goal!</p>
           </div>
           <div>
             <p class="card-text"> <small class="text-muted"><strong></strong> <span class="clickable" @click="deleteWeightGoal(wGoal._id)"><i
@@ -206,7 +206,7 @@
           </div>
         </div>
         <div v-for="sGoal in strengthGoals" :key="sGoal._id" class="">
-          <div class="card border-info">
+          <div class="card border-info mb-2">
             <div v-if="!sGoal.completed">
               <div class="card-header bg-light-blue">
                 <i class="fas fa-check-circle green float-right fa-2x" @click="editStrengthGoal(sGoal)" title="Completed"></i>
@@ -232,8 +232,8 @@
               </div>
             </div>
             <div>
-              <p class="card-text"> <small class="text-muted"><strong>Created</strong>: {{sGoal.created}} | <span class="clickable"
-                    @click="deleteStrengthGoal(sGoal._id)"><i class="far fa-trash-alt"></i></span></small></p>
+              <p class="card-text"> <small class="text-muted"><strong>Created</strong>: {{sGoal.created}} | 
+                <span class="clickable" @click="deleteStrengthGoal(sGoal._id)"><i class="far fa-trash-alt"></i></span></small></p>
             </div>
           </div>
         </div>
@@ -391,6 +391,9 @@
   h3 {
     font-weight: 700;
   }
+  .bg-light-blue {
+  background-color: #a0dee7;
+}
 
   .red {
     /* font-size: 500px; */
@@ -421,4 +424,7 @@
   .font-size {
     font-family: "Oldenburg", cursive;
   }
+  .clickable:hover {
+  cursor: pointer;
+}
 </style>
