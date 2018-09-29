@@ -216,6 +216,96 @@ export default {
         case 20:
           level = 20;
           break;
+        case 21:
+          level = 21;
+          break;
+        case 22:
+          level = 22;
+          break;
+        case 23:
+          level = 23;
+          break;
+        case 24:
+          level = 24;
+          break;
+        case 25:
+          level = 25;
+          break;
+        case 26:
+          level = 26;
+          break;
+        case 27:
+          level = 27;
+          break;
+        case 28:
+          level = 28;
+          break;
+        case 29:
+          level = 29;
+          break;
+        case 30:
+          level = 30;
+          break;
+        case 31:
+          level = 31;
+          break;
+        case 32:
+          level = 32;
+          break;
+        case 33:
+          level = 33;
+          break;
+        case 34:
+          level = 34;
+          break;
+        case 35:
+          level = 35;
+          break;
+        case 36:
+          level = 36;
+          break;
+        case 37:
+          level = 37;
+          break;
+        case 38:
+          level = 38;
+          break;
+        case 39:
+          level = 39;
+          break;
+        case 40:
+          level = 40;
+          break;
+        case 41:
+          level = 41;
+          break;
+        case 42:
+          level = 42;
+          break;
+        case 43:
+          level = 43;
+          break;
+        case 44:
+          level = 44;
+          break;
+        case 45:
+          level = 45;
+          break;
+        case 46:
+          level = 46;
+          break;
+        case 47:
+          level = 47;
+          break;
+        case 48:
+          level = 48;
+          break;
+        case 49:
+          level = 49;
+          break;
+        case 50:
+          level = 50;
+          break;
       }
       return level;
     }
