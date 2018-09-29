@@ -37,7 +37,8 @@
               <h3 class="font-size">Example Weight Goal</h3>
             </div>
             <div class="card-body font-size">
-              <p>Create a new weight goal by clicking the dropdown menu above and selecting weight loss/gain!</p>
+              <p>Create a new weight goal by clicking the dropdown menu above and selecting weight loss/gain!</p> 
+              <p>Earn XP for creating and completing goals.</p>
             </div>
             <div>
               <p class="card-text"> <small class="text-muted"><strong></strong> <span class="clickable" @click="def = !def"><i
@@ -97,6 +98,7 @@
             </div>
             <div class="card-body font-size">
               <p>Create a new endurance goal by clicking the dropdown menu above and selecting endurance!</p>
+              <p>Earn XP for creating and completing goals.</p>
             </div>
             <div>
               <p class="card-text"> <small class="text-muted"><strong></strong> <span class="clickable" @click="defE = !defE"><i
@@ -191,7 +193,8 @@
               <h3 class="font-size">Example Strength Goal</h3>
             </div>
             <div class="card-body font-size">
-              <p>Create a new weight goal by clicking the dropdown menu above and selecting strength!</p>
+              <p>Create a new weight goal by clicking the dropdown menu above and selecting strength!</p> 
+               <p>Earn XP for creating and completing goals.</p>
             </div>
             <div>
               <p class="card-text"> <small class="text-muted"><strong></strong> <span class="clickable" @click="defS = !defS"><i
@@ -244,7 +247,7 @@
                 <h3 class="font-size">Create a Progress Chart</h3>
               </div>
               <div class="card-body font-size">
-                <p>Create a new progress chart by clicking the dropdown menu above and selecting a category!</p>
+                <p>Create a new progress chart by clicking the dropdown menu above and selecting a category! Once you enter data your chart will appear! </p>
               </div>
               <div>
                 <p class="card-text"> <small class="text-muted"><strong></strong> <span class="clickable" @click="defT = !defT"><i
