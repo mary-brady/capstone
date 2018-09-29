@@ -90,7 +90,8 @@
           },
           options: {
             responsive: true,
-            maintainAspectRatio: false,
+            // maintainAspectRatio: false,
+            // scaleOverride: true,
             lineTension: 1,
             scales: {
               yAxes: [{
