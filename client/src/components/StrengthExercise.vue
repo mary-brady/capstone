@@ -4,7 +4,7 @@
     <div class="col-md-6" v-for="exercise in strengthEx" :key="exercise._id">
 <div class="card border-primary mb-3 mt-3" style="max-width: 15rem;">
   <div class="card-body d-flex title">
-    <h4 class="header">{{exercise.title}}</h4>
+    <h4 class="header font-size">{{exercise.title}}</h4>
     <span class="clickable" v-on:click="isHidden = !isHidden"><i class="fas fa-plus"></i></span>
   <div class="form-group" v-if="isHidden">
     <select class="custom-select" v-model="workout">
