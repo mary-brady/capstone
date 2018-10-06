@@ -1,8 +1,8 @@
 <template>
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-3" v-for="exercise in cardioEx" :key="exercise._id">
-<div class="card border-primary mb-3 mt-3" style="max-width: 12rem;">
+    <div class="col-md-6" v-for="exercise in cardioEx" :key="exercise._id">
+<div class="card border-primary mb-3 mt-3" style="max-width: 16rem;">
   <div class="card-body d-flex title">
     <h4 class="header">{{exercise.title}}</h4>
     <span class="clickable" v-on:click="isHidden = !isHidden"><i class="fas fa-plus"></i></span>
@@ -10,7 +10,7 @@
     <select class="custom-select" v-model="workout">
       <option v-for="workout in workouts" :key="workout._id" :value="workout">{{workout.title}}</option>
     </select>
-    <button @click="addToWorkout(exercise)">Add Exercise</button>
+    <button @click="addToWorkout(exercise)" class="btn-success btn-sm">Add Exercise</button>
   </div>
   </div>
   <div class="card-body">
@@ -67,5 +67,8 @@ export default {
 }
 .title {
   justify-content: space-between;
+}
+.from-group {
+  z-index: 999;
 }
 </style>

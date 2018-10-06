@@ -1,8 +1,8 @@
 <template>
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-3" v-for="exercise in strengthEx" :key="exercise._id">
-<div class="card border-primary mb-3 mt-3" style="max-width: 12rem;">
+    <div class="col-md-6" v-for="exercise in strengthEx" :key="exercise._id">
+<div class="card border-primary mb-3 mt-3" style="max-width: 15rem;">
   <div class="card-body d-flex title">
     <h4 class="header">{{exercise.title}}</h4>
     <span class="clickable" v-on:click="isHidden = !isHidden"><i class="fas fa-plus"></i></span>
@@ -67,5 +67,8 @@ export default {
 }
 .title {
   justify-content: space-between;
+}
+.card-body {
+  font-size: small;
 }
 </style>
