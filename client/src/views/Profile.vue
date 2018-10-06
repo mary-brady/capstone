@@ -97,7 +97,7 @@
             <div class="col-3"><button class="btn btn-warning" @click="showModal">Make Post</button>
               <modal v-show="isModalVisible" :userId="user._id" :username="user.username" @close="closeModal"></modal>
             </div>
-            <div class="col-3"> <button class="btn btn-success" @click="switchComponents('ProfileEdit')" :disabled="currentComp === 'ProfileEdit'">EditProfile</button></div>
+            <div class="col-3"> <button class="btn btn-success" @click="switchComponents('ProfileEdit')" :disabled="currentComp === 'ProfileEdit'">Edit Profile</button></div>
             <div class="col-12 mb-2 mt-2">
               <component id="profile" :is="currentComp" :userId="user._id" :username="user.username"></component>
             </div> 

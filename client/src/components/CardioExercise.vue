@@ -1,9 +1,9 @@
 <template>
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-6" v-for="exercise in cardioEx" :key="exercise._id">
-<div class="card border-primary mb-3 mt-3" style="max-width: 20rem;">
-  <div class="card-header d-flex">
+    <div class="col-md-3" v-for="exercise in cardioEx" :key="exercise._id">
+<div class="card border-primary mb-3 mt-3" style="max-width: 12rem;">
+  <div class="card-body d-flex title">
     <h4 class="header">{{exercise.title}}</h4>
     <span class="clickable" v-on:click="isHidden = !isHidden"><i class="fas fa-plus"></i></span>
   <div class="form-group" v-if="isHidden">
@@ -14,7 +14,6 @@
   </div>
   </div>
   <div class="card-body">
-    <h4>{{exercise.title}}</h4>
     <p class="card-text">{{exercise.description}}</p>
   </div>
 </div>
@@ -66,7 +65,7 @@ export default {
 .clickable:hover {
   cursor: pointer;
 }
-.card-header {
+.title {
   justify-content: space-between;
 }
 </style>

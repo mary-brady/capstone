@@ -1,20 +1,25 @@
 <template>
     <div id="workouts" class="container-fluid">
-      <h1>WELCOME TO WORKOUT TOWN</h1>
+      <h1>Your Workouts</h1>
       <button @click="showModal">Create New Workout</button>
             <modal v-show="isModalVisible" :userId="user._id" @close="closeModal"></modal>
-      <div class="card border-primary mb-3" style="max-width: 20rem" v-for="workout in workouts" :key="workout._id">
-        <div class="card-header">
+      <div class="card border-primary mb-3" style="max-width: 12rem" v-for="workout in workouts" :key="workout._id">
+        <div class="card-header font-size">
           {{workout.title}}
         </div>
-        <p class="card-text">
-          {{workout.description}}
+        <p class="card-subtitle mb-2 mt-1 text-muted desc">
+          <i>{{workout.description}}</i>
         </p>
+        <hr />
+        <h6 class="card-subtitle text-muted font-size">Strength</h6>
+        <hr />
         <ul v-for="strength in workout.strength" :key="strength._id">
-          <li>{{strength.title}}</li>
+          <li>{{strength.title}} | {{strength.reps}}x{{strength.sets}}</li>
         </ul>
         <hr />
-        <ul v-for="cardio in workout.cardio" v-if="workout.cardio.length > 0" :key="cardio._id">
+        <h6 class="card-subtitle text-muted font-size">Cardio</h6>
+        <hr />
+        <ul v-for="cardio in workout.cardio" v-if="workout.cardio.length > 0" :key="cardio._id" class="font-size">
           <li>{{cardio.title}}</li>
         </ul>
       </div>
@@ -72,5 +77,18 @@ export default {
 };
 </script>
 <style scoped>
+ul {
+  text-align: left;
+}
+.desc {
+  font-size: small;
+}
+.font-size {
+  font-family: "Oldenburg", cursive;
+}
+hr {
+  margin-top: 1px;
+  margin-bottom: 3px;
+}
 </style>
 
