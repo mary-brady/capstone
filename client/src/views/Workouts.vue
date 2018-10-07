@@ -1,7 +1,9 @@
 <template>
     <div id="workouts" class="container-fluid">
       <h1 class="font-size">Your Workouts</h1>
+      <div class="create">
       <button @click="showModal">Create New Workout</button>
+      </div>
             <modal v-show="isModalVisible" :userId="user._id" @close="closeModal"></modal>
       <div class="card border-primary mb-3" style="max-width: 12rem" v-for="workout in workouts" :key="workout._id">
         <div class="card-header font-size">
